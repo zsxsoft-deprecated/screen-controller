@@ -1,0 +1,67 @@
+@newline: `"\n"`; // Newline
+
+.animation_top(@selector, @animateName, @name, @duration, @delay) {
+    .Keyframe(@pre, @post, @vendor) {
+        @keyframe: ~"@{pre}@@{vendor}keyframes @{name} {@{newline}0%";
+        & when (@animateName = "fadeIn") {
+                @{keyframe} {
+                        opacity: 0;  
+                    }    
+                    50% {
+                        opacity: 0;
+                    }
+                    100%  { 
+                        opacity: 1;
+                    }    
+        }
+
+        & when (@animateName = "fadeOut") {
+                @{keyframe} {
+                        opacity: 1;  
+                    }    
+                    50% {
+                        opacity: 0;
+                    }
+                    100%  { 
+                        opacity: 0;
+                    }    
+        }
+        .Local(){}
+        .Local() when (@post=1) {
+            @local: ~"}@{newline}@{selector}";
+            @{local} {
+                -webkit-animation: @name;
+                animation: @name;
+
+                -webkit-animation-duration: @duration;
+                animation-duration: @duration;
+                
+                -webkit-animation-iteration-count: 1;
+                animation-iteration-count: 1;
+
+                -webkit-animation-delay: @delay;
+                animation-delay: @delay;
+            } 
+        }    
+        .Local;
+    } 
+    .Keyframe(""            , 0,    "-moz-");
+    .Keyframe(~"}@{newline}", 0, "-webkit-");
+    .Keyframe(~"}@{newline}", 0,      "-o-");
+    .Keyframe(~"}@{newline}", 0,     "-ms-");
+    .Keyframe(~"}@{newline}", 1,         "");
+} 
+
+.animation_top(".animate-fadeIn", "fadeIn", animate-fadeIn, 0.5s, "0s");
+.animation_top(".animate-fadeOut", "fadeOut", animate-fadeOut, 0.5s, "0s");
+
+
+
+.slide-current, .slide-prepareCurrent {
+    position: fixed;
+    top: 50px;
+    padding-bottom: 100px;
+}
+.slide-current {
+    z-index: 32767
+}

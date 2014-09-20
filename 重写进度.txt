@@ -1,0 +1,30 @@
+该应用正在重写状态。
+
+重写进度：
+
+-- (X) node.js服务端
+	-- (X) socket.io交互
+	-- (X) 数据库转为使用SQLite
+
+-- (.) 屏幕显示
+	-- (.) 组件拆分 {
+			(O) main.js - 主框架
+			(O) program.js - 数据处理
+			(.) dom.js - DOM树操作 {
+				(X) 随时间自动切换页面
+				(X) 视频部分HTML代码
+				(X) 默认显示界面
+			}
+			(X) highcharts.js - 图表
+			(X) socket.js - socket.io交互
+		}
+
+-- (X) 后台控制
+	-- (X) 组件拆分 {
+			main.js - 主框架
+			program.js - 数据处理
+			socket.js - socket.io交互
+		}
+
+-- (X) 管理界面
+	-- 待定

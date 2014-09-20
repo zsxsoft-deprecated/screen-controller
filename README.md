@@ -1,9 +1,24 @@
-﻿MyScreen
+﻿Screen Controler
 ================
 
 a node.js app to control fzbz screen.
 
-As we know, the activities in schools are always SHITFUL. My school is Fuzhou No.8 Middle School, and it has a large screen. In order to let the next activity perfect, I write this app to control the screen.
+## Contributors
+zsx(http://www.zsxsoft.com)
 
-This project is written by node.js. With the help of HTML5 socket.io, I can throw AJAX Polling away! But I didn't use other features, like Canvas. It's regret. In the other hand, it's enough as a app that developed only for 24 hours......
+## The reason for creating project
+As we know, the activities in schools are always __SHITFUL__. My school is Fuzhou No.8 Middle School, and it has a large screen. In order to let the next activity perfect, I write this app to control the screen.
 
+## Libraries
+
+* seajs [https://github.com/seajs/seajs](https://github.com/seajs/seajs)
+* jQuery [https://github.com/jquery/jquery](https://github.com/jquery/jquery)
+* Bootstrap [https://github.com/twbs/bootstrap](https://github.com/twbs/bootstrap)
+
+
+
+* express [https://github.com/strongloop/express](https://github.com/strongloop/express)
+* express-less [https://github.com/toogle/express-less](https://github.com/toogle/express-less)
+* socket.io [https://github.com/Automattic/socket.io](https://github.com/Automattic/socket.io)
+* ejs [https://github.com/visionmedia/ejs](https://github.com/visionmedia/ejs)
+* node-mysql [https://github.com/felixge/node-mysql](https://github.com/felixge/node-mysql)

@@ -26,6 +26,7 @@ define(function(require, exports, module) {
 			timeupdate: [],
 			toProgram: [],
 			toggleSlide: [],
+			toggleMusic: []
 		},
 
 		// Events
@@ -42,6 +43,14 @@ define(function(require, exports, module) {
 				argu = arguments;
 
 			$.each(this.events.toggleSlide, function(i, value) {
+				value(me, argu);
+			});
+		},
+		toggleMusic: function() {
+			var me = this,
+				argu = arguments;
+
+			$.each(this.events.toggleMusic, function(i, value) {
 				value(me, argu);
 			});
 		},
@@ -130,6 +139,16 @@ define(function(require, exports, module) {
 			var me = this;
 			$.each(param, function(i, value) {
 				me.events[value.event].push(value.func);
+			});
+			return this;
+		},
+
+		registerSocket: function(param) {
+			var me = this;
+			$.each(param, function(i, value) {
+				me.socket.on(value.event, function() {
+					value.func(me, arguments);
+				});
 			});
 			return this;
 		}

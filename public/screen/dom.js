@@ -25,6 +25,14 @@ define(function(require, exports, module) {
 				//init_bgm(object, argu);
 
 			}
+		},
+		{
+			event: "toggleMusic",
+			func: function(object, argu) {			
+
+				init_bgm(object, argu);
+
+			}
 		}
 	];
 

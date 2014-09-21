@@ -5,6 +5,7 @@ define(function(require, exports, module) {
 
 
 	module.exports = {
+		$: $,
 		socket: null,
 		program: {},
 		display: {},

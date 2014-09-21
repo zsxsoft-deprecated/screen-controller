@@ -1,12 +1,10 @@
 define(function(require, exports, module) {
-
-	var $ = require('jquery');
 	
 	module.exports = [
 		{
 			event: "timeupdate",
 			func: function(object) {
-				$(".dom-time").html(object.objects.player[0].currentTime);
+				object.$(".dom-time").html(object.objects.player[0].currentTime);
 			}
 		},
 		{
@@ -31,7 +29,8 @@ define(function(require, exports, module) {
 	];
 
 	var build_dom = function(object) {
-		
+		var $ = object.$;
+
 		$("#display-data .background-image").css("background-image", "");
 		var displayData = $("#display-data").html("");
 
@@ -66,6 +65,8 @@ define(function(require, exports, module) {
 
 
 	var slide_toggle = function(object, argu) {
+
+		var $ = object.$;
 
 		$(".animate-fadeIn").removeClass('animate-fadeIn');
 		$(".slide-prepareCurrent").removeClass('slide-prepareCurrent')

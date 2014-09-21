@@ -41,7 +41,7 @@ define(function(require, exports, module) {
 		$("#controlbutton-prev").click(function(){to_program(-1, true);});
 		$("#controlbutton-next").click(function(){to_program(+1, true);});
 		$("#controlbutton-init").click(function(){send_request("page", "init");socket.emit('global', {"need": "data"});to_program(0, true);});
-		$("#controlbutton-postjavascript").click(function(){send_request("page", {"type": "run_javascript", "code": $("#text-javascript").val()})});
+		$("#controlbutton-postjavascript").click(function(){send_request("page", {"method": "run_javascript", "code": $("#text-javascript").val()})});
 		$("#controlselect-changeprogram").change(function(){to_program($(this).val() - program_id, true)});
 		$("#controlselect-changebgm").change(function(){send_request("audio", {"method": "toggle", "to": $(this).val()})});
 

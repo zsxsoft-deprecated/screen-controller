@@ -16,7 +16,7 @@
 				(X) 默认显示界面
 			}
 			(X) highcharts.js - 图表
-			(X) socket.js - socket.io交互
+			(O) socket.js - socket.io交互
 		}
 
 -- (X) 后台控制

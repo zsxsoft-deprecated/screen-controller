@@ -52,6 +52,12 @@ define(function(require, exports, module) {
 							.appendTo(fullscreen);
 				break;
 				case "video":
+					$("<div>").addClass("background-image")
+							  .append($("<video>").attr("src", o.media)
+							  		              .height('100%'))
+							  		              //.width(document.documentElement.clientWidth)
+							  		              //.height(document.documentElement.clientHeight))
+							  .appendTo(fullscreen);
 				break;
 
 			}
@@ -114,20 +120,21 @@ define(function(require, exports, module) {
 
 			// BGM must be check after scroll
 			if (nextSlide.data("type") == "video") {
-				object.objects.active = nextDom.find("video")[0];
+				object.objects.active = nextSlide.find("video");
 				object.objects.active.bind("timeupdate", function(){
-					$(".dom-time").html(object.objects.active.currentTime);
+					$(".dom-time").html(object.objects.active[0].currentTime);
 				});
 				object.current.lastType = "video";
-				object.objects.player.pause();
+
+				object.objects.player[0].pause();
 			}
 			else {
 				if (object.current.lastType == "video")	{
-					object.objects.active.pause();
-					if (object.objects.active.readyState == 4) object.objects.active.currentTime = 0;
+					object.objects.active[0].pause();
+					if (object.objects.active[0].readyState == 4) object.objects.active[0].currentTime = 0;
 
 					object.objects.active = object.objects.player;
-					object.objects.active.play();
+					object.objects.active[0].play();
 				}
 				object.current.lastType = nextSlide.data("type");
 			}

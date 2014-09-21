@@ -12,7 +12,7 @@
 			(O) program.js - 数据处理
 			(.) dom.js - DOM树操作 {
 				(X) 随时间自动切换页面
-				(X) 视频部分HTML代码
+				(O) 视频部分HTML代码
 				(X) 默认显示界面
 			}
 			(X) highcharts.js - 图表

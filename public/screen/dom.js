@@ -33,8 +33,43 @@ define(function(require, exports, module) {
 				init_bgm(object, argu);
 
 			}
+		},
+		{
+			event: "timeupdate",
+			func: function(object, argu) {			
+
+				auto_toggle(object);
+
+			}
 		}
 	];
+
+	var auto_toggle = function(object) {
+
+		time = object.display[object.current.display]["time"];
+		if (time) {
+
+			var curTime = object.objects.player[0].currentTime, 
+				minusTime = Math.abs(time - curTime);
+			console.log('currentTime:' + curTime + ', nextTime:' + time + ', minusTime:' + minusTime);
+
+			if (minusTime <= 1) {
+				
+				if (object.current.repeat) {
+					var tmp = object.$.extend({}, object.display[object.current.display]); 
+					tmp["time"] = object.display[object.display.length - 1]["time"] + tmp["minus_time"];
+					object.display.push(tmp);
+					console.log("Add a repeat obj: ");
+					console.log(tmp);
+				}
+
+				object.toggleSlide({action: "", pos: 1});
+
+			}
+			
+		}
+
+	}
 
 	var build_dom = function(object) {
 		var $ = object.$;
@@ -71,7 +106,8 @@ define(function(require, exports, module) {
 					.appendTo(displayData);
 
 			o["time"] = parseFloat(o["time"]);
-			o["minus_time"] = (i == 0 ? 0 : (o["time"] - object.display[i - 1]["time"]));
+			o["minus_time"] = (i == 0 ? 1 : (o["time"] - object.display[i - 1]["time"]));
+			o["dom_id"] = i;
 
 		})
 
@@ -88,20 +124,20 @@ define(function(require, exports, module) {
 		
 
 		var thisSlide = $(".slide-current"),
-			thisSlideId = thisSlide.data("id"),
+			thisSlideId = object.current.display,//thisSlide.data("id"),
 			nextSlideId = (argu[0].action == "absolute" ? argu[0].pos : thisSlideId + argu[0].pos);
 
+		console.log("this: " + thisSlideId + ",  next: " + nextSlideId + ",   pos:" + argu[0].pos);
 		if (nextSlideId >= object.display.length) {
 			nextSlideId %= (object.display.length);
 		} else if (nextSlideId == NaN) {
 			nextSlideId = 0;
 		}
+		console.log("this: " + thisSlideId + ",  next: " + nextSlideId + ",   pos:" + argu[0].pos);
 
-		var nextSlide = $("#display-block-" + nextSlideId);
+		var nextSlide = $("#display-block-" + object.display[nextSlideId].dom_id);
 
 		if (nextSlideId != thisSlideId) {
-					 
-			
 			
 			nextSlide.addClass("slide-current")
 			    	 .show()
@@ -139,6 +175,8 @@ define(function(require, exports, module) {
 				object.current.lastType = nextSlide.data("type");
 			}
 		}
+
+		object.current.display = nextSlideId;
 		
 
 

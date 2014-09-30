@@ -10,14 +10,13 @@
 	-- (.) 组件拆分 {
 			(O) main.js - 主框架
 			(O) program.js - 数据处理
-			(.) dom.js - DOM树操作 {
-				(X) 随时间自动切换页面
-				(O) 视频部分HTML代码
-				(X) 默认显示界面
-			}
+			(O) dom.js - DOM树操作
 			(X) highcharts.js - 图表
 			(O) socket.js - socket.io交互
 		}
+	-- (.) 一些细节 {
+		(X) 视频全屏
+	}
 
 -- (X) 后台控制
 	-- (X) 组件拆分 {

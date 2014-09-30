@@ -82,22 +82,19 @@ define(function(require, exports, module) {
 		var displayData = $("#display-data").html("");
 
 		if (!object.current.index) {
-			var fullscreen = $("<div>").addClass("cover-container")
-									   .css("background-color", "#333")
-									   .append($("<div>")
-									   	      .addClass("inner")
-									   	      .html("<h1 class=\"dom-playing-name title-name cover-heading\"></h1><code class=\"lead dom-playing-player title-player yahei-font\"></code>")
-									    );
-			$("<div>").addClass("display-child-data")
-					.attr("id", "display-block-0")
-					.attr("data-id", 0)
-					.attr("data-type", "default")
-					.append(fullscreen)
-					.appendTo(displayData);
+
+			object.display.unshift({
+				display_type: "full-screen",
+				index: true,
+				media: "",
+				message: "",
+				type: "default"
+			});		
+			object.current.index = true;
 		}
 
 		$.each(object.display, function(i, o) {
-			var fullscreen = $("<div>").addClass("div-fullscreen");
+			var fullscreen = $("<div>").addClass("div-fullscreen " + (i == 0 ? ' slide-current' : ''));
 
 			switch(o.type) {
 				case "image":
@@ -107,11 +104,19 @@ define(function(require, exports, module) {
 				break;
 				case "video":
 					$("<div>").addClass("background-image")
-							  .append($("<video>").attr("src", o.media)
-							  		              .height('100%'))
+							  .append($("<video>").attr("src", o.media))
+							  		              //.height('100%'))
 							  		              //.width(document.documentElement.clientWidth)
 							  		              //.height(document.documentElement.clientHeight))
 							  .appendTo(fullscreen);
+				break;
+				case "default":
+					fullscreen.addClass("cover-container")
+							  .css("background-color", "#333")
+						      .append($("<div>")
+						      	.addClass("inner")
+							  	.html("<h1 class=\"dom-playing-name title-name cover-heading\"></h1><code class=\"lead dom-playing-player title-player yahei-font\"></code>")
+							  );
 				break;
 
 			}

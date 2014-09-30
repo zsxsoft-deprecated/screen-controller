@@ -1,108 +1,182 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="en">
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="author" content="">
-<title><%= title %></title>
-<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
-<meta charset="utf-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= title %></title>
+  <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/client.css" rel="stylesheet">
+  <script src="/sea.js"></script>
+  <script src="/jquery-2.1.1.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/bootstrap/js/bootstrap.min.js"></script>
+
+  <title><%= title%></title>
 </head>
 <body>
-<div class="navbar navbar-default navbar-static-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-      <a class="navbar-brand" href="#"><%= title %>控制程序</a> </div>
-    <div class="navbar-collapse collapse"> </div>
+
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Controller</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right"></ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3 col-md-2 sidebar">
+        <ul class="nav nav-sidebar">
+          <li class="active">
+            <a href="#">Dashboard</a>
+          </li>
+          <li>
+            <a href="#">Data Editor</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Information</a>
+              </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel">
+              <div class="panel-body">
+                <p>
+                  Playing ID:
+                  <span class="dom-playing-id"></span>
+                </p>
+                <p>
+                  Program:
+                  <span class="dom-playing-name"></span>
+                </p>
+                <p>
+                  Performer:
+                  <span class="dom-playing-player"></span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">Program Control</a>
+              </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel">
+              <div class="panel-body">
+                <p>
+                  Select a program:
+                  <select id="controlselect-changeprogram" class="form-control"></select>
+                </p>
+                <p>
+                  <input type="button" class="btn btn-default" value="Prev" id="controlbutton-prev"/>
+                  &nbsp;
+                  <input type="button" class="btn btn-success" value="Next" id="controlbutton-next" />
+                  &nbsp;
+                  <input type="button" class="btn btn-default" value="Mode Background" id="controlbutton-score"/>
+                  &nbsp;
+                  <input type="button" class="btn btn-default" value="Mode Score" id="controlbutton-init"/>
+
+                </p>
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="panel-group" id="accordion3" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion3" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">Slide  &amp; Music Control</a>
+            </h4>
+          </div>
+          <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel">
+            <div class="panel-body">
+              <p>
+                Select a music:
+                <select id="controlselect-changebgm" class="form-control"></select>
+              </p>
+              <p>
+                <input type="button" class="btn btn-success" value="Prev Slide" id="controlbutton-toggle-background-prev"/>
+                &nbsp;
+                <input type="button" class="btn btn-success" value="Next Slide" id="controlbutton-toggle-background-next"/>
+                &nbsp;
+                <input type="button" class="btn btn-default" value="Prev Music" id="controlbutton-toggle-music-prev"/>
+                &nbsp;
+                <input type="button" class="btn btn-default" value="Next Music" id="controlbutton-toggle-music-next"/>
+              </p>
+              <p></p>
+              <p>
+                <input type="button" class="btn btn-info" value="Play" id="controlbutton-play"/>
+                &nbsp;
+                <input type="button" class="btn btn-warning" value="Pause" id="controlbutton-pause"/>
+                &nbsp;
+                <input type="button" class="btn btn-danger" value="Stop" id="controlbutton-stop"/>
+              </p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-group" id="accordion5" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion5" href="#collapseFive" aria-expanded="true" aria-controls="collapseThree">Advanced</a>
+            </h4>
+          </div>
+          <div id="collapseFive" class="panel-collapse collapse in" role="tabpanel">
+            <div class="panel-body">
+              <div class="input-group">
+                <span class="input-group-btn">
+                  <button class="btn btn-info" type="button" id="controlbutton-init">Refresh</button>
+                </span>
+                <input type="text" class="form-control" id="text-javascript" placeholder="JavaScript Here">
+                <span class="input-group-btn">
+                  <button class="btn btn-success" type="button" id="controlbutton-postjavascript">Run</button>
+                </span>
+              </div>
+
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
-<div class="container">
-  <div class="jumbotron">
-    <p>手动写JavaScript：
-      <input type="text" class="form-control" id="text-javascript" style="width:30%;display:inline" />
-      &nbsp;
-      <input type="button" class="btn btn-success" value="提交" id="controlbutton-postjavascript"/>
-    </p>
-    <p>播放ID：<span class="dom-playing-id"></span></p>
-    <p>正在播放：<span class="dom-playing-name"></span></p>
-    <p>演唱者：<span class="dom-playing-player"></span></p>
-    <p>音乐连接测试：<span class="dom-playing-bgmcheck">0</span></p>
-    <p>快速切换节目：
-      <select id="controlselect-changeprogram">
-      </select>
-    </p>
-    <p>快速切换BGM：
-      <select id="controlselect-changebgm">
-      </select>
-    </p>
-    <p style="display:none">音乐控制台：
-    <audio id="dom-audio-test" controls></audio>
-    </p>
-    <p> 
-      <!--    <audio id="_audio" style="width:100%" controls></audio>--> 
-    </p>
-    <p>
-      <input type="button" class="btn btn-info" value="播放" id="controlbutton-play"/>
-      &nbsp;
-      <input type="button" class="btn btn-warning" value="暂停" id="controlbutton-pause"/>
-      &nbsp;
-      <input type="button" class="btn btn-danger" value="停止" id="controlbutton-stop"/>
-    </p>
-    <p>
-      <input type="button" class="btn btn-default" value="上一个节目" id="controlbutton-prev"/>
-      &nbsp;
-      <input type="button" class="btn btn-success" value="下一个节目" id="controlbutton-next" />
-    </p>
-    <p>
-      <input type="button" class="btn btn-toolbar" value="背景向前切换" id="controlbutton-toggle-background-prev"/>
-      &nbsp;
-      <input type="button" class="btn btn-toolbar" value="背景向后切换" id="controlbutton-toggle-background-next"/>
-      &nbsp;
-      （自动切换：<span class="dom-autoplay"></span>）
-    </p>
-    <p>
-      <input type="button" class="btn btn-toolbar" value="音乐向前切换" id="controlbutton-toggle-music-prev"/>
-      &nbsp;
-      <input type="button" class="btn btn-toolbar" value="音乐向后切换" id="controlbutton-toggle-music-next"/>
-    </p>
-    <p>
-      <input type="button" class="btn btn-link" value="背景模式" id="controlbutton-background"/>
-      &nbsp;
-      <input type="button" class="btn btn-link" value="计分模式" id="controlbutton-score"/>
-      &nbsp;
-      <input type="button" class="btn btn-link" value="初始化数据" id="controlbutton-init"/>
-      &nbsp; 
-      <!--<input type="button" class="btn btn-link" value="时间校正" onclick="if(!sendingcur)try{audio.currentTime = parseFloat($('#latestlog').html().split('\n')[0]);}catch(e){} "/>--> 
-    </p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <div id="latestlog"> </div>
-    <p></p>
-  </div>
 </div>
-<script src="/sea.js"></script> 
-<script src="/socket.io/socket.io.js"></script> 
-<script src="/jquery-2.1.1.min.js"></script> 
+<audio id="dom-audio-test"></audio>
 
 <script>
-	seajs.config({
+  seajs.config({
       paths: {
-        'path': '/',
-        'client': '/client'
+        'client': '/client',
+        'ext': '/client/ext'
       },
       alias: {
       }
     });
     seajs.use('client/main');
-</script>
-<!--<script src="/bootstrap/js/bootstrap.min.js"></script> 
-<script src="/js/holder.min.js"></script> 
-<script src="/js/global.js"></script> -->
-<script>
 </script>
 </body>
 </html>

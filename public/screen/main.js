@@ -4,7 +4,7 @@ define(function(require, exports, module) {
 	var program = require('screen/program'),
 		plugins = [
 
-			require('ext/dombuilder'),
+			require('ext/program'),
 			require('ext/slide'),
 			require('ext/bgm'),
 			require('ext/timeupdate'),

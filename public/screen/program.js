@@ -132,7 +132,7 @@ define(function(require, exports, module) {
 				me.toProgram(0);
 			})
 			this.socket.on('screen', function(data) {
-				me.runSocket(data.name, data);
+				me.runSocket(data.data.method, data);
 			});
 
 			return this;

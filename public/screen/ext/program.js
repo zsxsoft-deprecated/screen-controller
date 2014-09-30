@@ -2,11 +2,12 @@ define(function(require, exports, module) {
 	
 	module.exports = {
 		init: function(object) {
-			object.register(resister_function);
+			object.register(register_function);
+			object.registerSocket(register_socket);
 		}
 	};
 
-	var resister_function = [
+	var register_function = [
 		{
 			event: "toProgram",
 			func: function(object, argu) {			
@@ -18,6 +19,19 @@ define(function(require, exports, module) {
 			}
 		}
 	];
+	
+	var register_socket = [
+		{
+			event: "toProgram", 
+			func: function(object, data) {
+				object.toProgram(data.id);
+				return true;					
+			}
+		}
+	];
+
+	
+
 
 	var build_dom = function(object) {
 
@@ -66,6 +80,8 @@ define(function(require, exports, module) {
 							  	.html("<h1 class=\"dom-playing-name title-name cover-heading\"></h1><code class=\"lead dom-playing-player title-player yahei-font\"></code>")
 							  );
 				break;
+				case "custom":
+					o.custom(object, fullscreen);
 
 			}
 			$("<div>").addClass("display-child-data display-child-fullscreen")

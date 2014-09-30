@@ -1,6 +1,12 @@
 define(function(require, exports, module) {
 	
-	module.exports = [
+	module.exports = {
+		init: function(object) {
+			object.register(resister_function);
+		}
+	};
+
+	var resister_function = [
 		{
 			event: "timeupdate",
 			func: function(object) {

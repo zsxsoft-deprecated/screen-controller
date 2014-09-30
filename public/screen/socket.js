@@ -1,6 +1,12 @@
 define(function(require, exports, module) {
 	
-	module.exports = [
+	module.exports = {
+		init: function(object) {
+			object.registerSocket(resister_socket);
+		}
+	};
+
+	var resister_socket = [
 		{
 			event: "audio", 
 			func: function(object, argu) {

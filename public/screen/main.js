@@ -10,7 +10,9 @@ define(function(require, exports, module) {
 		program.objects.player = $("#dom-background-audio");
 		program.init({
 			socket: location.origin
-		}).register(dom).registerSocket(socket);
+		});
+		dom.init(program);
+		socket.init(program);
 
 		// debug
 		window.program = program;

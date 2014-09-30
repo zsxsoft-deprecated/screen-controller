@@ -104,8 +104,12 @@ define(function(require, exports, module) {
 				break;
 				case "video":
 					$("<div>").addClass("background-image")
-							  .append($("<video>").attr("src", o.media))
-							  		              //.height('100%'))
+							  .css("background-color", "#000000")
+							  .append($("<video>").attr("src", o.media)
+							  		              .width('100%')
+							  		              .height('100%')
+							  		              //.css("transform", "scaleX(2)")
+							  		 )
 							  		              //.width(document.documentElement.clientWidth)
 							  		              //.height(document.documentElement.clientHeight))
 							  .appendTo(fullscreen);

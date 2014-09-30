@@ -14,9 +14,6 @@
 			(X) highcharts.js - 图表
 			(O) socket.js - socket.io交互
 		}
-	-- (.) 一些细节 {
-		(X) 视频全屏
-	}
 
 -- (X) 后台控制
 	-- (X) 组件拆分 {

@@ -86,6 +86,8 @@
 </div>
 <script src="/sea.js"></script> 
 <script src="/socket.io/socket.io.js"></script> 
+<script src="/jquery-2.1.1.min.js"></script> 
+
 <script>
 	seajs.config({
       paths: {
@@ -93,8 +95,6 @@
         'client': '/client'
       },
       alias: {
-        'jquery': '/jquery-2.1.1.min.js',
-        'highcharts': '/'
       }
     });
     seajs.use('client/main');

@@ -4,7 +4,6 @@ define(function(require, exports, module) {
 
 
 	module.exports = {
-		$: null,
 		socket: null,
 		program: {},
 		display: {},

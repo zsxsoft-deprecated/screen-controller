@@ -1,25 +1,20 @@
 define(function(require, exports, module) {
 
 
-	var $ = require('jquery'),
-		program = require('screen/program');
+	var program = require('screen/program'),
+		plugins = [
 
-	window.$ = $;
-	window.jQuery = $;
+			require('ext/dombuilder'),
+			require('ext/slide'),
+			require('ext/bgm'),
+			require('ext/timeupdate'),
 
-	var plugins = [
+			require('ext/runjs'),
+			require('ext/init'),
 
-		require('ext/dombuilder'),
-		require('ext/slide'),
-		require('ext/bgm'),
-		require('ext/timeupdate'),
-
-		require('ext/runjs'),
-		require('ext/init'),
-
-		require('ext/highcharts'),
-		
-	]
+			require('ext/highcharts'),
+			
+		];
 
 	$(function() {
 

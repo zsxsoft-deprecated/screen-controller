@@ -9,6 +9,8 @@
 	<link href="/screen.css" rel="stylesheet">
 	<link href="/less/screen.css" rel="stylesheet">
 	<script src="/sea.js"></script>
+	<script src="/jquery-2.1.1.min.js"></script>
+	<script src="/highcharts-all.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
 
 	<title><%= title%></title>
@@ -69,13 +71,10 @@
 <script>
 	seajs.config({
       paths: {
-        'path': '/',
         'screen': '/screen',
         'ext': '/screen/ext'
       },
       alias: {
-        'jquery': '/jquery-2.1.1.min.js',
-        'highcharts': '/'
       }
     });
     seajs.use('screen/main');

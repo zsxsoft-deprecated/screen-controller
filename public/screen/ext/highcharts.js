@@ -54,9 +54,10 @@ define(function(require, exports, module) {
 						score: [0],
 						ishighcharts: true
 					});
+					last_program++;	
 				}
 
-				object.toProgram(last_program + 1);
+				object.toProgram(last_program);
 				return true;
 			} 
 		}
@@ -65,7 +66,7 @@ define(function(require, exports, module) {
 
 
 	var draw_chart = function(object){
-		var $ = $;
+
 
 		$('#dom-score').highcharts({
 			chart: {

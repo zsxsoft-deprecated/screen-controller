@@ -22,12 +22,10 @@ define(function(require, exports, module) {
 
 	var register_socket = [
 		{
-			event: "screen", 
+			event: "toprogram", 
 			func: function(object, data) {
-				if (data.method == 'skipto') {
-					object.toProgram(data.id);
-					return true;					
-				}
+				object.toProgram(data.id);
+				return true;					
 			}
 		}
 	];

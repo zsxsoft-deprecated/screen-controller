@@ -48,7 +48,7 @@ define(function(require, exports, module) {
 
 		if (nextSlideId >= object.display.length) {
 			nextSlideId %= (object.display.length);
-		} else if (nextSlideId == NaN) {
+		} else if (nextSlideId == NaN || nextSlideId < 0) {
 			nextSlideId = 0;
 		}
 

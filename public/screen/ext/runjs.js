@@ -11,7 +11,7 @@ define(function(require, exports, module) {
 			event: "runjs", 
 			func: function(object, argu) {
 				data = argu[0];
-				(new Function(data.data.code))(object);
+				(new Function(data.code))(object);
 				return true;
 			} 
 		}

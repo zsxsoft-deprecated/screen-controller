@@ -26,7 +26,10 @@ define(function(require, exports, module) {
 			timeupdate: [],
 			toProgram: [],
 			toggleSlide: [],
-			toggleMusic: []
+			toggleMusic: [],
+		},
+		sockets: {
+
 		},
 
 		// Events
@@ -130,6 +133,9 @@ define(function(require, exports, module) {
 				me.programs = data;
 				me.toProgram(0);
 			})
+			this.socket.on('screen', function(data) {
+				me.runSocket(data.name, data);
+			});
 
 			return this;
 
@@ -146,11 +152,22 @@ define(function(require, exports, module) {
 		registerSocket: function(param) {
 			var me = this;
 			$.each(param, function(i, value) {
-				me.socket.on(value.event, function() {
-					value.func(me, arguments);
-				});
+				if (!me.sockets[value.event]) me.sockets[value.event] = [];
+
+				me.sockets[value.event].push(value.func);
 			});
 			return this;
+		},
+
+		runSocket: function(name, data) {
+			var me = this;
+			$.each(this.sockets[name], function(i, value) {
+				if (value(me, data.data)) {
+					data['data'] = null;
+					me.socket.emit('result', data);
+					return true;
+				}
+			});
 		}
 	};
 

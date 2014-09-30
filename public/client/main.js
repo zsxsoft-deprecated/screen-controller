@@ -1,10 +1,7 @@
 define(function(require, exports, module) {
 
 
-	var $ = require('jquery'),
-		program = require('screen/program'),
-		dom = require('screen/dom'),
-		socket = require('screen/socket');
+	var $ = require('jquery');
 
 	$(function() {
 		window.$ = $;
@@ -34,14 +31,14 @@ define(function(require, exports, module) {
 		$("#controlbutton-toggle-music-prev").click(function(){send_request("audio", {"method": "toggle", "plus": -1})});
 		$("#controlbutton-toggle-music-next").click(function(){send_request("audio", {"method": "toggle", "plus":  1})});
 
-		$("#controlbutton-toggle-background-prev").click(function(){send_request("screen", {"method": "toggle", "pageplus": -1})});
-		$("#controlbutton-toggle-background-next").click(function(){send_request("screen", {"method": "toggle", "pageplus": 1})});
+		$("#controlbutton-toggle-background-prev").click(function(){send_request("toggle", {"pageplus": -1})});
+		$("#controlbutton-toggle-background-next").click(function(){send_request("toggle", {"pageplus": 1})});
 		$("#controlbutton-score").click(function(){send_request("screen", "score")});
 		$("#controlbutton-background").click(function(){send_request("screen", "background")});
 		$("#controlbutton-prev").click(function(){to_program(-1, true);});
 		$("#controlbutton-next").click(function(){to_program(+1, true);});
-		$("#controlbutton-init").click(function(){send_request("page", "init");socket.emit('global', {"need": "data"});to_program(0, true);});
-		$("#controlbutton-postjavascript").click(function(){send_request("page", {"method": "run_javascript", "code": $("#text-javascript").val()})});
+		$("#controlbutton-init").click(function(){send_request("init");socket.emit('global', {"need": "data"});to_program(0, true);});
+		$("#controlbutton-postjavascript").click(function(){send_request("runjs", {"code": $("#text-javascript").val()})});
 		$("#controlselect-changeprogram").change(function(){to_program($(this).val() - program_id, true)});
 		$("#controlselect-changebgm").change(function(){send_request("audio", {"method": "toggle", "to": $(this).val()})});
 
@@ -104,7 +101,7 @@ define(function(require, exports, module) {
 		queue.data[queue_max] = { name : name, data : data , id : queue_max };
 		queue.callback[queue_max] = callback;
 		console.log(queue.data[queue_max]);
-		socket.emit(name, queue.data[queue_max]);
+		socket.emit('screen', queue.data[queue_max]);
 		
 	}
 

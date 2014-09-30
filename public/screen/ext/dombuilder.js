@@ -13,8 +13,8 @@ define(function(require, exports, module) {
 			func: function(object, argu) {			
 
 				build_dom(object);
-				object.$(".dom-playing-name").text(object.program.program.name);
-				object.$(".dom-playing-player").text(object.program.player.class + " " + object.program.player.name);
+				$(".dom-playing-name").text(object.program.program.name);
+				$(".dom-playing-player").text(object.program.player.class + " " + object.program.player.name);
 
 			}
 		}
@@ -33,7 +33,7 @@ define(function(require, exports, module) {
 	];
 
 	var build_dom = function(object) {
-		var $ = object.$;
+
 
 		$("#display-data .background-image").css("background-image", "");
 		var displayData = $("#display-data").html("");
@@ -79,6 +79,8 @@ define(function(require, exports, module) {
 							  	.html("<h1 class=\"dom-playing-name title-name cover-heading\"></h1><code class=\"lead dom-playing-player title-player yahei-font\"></code>")
 							  );
 				break;
+				case "custom":
+					o.custom(object, fullscreen);
 
 			}
 			$("<div>").addClass("display-child-data display-child-fullscreen")

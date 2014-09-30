@@ -36,8 +36,6 @@ define(function(require, exports, module) {
 
 		if (object.display.length == 0) return;
 
-		var $ = object.$;
-
 
 		$(".animate-fadeIn").removeClass('animate-fadeIn');
 		$(".slide-prepareCurrent").removeClass('slide-prepareCurrent')

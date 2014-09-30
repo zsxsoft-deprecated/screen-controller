@@ -4,6 +4,9 @@ define(function(require, exports, module) {
 	var $ = require('jquery'),
 		program = require('screen/program');
 
+	window.$ = $;
+	window.jQuery = $;
+
 	var plugins = [
 
 		require('ext/dombuilder'),
@@ -12,11 +15,16 @@ define(function(require, exports, module) {
 		require('ext/timeupdate'),
 
 		require('ext/runjs'),
-		require('ext/init')
+		require('ext/init'),
+
+		require('ext/highcharts'),
 		
 	]
 
 	$(function() {
+
+		window.program = program;
+
 		program.objects.player = $("#dom-background-audio");
 		program.init({
 			socket: location.origin
@@ -27,7 +35,7 @@ define(function(require, exports, module) {
 		});
 
 		// debug
-		window.program = program;
+		
 	});
 
 

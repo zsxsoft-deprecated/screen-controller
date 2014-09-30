@@ -12,15 +12,15 @@ define(function(require, exports, module) {
 			func: function(object, argu) {			
 
 				build_dom(object);
-				object.$(".dom-playing-name").text(object.program.program.name);
-				object.$(".dom-playing-player").text(object.program.player.class + " " + object.program.player.name);
+				$(".dom-playing-name").text(object.program.program.name);
+				$(".dom-playing-player").text(object.program.player.class + " " + object.program.player.name);
 
 			}
 		}
 	];
 
 	var build_dom = function(object) {
-		var $ = object.$;
+
 
 		$("#display-data .background-image").css("background-image", "");
 		var displayData = $("#display-data").html("");

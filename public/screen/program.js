@@ -1,11 +1,10 @@
 define(function(require, exports, module) {
 
-	var $ = require('jquery'),
-		NO_AUDIO_DEFAULT_BGM = '/multimedia/empty.mp3';
+	var NO_AUDIO_DEFAULT_BGM = '/multimedia/empty.mp3';
 
 
 	module.exports = {
-		$: $,
+		$: null,
 		socket: null,
 		program: {},
 		display: {},
@@ -69,13 +68,13 @@ define(function(require, exports, module) {
 				.attr("preload", true)
 				.attr("autoplay", true)
 				.bind('canplaythrough', function() {
-					console.log($(this).attr("src") + " 音频加载完毕");
+					//console.log($(this).attr("src") + " 音频加载完毕");
 				})
 				.bind('play', function() {
-					console.log($(this).attr("src") + " 播放中");
+					//console.log($(this).attr("src") + " 播放中");
 				})
 				.bind('pause', function() {
-					console.log($(this).attr("src") + " 暂停播放");
+					//console.log($(this).attr("src") + " 暂停播放");
 				})
 				.bind('timeupdate', function() {
 					$.each(me.events.timeupdate, function(i, value) {

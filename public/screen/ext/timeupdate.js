@@ -10,7 +10,7 @@ define(function(require, exports, module) {
 		{
 			event: "timeupdate",
 			func: function(object, argu) {		
-				object.$(".dom-time").html(object.objects.player[0].currentTime);
+				$(".dom-time").html(object.objects.player[0].currentTime);
 				auto_toggle(object);
 			}
 		},
@@ -31,7 +31,7 @@ define(function(require, exports, module) {
 		// Toggle Slide
 		if (minusTime <= 1) {
 			if (object.current.repeat) {
-				var tmp = object.$.extend({}, object.display[object.current.display]); 
+				var tmp = $.extend({}, object.display[object.current.display]); 
 				tmp["time"] = object.display[object.display.length - 1]["time"] + tmp["minus_time"];
 				object.display.push(tmp);
 				console.log("Add a repeat obj: ");

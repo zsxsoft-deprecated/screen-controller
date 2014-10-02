@@ -16,25 +16,36 @@ var config = require('./config').config,
 mysqlConnect.query('USE `' + config.mysql.database + '`');
 http_page.config = config;
 
-app.use('/less', expressLess(path.join(__dirname, config.webserver.static_folders, '/less')), {
-    debug: app.get('env') == 'development'
-})
-   .set('port', config.webserver.port)
-   
+app
 
+   // Dev mode
+   /*
+     .use(express.logger('dev'))
+     .use(express.errorHandler())
+   */
+   
+   // set ejs
    .engine('.html', require('ejs').__express)
    .set('view engine', 'html')
+   // set ejs render
+   .set('views', path.join(__dirname, config.webserver.html_folders))
 
-// .use(express.logger('dev'))
-// .use(express.errorHandler())
+   // set less
+   .use('/less', expressLess(path.join(__dirname, config.webserver.static_folders, '/less')))
+
 
    .use(express.json())
    .use(express.urlencoded())
    .use(express.methodOverride())
    .use(app.router)
+    
+   // set port
+   .set('port', config.webserver.port)
 
+   // set static resouces
    .use(express.static(path.join(__dirname, config.webserver.static_folders)))
-   .set('views', path.join(__dirname, config.webserver.html_folders))
+
+   // set url
    .get('/', http_page.index)
    .get('/screen', http_page.screen)
    .get('/controller', http_page.controller)
@@ -43,15 +54,14 @@ app.use('/less', expressLess(path.join(__dirname, config.webserver.static_folder
 ;
 
 
-var http_server = http.createServer(app).listen(config.webserver.port, function(){
+var httpServer = http.createServer(app).listen(config.webserver.port, function(){
     console.log('Server created!');
 });
 
-
-//   Socket Events
-common.sql = mysqlConnect;
-common.config = config;
-common.bind('screen', require('./lib/screen').func);
-common.bind('controller', require('./lib/controller').func);
-common.bind('desc_editor', require('./lib/desc_editor').func);
-common.on(http_server);
+console.log(common);
+common.bindSQLObject(mysqlConnect)
+      .rebuildConfig(config)
+      .bindEvent('global')
+      .bindEvent('screen')
+      .bindEvent('controller')
+      .bindServer(httpServer);

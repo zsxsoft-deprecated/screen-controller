@@ -83,7 +83,7 @@
               <div class="panel-body">
                 <p>
                   Select a program:
-                  <select id="controlselect-changeprogram" class="form-control"></select>
+                  <select id="controlselect-changeprogram" class="form-control select-command" data-command="toProgram" data-param="{action: 'absolute', pos: %val%}"></select>
                 </p>
                 <p>
                   <button class="btn btn-default btn-command" data-command="toProgram" data-param="{action: '', pos: -1}"  id="controlbutton-prev">Prev</button>
@@ -112,7 +112,7 @@
             <div class="panel-body">
               <p>
                 Select a music:
-                <select id="controlselect-changebgm" class="form-control"></select>
+                <select id="controlselect-changebgm" class="form-control select-command" data-command="controlMultimedia" data-param="{method: 'toggle', param: {action: 'absolute', pos: %val%}}"></select>
               </p>
               <p>
                 <button class="btn btn-success btn-command" data-command="toggleSlide" data-param="{action: '', pos: -1}" id="controlbutton-toggle-background-prev">Prev Slide</button>

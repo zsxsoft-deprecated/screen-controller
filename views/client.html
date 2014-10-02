@@ -86,13 +86,13 @@
                   <select id="controlselect-changeprogram" class="form-control"></select>
                 </p>
                 <p>
-                  <input type="button" class="btn btn-default" value="Prev" id="controlbutton-prev"/>
+                  <input type="button" class="btn btn-default btn-command" data-command="toProgram" data-param="{action: '', pos: -1}" value="Prev" id="controlbutton-prev"/>
                   &nbsp;
-                  <input type="button" class="btn btn-success" value="Next" id="controlbutton-next" />
+                  <input type="button" class="btn btn-success btn-command" data-command="toProgram" data-param="{action: '', pos: 1}" value="Next" id="controlbutton-next" />
                   &nbsp;
-                  <input type="button" class="btn btn-default" value="Mode Background" id="controlbutton-score"/>
+                  <input type="button" class="btn btn-default btn-command" data-command="toProgram" data-param="{action: 'absoulue', pos: 1}" value="Mode Background" id="controlbutton-background"/>
                   &nbsp;
-                  <input type="button" class="btn btn-default" value="Mode Score" id="controlbutton-init"/>
+                  <input type="button" class="btn btn-default btn-command" data-command="toScore" data-param="{}" value="Mode Score" id="controlbutton-score"/>
 
                 </p>
               </p>

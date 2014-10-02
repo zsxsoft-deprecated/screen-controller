@@ -115,21 +115,21 @@
                 <select id="controlselect-changebgm" class="form-control"></select>
               </p>
               <p>
-                <button class="btn btn-success btn-command"  id="controlbutton-toggle-background-prev">Prev Slide</button>
+                <button class="btn btn-success btn-command" data-command="toggleSlide" data-param="{action: '', pos: -1}" id="controlbutton-toggle-background-prev">Prev Slide</button>
                 &nbsp;
-                <button class="btn btn-success btn-command"  id="controlbutton-toggle-background-next">Next Slide</button>
+                <button class="btn btn-success btn-command" data-command="toggleSlide" data-param="{action: '', pos: 1}" id="controlbutton-toggle-background-next">Next Slide</button>
                 &nbsp;
-                <button class="btn btn-default"  id="controlbutton-toggle-music-prev">Prev Music</button>
+                <button class="btn btn-default btn-command" data-command="controlMultimedia" data-param="{method: 'toggle', param: {action: '', pos: -1}}" id="controlbutton-toggle-music-prev">Prev Music</button>
                 &nbsp;
-                <button class="btn btn-default"  id="controlbutton-toggle-music-next">Next Music</button>
+                <button class="btn btn-default btn-command" data-command="controlMultimedia" data-param="{method: 'toggle', param: {action: '', pos: 1}}" id="controlbutton-toggle-music-next">Next Music</button>
               </p>
               <p></p>
               <p>
-                <button class="btn btn-info"  id="controlbutton-play">Play</button>
+                <button class="btn btn-info btn-command" data-command="controlMultimedia" data-param="{method: 'play'}" id="controlbutton-play">Play</button>
                 &nbsp;
-                <button class="btn btn-warning"  id="controlbutton-pause">Pause</button>
+                <button class="btn btn-warning btn-command" data-command="controlMultimedia" data-param="{method: 'pause'}"   id="controlbutton-pause">Pause</button>
                 &nbsp;
-                <button class="btn btn-danger"  id="controlbutton-stop">Stop</button>
+                <button class="btn btn-danger btn-command" data-command="controlMultimedia" data-param="{method: 'stop'}"   id="controlbutton-stop">Stop</button>
               </p>
 
             </div>

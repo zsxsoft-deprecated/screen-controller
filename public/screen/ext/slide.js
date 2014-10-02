@@ -17,22 +17,22 @@ define(function(require, exports, module) {
 		{
 			event: "toggleSlide",
 			func: function(object, argu) {		
-				slide_toggle(object, argu);
+				slideToggle(object, argu);
 			}
 		}
 	];
 
 	var register_socket = [
 		{
-			event: "toggle", 
+			event: "toggleSlide", 
 			func: function(object, data) {
-				object.toggleSlide({action: "", pos: data.pageplus});
+				object.toggleSlide(data.param);
 				return true;
 			} 
 		}
 	];
 
-	var slide_toggle = function(object, argu) {
+	var slideToggle = function(object, argu) {
 
 		if (object.display.length == 0) return;
 

@@ -62,12 +62,6 @@ define(function(require, exports, module) {
 			}, subFunction);
 
 		},
-		toScore: function(param) {
-			var me = this;
-			me.sendRequest({
-				method: "toScore"
-			});
-		},
 		initSocket: function() {
 			var me = this;
 			this.socket = io.connect(location.origin);
@@ -129,7 +123,14 @@ define(function(require, exports, module) {
 					command = that.data("command"),
 					param = (typeof(that.data("param")) == 'object' ? that.data("param") : ((new Function('return ' + that.data("param")))()));
 
-				me[command](param);
+				if (me[command]) {
+					me[command](param);
+				} else {
+					me.sendRequest({
+						method: command,
+						param: param
+					});
+				}
 
 			});
 

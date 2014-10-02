@@ -24,7 +24,7 @@ define(function(require, exports, module) {
 
 	var resister_socket = [
 		{
-			event: "audio", 
+			event: "controlMultimedia", 
 			func: function(object, data) {
 
 				var methods = {
@@ -39,16 +39,13 @@ define(function(require, exports, module) {
 						object.objects.active[0].currentTime = 0;
 					},
 					toggle: function() {
-						object.toggleMusic({
-							action: (data.to ? "absolute" : ""),
-							pos: (data.to ? data.to : data.plus)
-						});
+						object.toggleMusic(data.param.param);
 					}
 				};
-				methods[data.method]();
+				methods[data.param.method]();
 				return true;
 			}
-		},
+		}
 	];
 
 	var init_bgm = function(object, argu) {

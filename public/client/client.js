@@ -11,6 +11,29 @@ define(function(require, exports, module) {
 			data: [],
 			callback: []
 		},
+		buttonEvents: {
+			toProgram: function(me, param) {
+				var absId = getAbsoluteProgramId(me, param),
+					subFunction = function() {
+						me.program = me.programs[absId];
+						me.initProgram();
+					}
+				// console.log("beforeId:  " + me.program.id + "    afterId: " + absId);
+
+				me.sendRequest({
+					method: "toProgram",
+					id: me.programs[absId].tagId
+				}, subFunction);
+
+			},
+			runJavaScript: function(me, param) {
+				me.sendRequest({
+					method: "runJavaScript",
+					code: $("#text-javascript").val()
+				});
+			}
+		},
+
 		sendRequest: function(data, callback) {
 
 			if (!data) data = {};
@@ -46,28 +69,6 @@ define(function(require, exports, module) {
 							 .text(v)
 							 .appendTo(object);
 			});
-		},
-		toProgram: function(param) {
-			var me = this,
-				absId = getAbsoluteProgramId(this, param),
-				subFunction = function() {
-					me.program = me.programs[absId];
-					me.initProgram();
-				}
-			// console.log("beforeId:  " + me.program.id + "    afterId: " + absId);
-
-			me.sendRequest({
-				method: "toProgram",
-				id: me.programs[absId].tagId
-			}, subFunction);
-
-		},
-		runJavaScript: function(param) {
-			var me = this;
-			me.sendRequest({
-				method: "runJavaScript",
-				code: $("#text-javascript").val()
-			})
 		},
 		initSocket: function() {
 			var me = this;
@@ -130,8 +131,8 @@ define(function(require, exports, module) {
 					command = that.data("command"),
 					param = (typeof(that.data("param")) == 'object' ? that.data("param") : ((new Function('return ' + that.data("param")))()));
 
-				if (me[command]) {
-					me[command](param);
+				if (me.buttonEvents[command]) {
+					me.buttonEvents[command](me, param);
 				} else {
 					me.sendRequest({
 						method: command,
@@ -145,7 +146,9 @@ define(function(require, exports, module) {
 
 			return this;
 
-		}
+		},
+
+
 
 
 	};

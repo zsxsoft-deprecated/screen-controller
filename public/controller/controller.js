@@ -12,7 +12,17 @@ define(function(require, exports, module) {
 			callback: []
 		},
 		selectEvents: {
+			toProgram: function(me, param) {
+				var subFunction = function() {
+					me.program = me.programs[param.pos];
+					me.initProgram();
+				}
 
+				me.sendRequest({
+					method: "toProgram",
+					param: param
+				}, subFunction);
+			}
 		},
 		buttonEvents: {
 			toProgram: function(me, param) {
@@ -92,8 +102,8 @@ define(function(require, exports, module) {
 			});
 
 			this.socket.on('result', function(data){
-				var id = data.data_id;
-				if(id > 0 && me.queue.data[id]){
+				var id = data.dataId;
+				if(id >= 0 && me.queue.data[id]){
 					console.log('Request ' + id + ' finished!');
 					me.queue.callback[id]();
 					delete me.queue.data[id];

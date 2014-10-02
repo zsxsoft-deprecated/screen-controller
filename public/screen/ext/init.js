@@ -8,7 +8,7 @@ define(function(require, exports, module) {
 
 	var register_socket = [
 		{
-			event: "init", 
+			event: "initPage", 
 			func: function(object) {
 				location.reload();
 				return true;

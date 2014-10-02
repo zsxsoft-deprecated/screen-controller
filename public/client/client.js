@@ -62,6 +62,13 @@ define(function(require, exports, module) {
 			}, subFunction);
 
 		},
+		runJavaScript: function(param) {
+			var me = this;
+			me.sendRequest({
+				method: "runJavaScript",
+				code: $("#text-javascript").val()
+			})
+		},
 		initSocket: function() {
 			var me = this;
 			this.socket = io.connect(location.origin);

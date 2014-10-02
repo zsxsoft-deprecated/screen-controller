@@ -8,10 +8,9 @@ define(function(require, exports, module) {
 
 	var resister_socket = [
 		{
-			event: "runjs", 
+			event: "runJavaScript", 
 			func: function(object, argu) {
-				data = argu[0];
-				(new Function(data.code))(object);
+				(new Function(argu.code))(object);
 				return true;
 			} 
 		}

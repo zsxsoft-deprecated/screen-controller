@@ -24,7 +24,7 @@ define(function(require, exports, module) {
 		{
 			event: "toProgram", 
 			func: function(object, data) {
-				object.toProgram(data.id);
+				object.toProgram(data.param.pos);
 				return true;					
 			}
 		}

@@ -11,6 +11,9 @@ define(function(require, exports, module) {
 			data: [],
 			callback: []
 		},
+		selectEvents: {
+
+		},
 		buttonEvents: {
 			toProgram: function(me, param) {
 				var absId = getAbsoluteProgramId(me, param),
@@ -22,7 +25,10 @@ define(function(require, exports, module) {
 
 				me.sendRequest({
 					method: "toProgram",
-					id: me.programs[absId].tagId
+					param: {
+						action: "absolute",
+						pos: me.programs[absId].tagId
+					}
 				}, subFunction);
 
 			},
@@ -62,7 +68,7 @@ define(function(require, exports, module) {
 			$(".dom-autoplay").text(((me.program.display.length > 0) ? (me.program.display[0].time ? "√" + (me.program.display[0].repeat ? "(repeat)" : "") : "×") : "×"));
 			// This line ...
 
-			var object = $("#controlselect-changebgm");
+			var object = $("#controlselect-changebgm").html("");
 			$.each(me.program.bgm, function(i, v) {
 				$("<option>").val(i)
 							 .attr("data-pos", i)
@@ -133,6 +139,22 @@ define(function(require, exports, module) {
 
 				if (me.buttonEvents[command]) {
 					me.buttonEvents[command](me, param);
+				} else {
+					me.sendRequest({
+						method: command,
+						param: param
+					});
+				}
+
+			});
+
+			$(".select-command").change(function() {
+				var that = $(this),
+					command = that.data("command"),
+					param = (typeof(that.data("param")) == 'object' ? that.data("param") : ((new Function('return ' + that.data("param").replace("%val%", that.val())))()));
+
+				if (me.selectEvents[command]) {
+					me.selectEvents[command](me, param);
 				} else {
 					me.sendRequest({
 						method: command,

@@ -22,7 +22,7 @@ define(function(require, exports, module) {
 
 	var register_socket = [
 		{
-			event: "toscore",
+			event: "toScore",
 			func: function(object) {
 
 				var last_program = object.programs.length - 1;

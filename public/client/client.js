@@ -62,6 +62,12 @@ define(function(require, exports, module) {
 			}, subFunction);
 
 		},
+		toScore: function(param) {
+			var me = this;
+			me.sendRequest({
+				method: "toScore"
+			});
+		},
 		initSocket: function() {
 			var me = this;
 			this.socket = io.connect(location.origin);

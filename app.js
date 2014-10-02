@@ -3,20 +3,17 @@ delete require.cache['./config'];
 var express = require('express'),
     http = require('http'),
     path = require('path'),
-	controler = require('./lib/common'),
+	common = require('./lib/common'),
 	expressLess = require('express-less');
 
 var DATABASE = require('mysql');
 
 var config = require('./config').config,
-    single = require('./lib/class_data').init;
-
-
-var http_page = require('./' + config.webserver.server_folders),
+	http_page = require('./' + config.webserver.server_folders),
 	app = express(),
-	client = DATABASE.createConnection(config.mysql);
+	mysqlConnect = DATABASE.createConnection(config.mysql);
 
-client.query('USE `' + config.mysql.database + '`');
+mysqlConnect.query('USE `' + config.mysql.database + '`');
 http_page.config = config;
 
 app.use('/less', expressLess(path.join(__dirname, config.webserver.static_folders, '/less')), {
@@ -40,7 +37,7 @@ app.use('/less', expressLess(path.join(__dirname, config.webserver.static_folder
    .set('views', path.join(__dirname, config.webserver.html_folders))
    .get('/', http_page.index)
    .get('/screen', http_page.screen)
-   .get('/client', http_page.client)
+   .get('/controller', http_page.controller)
    .get('/edit', http_page.edit)
 
 ;
@@ -52,9 +49,9 @@ var http_server = http.createServer(app).listen(config.webserver.port, function(
 
 
 //   Socket Events
-controler.sql = client;
-controler.config = config;
-controler.bind('screen', require('./lib/screen').func);
-controler.bind('client', require('./lib/client').func);
-controler.bind('desc_editor', require('./lib/desc_editor').func);
-controler.on(http_server);
+common.sql = mysqlConnect;
+common.config = config;
+common.bind('screen', require('./lib/screen').func);
+common.bind('controller', require('./lib/controller').func);
+common.bind('desc_editor', require('./lib/desc_editor').func);
+common.on(http_server);

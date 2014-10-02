@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><%= title %></title>
   <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="/client.css" rel="stylesheet">
+  <link href="/controller.css" rel="stylesheet">
   <script src="/sea.js"></script>
   <script src="/jquery-2.1.1.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
@@ -170,13 +170,13 @@
 <script>
   seajs.config({
       paths: {
-        'client': '/client',
-        'ext': '/client/ext'
+        'controller': '/controller',
+        'ext': '/controller/ext'
       },
       alias: {
       }
     });
-    seajs.use('client/main');
+    seajs.use('controller/main');
 </script>
 </body>
 </html>

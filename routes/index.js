@@ -23,8 +23,8 @@ exports.screen = function(req, res){
 };
 
 
-exports.client = function(req, res){
-	res.render('client', {
+exports.controller = function(req, res){
+	res.render('controller', {
 		title: 'CONTROLLER',
 		config: exports.config,
 		global: GLOBAL

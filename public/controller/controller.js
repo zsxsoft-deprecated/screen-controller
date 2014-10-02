@@ -102,7 +102,7 @@ define(function(require, exports, module) {
 			});
 
 			this.socket.on('whoami', function(){
-				me.socket.emit('whoami', 'client');
+				me.socket.emit('whoami', 'controller');
 				me.socket.emit('global', {"need": "data"});
 			});
 

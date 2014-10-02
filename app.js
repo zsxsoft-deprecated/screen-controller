@@ -10,40 +10,44 @@ var DATABASE = require('mysql');
 
 var config = require('./config').config,
     single = require('./lib/class_data').init;
-	
-//  Connect to MySQL
-var client = DATABASE.createConnection(config.mysql);
+
+
+var http_page = require('./' + config.webserver.server_folders),
+	app = express(),
+	client = DATABASE.createConnection(config.mysql);
+
 client.query('USE `' + config.mysql.database + '`');
-
-
-//  Init WebServer
-var http_page = require('./' + config.webserver.server_folders);
 http_page.config = config;
-var app = express();
+
 app.use('/less', expressLess(path.join(__dirname, config.webserver.static_folders, '/less')), {
     debug: app.get('env') == 'development'
-});
-app.set('port', config.webserver.port);
-app.set('views', path.join(__dirname, config.webserver.html_folders));
+})
+   .set('port', config.webserver.port)
+   
 
-app.engine('.html', require('ejs').__express);
-app.set('view engine', 'html');
-app.use(express.logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded());
-app.use(express.methodOverride());
-app.use(app.router);
-app.use(express.static(path.join(__dirname, config.webserver.static_folders)));
-if ('development' == app.get('env')) app.use(express.errorHandler());
-app.get('/', http_page.index);
-app.get('/screen', http_page.screen);
-app.get('/client', http_page.client);
-app.get('/client-min', http_page.client_min);
-app.get('/edit', http_page.edit);
+   .engine('.html', require('ejs').__express)
+   .set('view engine', 'html')
+
+// .use(express.logger('dev'))
+// .use(express.errorHandler())
+
+   .use(express.json())
+   .use(express.urlencoded())
+   .use(express.methodOverride())
+   .use(app.router)
+
+   .use(express.static(path.join(__dirname, config.webserver.static_folders)))
+   .set('views', path.join(__dirname, config.webserver.html_folders))
+   .get('/', http_page.index)
+   .get('/screen', http_page.screen)
+   .get('/client', http_page.client)
+   .get('/edit', http_page.edit)
+
+;
 
 
 var http_server = http.createServer(app).listen(config.webserver.port, function(){
-    console.info('   info  - http_server created!');
+    console.log('Server created!');
 });
 
 

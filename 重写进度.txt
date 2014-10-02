@@ -3,15 +3,7 @@
 重写进度：
 
 -- (X) node.js服务端
-	-- (X) socket.io交互
 	-- (X) 数据库转为使用SQLite
-
--- (X) 后台控制
-	-- (X) 组件拆分 {
-			main.js - 主框架
-			program.js - 数据处理
-			socket.js - socket.io交互
-		}
 
 -- (X) 管理界面
 	-- 待定

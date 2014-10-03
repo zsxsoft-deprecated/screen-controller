@@ -25,7 +25,8 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#"><%=title%></a>
+        <a class="navbar-brand" href="#">
+          <%=title%></a>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right"></ul>
@@ -72,6 +73,7 @@
             </div>
           </div>
         </div>
+        <% if (http.get.action == "full") {%>
         <div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
           <div class="panel panel-default">
             <div class="panel-heading">
@@ -100,65 +102,67 @@
 
           </div>
         </div>
-      </div>
-      <div class="panel-group" id="accordion3" role="tablist" aria-multiselectable="true">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion3" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">Slide  &amp; Music Control</a>
-            </h4>
-          </div>
-          <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel">
-            <div class="panel-body">
-              <p>
-                Select a music:
-                <select id="controlselect-changebgm" class="form-control select-command" data-command="controlMultimedia" data-param="{method: 'toggle', param: {action: 'absolute', pos: %val%}}"></select>
-              </p>
-              <p>
-                <button class="btn btn-success btn-command" data-command="toggleSlide" data-param="{action: '', pos: -1}" id="controlbutton-toggle-background-prev">Prev Slide</button>
-                &nbsp;
-                <button class="btn btn-success btn-command" data-command="toggleSlide" data-param="{action: '', pos: 1}" id="controlbutton-toggle-background-next">Next Slide</button>
-                &nbsp;
-                <button class="btn btn-default btn-command" data-command="controlMultimedia" data-param="{method: 'toggle', param: {action: '', pos: -1}}" id="controlbutton-toggle-music-prev">Prev Music</button>
-                &nbsp;
-                <button class="btn btn-default btn-command" data-command="controlMultimedia" data-param="{method: 'toggle', param: {action: '', pos: 1}}" id="controlbutton-toggle-music-next">Next Music</button>
-              </p>
-              <p></p>
-              <p>
-                <button class="btn btn-info btn-command" data-command="controlMultimedia" data-param="{method: 'play'}" id="controlbutton-play">Play</button>
-                &nbsp;
-                <button class="btn btn-warning btn-command" data-command="controlMultimedia" data-param="{method: 'pause'}"   id="controlbutton-pause">Pause</button>
-                &nbsp;
-                <button class="btn btn-danger btn-command" data-command="controlMultimedia" data-param="{method: 'stop'}"   id="controlbutton-stop">Stop</button>
-              </p>
+        <% }%>
+        <div class="panel-group" id="accordion3" role="tablist" aria-multiselectable="true">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion3" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">Slide  &amp; Music Control</a>
+              </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel">
+              <div class="panel-body">
+                <p>
+                  Select a music:
+                  <select id="controlselect-changebgm" class="form-control select-command" data-command="controlMultimedia" data-param="{method: 'toggle', param: {action: 'absolute', pos: %val%}}"></select>
+                </p>
+                <p>
+                  <button class="btn btn-success btn-command" data-command="toggleSlide" data-param="{action: '', pos: -1}" id="controlbutton-toggle-background-prev">Prev Slide</button>
+                  &nbsp;
+                  <button class="btn btn-success btn-command" data-command="toggleSlide" data-param="{action: '', pos: 1}" id="controlbutton-toggle-background-next">Next Slide</button>
+                  &nbsp;
+                  <button class="btn btn-default btn-command" data-command="controlMultimedia" data-param="{method: 'toggle', param: {action: '', pos: -1}}" id="controlbutton-toggle-music-prev">Prev Music</button>
+                  &nbsp;
+                  <button class="btn btn-default btn-command" data-command="controlMultimedia" data-param="{method: 'toggle', param: {action: '', pos: 1}}" id="controlbutton-toggle-music-next">Next Music</button>
+                </p>
+                <p></p>
+                <p>
+                  <button class="btn btn-info btn-command" data-command="controlMultimedia" data-param="{method: 'play'}" id="controlbutton-play">Play</button>
+                  &nbsp;
+                  <button class="btn btn-warning btn-command" data-command="controlMultimedia" data-param="{method: 'pause'}"   id="controlbutton-pause">Pause</button>
+                  &nbsp;
+                  <button class="btn btn-danger btn-command" data-command="controlMultimedia" data-param="{method: 'stop'}"   id="controlbutton-stop">Stop</button>
+                </p>
 
+              </div>
             </div>
           </div>
         </div>
-      </div>
+        <% if (http.get.action == "full") {%>
+        <div class="panel-group" id="accordion5" role="tablist" aria-multiselectable="true">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion5" href="#collapseFive" aria-expanded="true" aria-controls="collapseThree">Advanced</a>
+              </h4>
+            </div>
+            <div id="collapseFive" class="panel-collapse collapse in" role="tabpanel">
+              <div class="panel-body">
+                <div class="input-group">
+                  <span class="input-group-btn">
+                    <button class="btn btn-info btn-command" data-command="initPage" data-param="{}" type="button" id="controlbutton-init">Refresh</button>
+                  </span>
+                  <input type="text" class="form-control" id="text-javascript" placeholder="JavaScript Here">
+                  <span class="input-group-btn">
+                    <button class="btn btn-success btn-command" data-command="runJavaScript" data-param="{}" type="button" id="controlbutton-postjavascript">Run</button>
+                  </span>
+                </div>
 
-      <div class="panel-group" id="accordion5" role="tablist" aria-multiselectable="true">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion5" href="#collapseFive" aria-expanded="true" aria-controls="collapseThree">Advanced</a>
-            </h4>
-          </div>
-          <div id="collapseFive" class="panel-collapse collapse in" role="tabpanel">
-            <div class="panel-body">
-              <div class="input-group">
-                <span class="input-group-btn">
-                  <button class="btn btn-info btn-command" data-command="initPage" data-param="{}" type="button" id="controlbutton-init">Refresh</button>
-                </span>
-                <input type="text" class="form-control" id="text-javascript" placeholder="JavaScript Here">
-                <span class="input-group-btn">
-                  <button class="btn btn-success btn-command" data-command="runJavaScript" data-param="{}" type="button" id="controlbutton-postjavascript">Run</button>
-                </span>
-              </div>
-
-            </p>
+              </p>
+            </div>
           </div>
         </div>
+        <% }%>
       </div>
     </div>
 

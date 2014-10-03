@@ -25,9 +25,12 @@ exports.screen = function(req, res){
 
 exports.controller = function(req, res){
 	res.render('controller', {
+		http: {
+			get: req.query
+		},
 		title: 'CONTROLLER',
 		config: exports.config,
-		global: GLOBAL
+		global: GLOBAL,
 	});
 };
 

@@ -1,66 +1,65 @@
 define(function(require, exports, module) {
 
 	module.exports = {
-		init: function(object) {
-			object.register(resister_function);
-			object.registerSocket(resister_socket);
+		init: function() {
+			this.register(resisterFunction);
+			this.registerSocket(resisterSocket);
 		}
 	};
 
-	var resister_function = [
+	var resisterFunction = [
 		{
 			event: "toggleMusic",
-			func: function(object, argu) {		
-				init_bgm(object, argu);
+			func: function(argu) {		
+				initMusic.apply(this, argu);
 			}
 		},
 		{
 			event: "toProgram",
-			func: function(object, argu) {			
-				object.toggleMusic({action: "absolute", pos: 0})
+			func: function(argu) {			
+				this.toggleMusic({action: "absolute", pos: 0})
 			}
 		}
 	];
 
-	var resister_socket = [
+	var resisterSocket = [
 		{
 			event: "controlMultimedia", 
-			func: function(object, data) {
-
+			func: function(data) {
 				var methods = {
 					play: function() {
-						object.objects.active[0].play();
+						this.objects.active[0].play();
 					},
 					pause: function() {
-						object.objects.active[0].pause();
+						this.objects.active[0].pause();
 					},
 					stop: function() {
 						this.pause();
-						object.objects.active[0].currentTime = 0;
+						this.objects.active[0].currentTime = 0;
 					},
 					toggle: function() {
-						object.toggleMusic(data.param.param);
+						this.toggleMusic(data.param.param);
 					}
 				};
-				methods[data.param.method]();
+				methods[data.param.method].call(this);
 				return true;
 			}
 		}
 	];
 
-	var init_bgm = function(object, argu) {
+	var initMusic = function(param) {
 
-		var thisBGM = object.current.bgm,
-			nextBGM = (argu[0].action == "absolute" ? argu[0].pos : thisBGM + argu[0].pos);
+		var thisBGM = this.current.bgm,
+			nextBGM = (param.action == "absolute" ? param.pos : thisBGM + param.pos);
 
-		if (nextBGM >= object.program.bgm.length) {
-			nextBGM %= (object.program.bgm.length);
+		if (nextBGM >= this.program.bgm.length) {
+			nextBGM %= (this.program.bgm.length);
 		} else if (nextBGM == NaN) {
 			nextBGM = 0;
 		}
 
-		object.objects.player.attr("src", object.program.bgm[nextBGM]);
-		object.current.bgm = nextBGM;
+		this.objects.player.attr("src", this.program.bgm[nextBGM]);
+		this.current.bgm = nextBGM;
 
 	}
 

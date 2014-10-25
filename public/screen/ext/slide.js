@@ -1,40 +1,40 @@
 define(function(require, exports, module) {
 
 	module.exports = {
-		init: function(object) {
-			object.register(register_function);
-			object.registerSocket(register_socket);
+		init: function() {
+			this.register(registerFunction);
+			this.registerSocket(registerSocket);
 		}
 	};
 
-	var register_function = [
+	var registerFunction = [
 		{
 			event: "toProgram",
-			func: function(object, argu) {
-				object.toggleSlide({action: "absolute", pos: 0});
+			func: function(argu) {
+				this.toggleSlide({action: "absolute", pos: 0});
 			}
 		},
 		{
 			event: "toggleSlide",
-			func: function(object, argu) {		
-				slideToggle(object, argu);
+			func: function(argu) {		
+				slideToggle.apply(this, argu);
 			}
 		}
 	];
 
-	var register_socket = [
+	var registerSocket = [
 		{
 			event: "toggleSlide", 
-			func: function(object, data) {
-				object.toggleSlide(data.param);
+			func: function(data) {
+				this.toggleSlide(data.param);
 				return true;
 			} 
 		}
 	];
 
-	var slideToggle = function(object, argu) {
+	var slideToggle = function(argu) {
 
-		if (object.display.length == 0) return;
+		if (this.display.length == 0) return;
 
 
 		$(".animate-fadeIn").removeClass('animate-fadeIn');
@@ -43,16 +43,16 @@ define(function(require, exports, module) {
 		
 
 		var thisSlide = $(".slide-current"),
-			thisSlideId = object.current.display,//thisSlide.data("id"),
-			nextSlideId = (argu[0].action == "absolute" ? argu[0].pos : thisSlideId + argu[0].pos);
+			thisSlideId = this.current.display,//thisSlide.data("id"),
+			nextSlideId = (argu.action == "absolute" ? argu.pos : thisSlideId + argu.pos);
 
-		if (nextSlideId >= object.display.length) {
-			nextSlideId %= (object.display.length);
+		if (nextSlideId >= this.display.length) {
+			nextSlideId %= (this.display.length);
 		} else if (nextSlideId == NaN || nextSlideId < 0) {
 			nextSlideId = 0;
 		}
 
-		var nextSlide = $("#display-block-" + object.display[nextSlideId].dom_id);
+		var nextSlide = $("#display-block-" + this.display[nextSlideId].dom_id);
 
 		if (nextSlideId != thisSlideId) {
 			
@@ -73,27 +73,27 @@ define(function(require, exports, module) {
 
 			// BGM must be check after scroll
 			if (nextSlide.data("type") == "video") {
-				object.objects.active = nextSlide.find("video");
-				object.objects.active.bind("timeupdate", function(){
-					$(".dom-time").html(object.objects.active[0].currentTime);
+				this.objects.active = nextSlide.find("video");
+				this.objects.active.bind("timeupdate", function(){
+					$(".dom-time").html(this.objects.active[0].currentTime);
 				});
-				object.current.lastType = "video";
+				this.current.lastType = "video";
 
-				object.objects.player[0].pause();
+				this.objects.player[0].pause();
 			}
 			else {
-				if (object.current.lastType == "video")	{
-					object.objects.active[0].pause();
-					if (object.objects.active[0].readyState == 4) object.objects.active[0].currentTime = 0;
+				if (this.current.lastType == "video")	{
+					this.objects.active[0].pause();
+					if (this.objects.active[0].readyState == 4) this.objects.active[0].currentTime = 0;
 
-					object.objects.active = object.objects.player;
-					object.objects.active[0].play();
+					this.objects.active = this.thiss.player;
+					this.objects.active[0].play();
 				}
-				object.current.lastType = nextSlide.data("type");
+				this.current.lastType = nextSlide.data("type");
 			}
 		}
 
-		object.current.display = nextSlideId;
+		this.current.display = nextSlideId;
 		
 
 

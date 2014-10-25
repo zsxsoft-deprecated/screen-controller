@@ -1,16 +1,16 @@
 define(function(require, exports, module) {
 
 	module.exports = {
-		init: function(object) {
-			object.registerSocket(resister_socket);
+		init: function() {
+			this.registerSocket(resisterSocket);
 		}
 	};
 
-	var resister_socket = [
+	var resisterSocket = [
 		{
 			event: "runJavaScript", 
-			func: function(object, argu) {
-				(new Function(argu.code))(object);
+			func: function(argu) {
+				(new Function(argu.code)).apply(this);
 				return true;
 			} 
 		}

@@ -2,44 +2,42 @@ define(function(require, exports, module) {
 	
 	var HIGHCHARTS_BGM = '/multimedia/empty.mp3';
 	module.exports = {
-		init: function(object) {
-			object.register(register_function);
-			object.registerSocket(register_socket);
+		init: function() {
+			this.register(registerFunction);
+			this.registerSocket(registerSocket);
 		}
 	};
 
 
-	var register_function = [
+	var registerFunction = [
 		{
 			event: "toggleSlide",
-			func: function(object, argu) {			
-				if (object.program.ishighcharts) {
-					draw_chart(object);
+			func: function(argu) {			
+				if (this.program.ishighcharts) {
+					drawChart.apply(this);
 				}
 			}
 		}
 	];
 
-	var register_socket = [
+	var registerSocket = [
 		{
 			event: "toScore",
-			func: function(object) {
-
-				var last_program = object.programs.length - 1;
-
-				if (!object.programs[last_program].ishighcharts) {
-					object.programs.push({
+			func: function() {
+				var lastProgram = this.programs.length - 1;
+				if (!this.programs[lastProgram].ishighcharts) {
+					this.programs.push({
 						bgm: [HIGHCHARTS_BGM],
 						display: [
 							{
 								display_type: "full-screen",
 								type: "custom",
-								custom: function(object, dom) {
+								custom: function(dom) {
 									dom.attr("id", "dom-score").css("background-color", "#333");
 								}
 							}
 						],
-						id: last_program,
+						id: lastProgram,
 						player: {
 							class: "精彩正在呈现",
 							doom: "",
@@ -54,10 +52,10 @@ define(function(require, exports, module) {
 						score: [0],
 						ishighcharts: true
 					});
-					last_program++;	
+					lastProgram++;	
 				}
 
-				object.toProgram(last_program);
+				this.toProgram(lastProgram);
 				return true;
 			} 
 		}
@@ -65,8 +63,9 @@ define(function(require, exports, module) {
 
 
 
-	var draw_chart = function(object){
+	var drawChart = function(){
 
+		var object = this;
 
 		$('#dom-score').highcharts({
 			chart: {
@@ -126,7 +125,7 @@ define(function(require, exports, module) {
 					stacking: 'normal'	
 				}
 			},
-			series: build_series(object),
+			series: buildSeries.call(object),
 			credits: {
 				enabled: false
 			}
@@ -145,9 +144,11 @@ define(function(require, exports, module) {
 	}
 
 
-	var build_series = function(object){
-		series = [];
-		series_name = [''];
+	var buildSeries = function(){
+		var 
+			series = [],
+			series_name = [''],
+			object = this;
 		
 		for(var i = 0; i < series_name.length; i++)
 		{

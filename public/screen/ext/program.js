@@ -1,30 +1,30 @@
 define(function(require, exports, module) {
 	
 	module.exports = {
-		init: function(object) {
-			object.register(register_function);
-			object.registerSocket(register_socket);
+		init: function() {
+			this.register(registerFunction);
+			this.registerSocket(registerSocket);
 		}
 	};
 
-	var register_function = [
+	var registerFunction = [
 		{
 			event: "toProgram",
-			func: function(object, argu) {			
+			func: function(argu) {			
 
-				build_dom(object);
-				$(".dom-playing-name").text(object.program.program.name);
-				$(".dom-playing-player").text(object.program.player.class + " " + object.program.player.name);
+				build_dom.apply(this);
+				$(".dom-playing-name").text(this.program.program.name);
+				$(".dom-playing-player").text(this.program.player.class + " " + this.program.player.name);
 
 			}
 		}
 	];
 	
-	var register_socket = [
+	var registerSocket = [
 		{
 			event: "toProgram", 
-			func: function(object, data) {
-				object.toProgram(data.param.pos);
+			func: function(data) {
+				this.toProgram(data.param.pos);
 				return true;					
 			}
 		}
@@ -33,25 +33,26 @@ define(function(require, exports, module) {
 	
 
 
-	var build_dom = function(object) {
+	var build_dom = function() {
 
 
 		$("#display-data .background-image").css("background-image", "");
-		var displayData = $("#display-data").html("");
+		var displayData = $("#display-data").html(""),
+			self = this;
 
-		if (!object.current.index) {
+		if (!this.current.index) {
 
-			object.display.unshift({
+			this.display.unshift({
 				display_type: "full-screen",
 				index: true,
 				media: "",
 				message: "",
 				type: "default"
 			});		
-			object.current.index = true;
+			this.current.index = true;
 		}
 
-		$.each(object.display, function(i, o) {
+		$.each(this.display, function(i, o) {
 			var fullscreen = $("<div>").addClass("div-fullscreen " + (i == 0 ? ' slide-current' : ''));
 
 			switch(o.type) {
@@ -81,7 +82,7 @@ define(function(require, exports, module) {
 							  );
 				break;
 				case "custom":
-					o.custom(object, fullscreen);
+					o.custom.call(self, fullscreen);
 
 			}
 			$("<div>").addClass("display-child-data display-child-fullscreen")
@@ -93,7 +94,7 @@ define(function(require, exports, module) {
 					.appendTo(displayData);
 
 			o["time"] = parseFloat(o["time"]);
-			o["minus_time"] = (i == 0 ? 1 : (o["time"] - object.display[i - 1]["time"]));
+			o["minus_time"] = (i == 0 ? 1 : (o["time"] - self.display[i - 1]["time"]));
 			o["dom_id"] = i;
 
 		});

@@ -1,43 +1,43 @@
 define(function(require, exports, module) {
 
 	module.exports = {
-		init: function(object) {
-			object.register(resister_function);
+		init: function() {
+			this.register(resisterFunction);
 		}
 	};
 
-	var resister_function = [
+	var resisterFunction = [
 		{
 			event: "timeupdate",
-			func: function(object, argu) {		
-				$(".dom-time").html(object.objects.player[0].currentTime);
-				auto_toggle(object);
+			func: function(argu) {		
+				$(".dom-time").html(this.objects.player[0].currentTime);
+				autoToggle.apply(this);
 			}
 		},
 	];
 
-	var auto_toggle = function(object) {
+	var autoToggle = function() {
 
-		if (object.display.length == 0) return;
+		if (this.display.length == 0) return;
 		
-		var time = object.display[object.current.display]["time"];
+		var time = this.display[this.current.display]["time"];
 		if (!time) return;
 
-		var curTime = object.objects.player[0].currentTime, 
+		var curTime = this.objects.player[0].currentTime, 
 			minusTime = Math.abs(time - curTime);
 
 		console.log('currentTime:' + curTime + ', nextTime:' + time + ', minusTime:' + minusTime);
 
 		// Toggle Slide
 		if (minusTime <= 1) {
-			if (object.current.repeat) {
-				var tmp = $.extend({}, object.display[object.current.display]); 
-				tmp["time"] = object.display[object.display.length - 1]["time"] + tmp["minus_time"];
-				object.display.push(tmp);
+			if (this.current.repeat) {
+				var tmp = $.extend({}, this.display[this.current.display]); 
+				tmp["time"] = this.display[this.display.length - 1]["time"] + tmp["minus_time"];
+				this.display.push(tmp);
 				console.log("Add a repeat obj: ");
 				console.log(tmp);
 			}
-			object.toggleSlide({action: "", pos: 1});
+			this.toggleSlide({action: "", pos: 1});
 		}
 	}
 

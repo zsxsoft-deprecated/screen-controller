@@ -34,25 +34,22 @@ define(function(require, exports, module) {
 		toProgram: function() {
 			var me = this,
 				argu = arguments;
-
 			$.each(this.events.toProgram, function(i, value) {
-				value(me, argu);
+				value.call(me, argu);
 			});
 		},
 		toggleSlide: function() {
 			var me = this,
 				argu = arguments;
-
 			$.each(this.events.toggleSlide, function(i, value) {
-				value(me, argu);
+				value.call(me, argu);
 			});
 		},
 		toggleMusic: function() {
 			var me = this,
 				argu = arguments;
-
 			$.each(this.events.toggleMusic, function(i, value) {
-				value(me, argu);
+				value.call(me, argu);
 			});
 		},
 
@@ -66,28 +63,20 @@ define(function(require, exports, module) {
 			this.objects.player
 				.attr("preload", true)
 				.attr("autoplay", true)
-				.bind('canplaythrough', function() {
-					//console.log($(this).attr("src") + " 音频加载完毕");
-				})
-				.bind('play', function() {
-					//console.log($(this).attr("src") + " 播放中");
-				})
-				.bind('pause', function() {
-					//console.log($(this).attr("src") + " 暂停播放");
-				})
 				.bind('timeupdate', function() {
 					$.each(me.events.timeupdate, function(i, value) {
-						value(me);
+						value.apply(me);
 					});
 				});
-
 
 			// Register events
 			this.register([{
 				event: "toProgram", 
-				func: function(object, argu) {
+				func: function(argu) {
 				
-					var id = argu[0];
+					var id = argu[0],
+						object = this;
+
 					object.current.display = 0;
 					object.current.program = id;
 					object.current.bgm = 0;
@@ -151,7 +140,6 @@ define(function(require, exports, module) {
 			var me = this;
 			$.each(param, function(i, value) {
 				if (!me.sockets[value.event]) me.sockets[value.event] = [];
-
 				me.sockets[value.event].push(value.func);
 			});
 			return this;
@@ -160,7 +148,7 @@ define(function(require, exports, module) {
 		runSocket: function(name, data) {
 			var me = this;
 			$.each(this.sockets[name], function(i, value) {
-				if (value(me, data.data)) {
+				if (value.call(me, data.data)) {
 					data['data'] = null;
 					me.socket.emit('result', data);
 					return true;

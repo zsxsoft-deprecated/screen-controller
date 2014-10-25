@@ -26,7 +26,7 @@ define(function(require, exports, module) {
 		});
 
 		$.each(plugins, function(i, v) {
-			v.init(program);
+			v.init.call(program);
 		});
 
 		// debug

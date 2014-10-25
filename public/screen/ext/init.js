@@ -1,15 +1,15 @@
 define(function(require, exports, module) {
 
 	module.exports = {
-		init: function(object) {
-			object.registerSocket(register_socket);
+		init: function() {
+			this.registerSocket(registerSocket);
 		}
 	};
 
-	var register_socket = [
+	var registerSocket = [
 		{
 			event: "initPage", 
-			func: function(object) {
+			func: function() {
 				location.reload();
 				return true;
 			} 

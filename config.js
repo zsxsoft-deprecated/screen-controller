@@ -4,7 +4,7 @@ exports.config = {
 		"post": "3306",
 		"user": "root",
 		"password": "123456",
-		"database": "screen_xgywyhy",
+		"database": "screen_langsongbisai",
 	},
 	"tables":{
 		"data": {
@@ -12,10 +12,10 @@ exports.config = {
 			"fields": ["id", "player", "player_name", "player_class", "bgm", "program", "program_name", "score", "display"]
 		}
 	},
-	"webserver":{
+	"webServer":{
 		"port": 3000,
-		"static_folders": "public",
-		"html_folders": "views",
-		"server_folders": "routes"
+		"staticFolders": "public",
+		"htmlFolders": "views",
+		"serverFolders": "routes"
 	}
 }

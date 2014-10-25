@@ -1,20 +1,21 @@
 delete require.cache['./config'];
 //  Include modules
-var express = require('express'),
-    http = require('http'),
-    path = require('path'),
+var
+  express = require('express'),
+  http = require('http'),
+  path = require('path'),
 	common = require('./lib/common'),
 	expressLess = require('express-less');
 
 var DATABASE = require('mysql');
 
 var config = require('./config').config,
-	http_page = require('./' + config.webserver.server_folders),
+	httpPage = require('./' + config.webServer.serverFolders),
 	app = express(),
 	mysqlConnect = DATABASE.createConnection(config.mysql);
 
 mysqlConnect.query('USE `' + config.mysql.database + '`');
-http_page.config = config;
+httpPage.config = config;
 
 app
 
@@ -28,10 +29,10 @@ app
    .engine('.html', require('ejs').__express)
    .set('view engine', 'html')
    // set ejs render
-   .set('views', path.join(__dirname, config.webserver.html_folders))
+   .set('views', path.join(__dirname, config.webServer.htmlFolders))
 
    // set less
-   .use('/less', expressLess(path.join(__dirname, config.webserver.static_folders, '/less')))
+   .use('/less', expressLess(path.join(__dirname, config.webServer.staticFolders, '/less')))
 
 
    .use(express.json())
@@ -40,25 +41,24 @@ app
    .use(app.router)
     
    // set port
-   .set('port', config.webserver.port)
+   .set('port', config.webServer.port)
 
    // set static resouces
-   .use(express.static(path.join(__dirname, config.webserver.static_folders)))
+   .use(express.static(path.join(__dirname, config.webServer.staticFolders)))
 
    // set url
-   .get('/', http_page.index)
-   .get('/screen', http_page.screen)
-   .get('/controller', http_page.controller)
-   .get('/edit', http_page.edit)
+   .get('/', httpPage.index)
+   .get('/screen', httpPage.screen)
+   .get('/controller', httpPage.controller)
+   .get('/edit', httpPage.edit)
 
 ;
 
 
-var httpServer = http.createServer(app).listen(config.webserver.port, function(){
-    console.log('Server created!');
+var httpServer = http.createServer(app).listen(config.webServer.port, function(){
+    console.log('Server created at http://127.0.0.1:' + config.webServer.port + '/ !');
 });
 
-console.log(common);
 common.bindSQLObject(mysqlConnect)
       .rebuildConfig(config)
       .bindEvent('global')

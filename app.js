@@ -1,3 +1,4 @@
+"use strict";
 delete require.cache['./config'];
 //  Include modules
 var
@@ -5,20 +6,19 @@ var
   http = require('http'),
   path = require('path'),
 	common = require('./lib/common'),
-	expressLess = require('express-less');
-
-var DATABASE = require('mysql');
+  console = require('./lib/console'),
+	expressLess = require('express-less'),
+  mysql = require('mysql');
 
 var config = require('./config').config,
 	httpPage = require('./' + config.webServer.serverFolders),
 	app = express(),
-	mysqlConnect = DATABASE.createConnection(config.mysql);
+	mysqlConnect = mysql.createConnection(config.mysql);
 
 mysqlConnect.query('USE `' + config.mysql.database + '`');
 httpPage.config = config;
 
 app
-
    // Dev mode
    /*
      .use(express.logger('dev'))
@@ -33,7 +33,6 @@ app
 
    // set less
    .use('/less', expressLess(path.join(__dirname, config.webServer.staticFolders, '/less')))
-
 
    .use(express.json())
    .use(express.urlencoded())
@@ -56,10 +55,11 @@ app
 
 
 var httpServer = http.createServer(app).listen(config.webServer.port, function(){
-    console.log('Server created at http://127.0.0.1:' + config.webServer.port + '/ !');
+  console.success('Server created at http://127.0.0.1:' + config.webServer.port + '/ !');
 });
 
-common.bindSQLObject(mysqlConnect)
+common.setConsole(console)
+      .bindSQLObject(mysqlConnect)
       .rebuildConfig(config)
       .bindEvent('global')
       .bindEvent('screen')

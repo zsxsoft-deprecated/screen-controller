@@ -57,6 +57,7 @@ define(function(require, exports, module) {
 				event: "toProgram",
 				func: function(id) {
 					this.program = this.programs[id];
+					this.display = this.program.display;
 				}
 			}])
 

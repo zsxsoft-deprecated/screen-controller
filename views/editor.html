@@ -37,9 +37,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-3 col-md-2 sidebar">
-        <ul class="nav nav-sidebar" id="sidebar">
-          
-        </ul>
+        <ul class="nav nav-sidebar" id="sidebar"></ul>
       </div>
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
@@ -52,31 +50,26 @@
             </div>
             <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel">
               <div class="panel-body">
-              <form id="program-info" data-function="program-info">
-                <p>
-                  Program ID:
-                  <input type="number" id="program-id" name="program-id" class="form-control" min="0">
-                </p>
-                <p>
-                  Program Name:
-                  <input type="text" id="program-name" name="program-name" class="form-control">
-                </p>
-                <p>
-                  Player Name:
-                  <input type="text" id="program-player-name" name="program-player-name" class="form-control">
-                </p>
-                <p>
-                  Player Class:
-                  <input type="text" id="program-player-class" name="program-player-class" class="form-control">
-                </p>
-                <p>
-                  Player Doom:
-                  <input type="text" id="program-player-doom" name="program-player-doom" class="form-control">
-                </p>
-                <p>
-                <button type="submit" class="btn btn-success form-control">Submit</button>
-                </p>
-              </form>
+                <form id="program-info" data-function="program-info">
+                  <p>
+                    Program ID:
+                    <input type="number" id="program-id" name="program-id" class="form-control" min="0"></p>
+                  <p>
+                    Program Name:
+                    <input type="text" id="program-name" name="program-name" class="form-control"></p>
+                  <p>
+                    Player Name:
+                    <input type="text" id="program-player-name" name="program-player-name" class="form-control"></p>
+                  <p>
+                    Player Class:
+                    <input type="text" id="program-player-class" name="program-player-class" class="form-control"></p>
+                  <p>
+                    Player Doom:
+                    <input type="text" id="program-player-doom" name="program-player-doom" class="form-control"></p>
+                  <p>
+                    <button type="submit" class="btn btn-success form-control">Submit</button>
+                  </p>
+                </form>
               </div>
 
             </div>
@@ -91,7 +84,14 @@
             </div>
             <div id="collaspeTwo" class="panel-collapse collapse in" role="tabpanel">
               <div class="panel-body">
-                
+                <form id="program-desc" data-function="program-desc">
+                  <p>
+                    <textarea class="form-control" rows="10" name="program-display" id="program-display"></textarea>
+                  </p>
+                  <p>
+                    <button type="submit" class="btn btn-success form-control">Submit</button>
+                  </p>
+                </form>
               </div>
             </div>
           </div>
@@ -104,21 +104,19 @@
               </h4>
             </div>
             <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel">
-              <div class="panel-body">
-                
-              </div>
+              <div class="panel-body"></div>
             </div>
           </div>
         </div>
 
+      </div>
+
     </div>
-
   </div>
-</div>
 
-<audio id="dom-audio-test"></audio>
+  <audio id="dom-audio-test"></audio>
 
-<script>
+  <script>
   seajs.config({
       paths: {
         'editor': '/editor',
@@ -131,5 +129,22 @@
       editor.tableName = "<%=config.tables.data.name%>";
     });
 </script>
+
+  <div class="modal fade bs-modal-sm" tabindex="-1" role="dialog" aria-labelledby="modalInfo" aria-hidden="true" id="modalMsg">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+            <span class="sr-only">Close</span>
+          </button>
+          <h4 class="modal-title" id="Title">Info</h4>
+        </div>
+        <div class="modal-body"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

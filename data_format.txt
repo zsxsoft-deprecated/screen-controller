@@ -1,6 +1,8 @@
 `data_id` (int, auto-increment, unique)
 	no extend data
 
+`data_sort` (int)
+	use for sort
 
 `data_player` (text, json) 
 	use for store the player's info.
@@ -52,7 +54,6 @@
 			"message": "MESSAGE_DISPLAY_IN_SCREEN",
 			"media": "MULTIMEDIA_DATA_DISPLAY_IN_SCREEN",
 			"type": "MULTIMEDIA_TYPE(image|video|text)",
-			"display_type": "MULTIMEDIA_DISPLAY_TYPE(half-screen|full-screen)"
 		}
 		//etc..
 	]

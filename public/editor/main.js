@@ -6,7 +6,8 @@ define(function(require, exports, module) {
 			require('ext/form'),
 			require('ext/sidebar'),
 			require('ext/information'),
-			require('ext/display')
+			require('ext/display'),
+			require('ext/bgm')
 		];
 
 	editor.utils = require("editor/utils");

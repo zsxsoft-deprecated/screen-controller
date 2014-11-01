@@ -129,7 +129,7 @@ define(function(require, exports, module) {
 				me.program = me.programs[0];
 				//me.toProgram(0);
 				
-				var object = $("#controlselect-changeprogram");
+				var object = $("#controlselect-changeprogram").html("");
 				$.each(me.programs, function(i, v) {
 					v.tagId = i;
 					$("<option>").val(i)

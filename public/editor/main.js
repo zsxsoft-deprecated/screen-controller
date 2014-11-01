@@ -9,7 +9,8 @@ define(function(require, exports, module) {
 			require('ext/sidebar'),
 			require('ext/information'),
 			require('ext/display'),
-			require('ext/bgm')
+			require('ext/bgm'),
+			require('ext/score')
 		];
 
 	editor.utils = require("editor/utils");
@@ -24,7 +25,7 @@ define(function(require, exports, module) {
 		$.each(plugins, function(i, v) {
 			v.init.call(editor);
 		});
-		
+
 	});
 
 

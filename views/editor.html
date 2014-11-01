@@ -127,7 +127,9 @@
       alias: {
       }
     });
-    seajs.use('editor/main');
+    seajs.use('editor/main', function(a) {
+      editor.tableName = "<%=config.tables.data.name%>";
+    });
 </script>
 </body>
 </html>

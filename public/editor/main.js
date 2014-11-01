@@ -1,5 +1,6 @@
 define(function(require, exports, module) {
 
+
 	var editor = require('editor/editor'),
 		plugins = [
 			require('ext/form'),

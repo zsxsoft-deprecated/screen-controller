@@ -6,10 +6,8 @@ define(function(require, exports, module) {
 		display: {},
 		programs: [],
 		events: {
-			timeupdate: [],
+			runSql: [],
 			toProgram: [],
-			toggleSlide: [],
-			toggleMusic: [],
 		},
 
 		// Events
@@ -17,6 +15,14 @@ define(function(require, exports, module) {
 			var me = this,
 				argu = arguments;
 			$.each(this.events.toProgram, function(i, value) {
+				value.apply(me, argu);
+			});
+		},
+		runSql: function() {
+			console.log(arguments);
+			var me = this,
+				argu = arguments;
+			$.each(this.events.runSql, function(i, value) {
 				value.apply(me, argu);
 			});
 		},
@@ -47,6 +53,12 @@ define(function(require, exports, module) {
 			this.socket.on('return', function(data) {
 				me.runSocket(data.data.method, data);
 			});
+			this.register([{
+				event: "toProgram",
+				func: function(id) {
+					this.program = this.programs[id];
+				}
+			}])
 
 			return this;
 

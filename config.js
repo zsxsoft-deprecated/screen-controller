@@ -9,7 +9,7 @@ exports.config = {
 	"tables":{
 		"data": {
 			"name": "screen_data",
-			"fields": ["id", "player", "player_name", "player_class", "bgm", "program", "program_name", "score", "display"]
+			"fields": ["id", "sort", "player", "player_name", "player_class", "bgm", "program", "program_name", "score", "display"]
 		}
 	},
 	"webServer":{

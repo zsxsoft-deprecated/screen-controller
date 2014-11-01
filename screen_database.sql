@@ -28,6 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `screen_data` (
   `data_id` int(11) NOT NULL AUTO_INCREMENT,
+  `data_sort` int(11) NOT NULL,
   `data_player` text NOT NULL,
   `data_player_name` text NOT NULL,
   `data_player_class` text NOT NULL,
@@ -36,18 +37,16 @@ CREATE TABLE IF NOT EXISTS `screen_data` (
   `data_program_name` text NOT NULL,
   `data_score` text NOT NULL,
   `data_display` text NOT NULL,
-  PRIMARY KEY (`data_id`),
-  UNIQUE KEY `data_id_2` (`data_id`),
-  KEY `data_id` (`data_id`)
+  PRIMARY KEY (`data_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- 转存表中的数据 `screen_data`
 --
 
-INSERT INTO `screen_data` (`data_id`, `data_player`, `data_player_name`, `data_player_class`, `data_bgm`, `data_program`, `data_program_name`, `data_score`, `data_display`) VALUES
-(1, '{"class": "测试（一）班", "name": "测试", "doom": "A101"}', '测试', '测试（1）班', '/multimedia/星守歌.mp3', '{"name": "测试节目1"}', '测试节目1', '[1,2,3,4,5]', '[{"message": "测试1", "media": "/multimedia/thefox.mp4", "type": "video", "display_type": "full-screen"}, {"message": "测试2", "media": "/multimedia/2.jpg", "type": "image", "display_type": "full-screen"}]'),
-(2, '{"class": "测试（2）班", "name": "测试2", "doom": "A101"}', '测试2', '测试（2）班', '/multimedia/星守歌.mp3', '{"name": "测试节目2"}', '测试节目2', '[5,2,3,4,1]', '[{"message": "测试2", "media": "", "type": "text", "display_type": "full-screen"}, {"message": "", "media": "/multimedia/1.jpg", "type": "image", "display_type": "full-screen"}, {"message": "", "media": "/multimedia/thefox.mp4", "type": "video", "display_type": "full-screen"}]');
+INSERT INTO `screen_data` (`data_id`, `data_sort`, `data_player`, `data_player_name`, `data_player_class`, `data_bgm`, `data_program`, `data_program_name`, `data_score`, `data_display`) VALUES
+(1, 1, '{"class": "测试（一）班", "name": "测试", "doom": "A101"}', '测试', '测试（1）班', '/multimedia/星守歌.mp3', '{"name": "测试节目1"}', '测试节目1', '[1,2,3,4,5]', '[{"message": "测试1", "media": "/multimedia/thefox.mp4", "type": "video", "display_type": "full-screen"}, {"message": "测试2", "media": "/multimedia/2.jpg", "type": "image", "display_type": "full-screen"}]'),
+(2, 2, '{"class": "测试（2）班", "name": "测试2", "doom": "A101"}', '测试2', '测试（2）班', '/multimedia/星守歌.mp3', '{"name": "测试节目2"}', '测试节目2', '[5,2,3,4,1]', '[{"message": "测试2", "media": "", "type": "text", "display_type": "full-screen"}, {"message": "", "media": "/multimedia/1.jpg", "type": "image", "display_type": "full-screen"}, {"message": "", "media": "/multimedia/thefox.mp4", "type": "video", "display_type": "full-screen"}]');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

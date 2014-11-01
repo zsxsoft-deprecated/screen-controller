@@ -33,7 +33,7 @@ define(function(require, exports, module) {
 	var bindSideBar = function(dom) {
 		var me = this;
 		dom.on('click', '.item', function() {
-			buildSidebar.call(me, $(this).children("a").data("aryId"))
+			me.toProgram($(this).children("a").data("aryId"));
 		}).data("bind", "bind");
 	}
 

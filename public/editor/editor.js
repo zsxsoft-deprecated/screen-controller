@@ -11,6 +11,7 @@ define(function(require, exports, module) {
 			toggleSlide: [],
 			toggleMusic: [],
 		},
+
 		// Events
 		toProgram: function() {
 			var me = this,

@@ -52,23 +52,64 @@
             </div>
             <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel">
               <div class="panel-body">
+              <form id="program-info" data-function="program-info">
                 <p>
-                  Playing ID:
-                  <span class="dom-playing-id"></span>
+                  Program ID:
+                  <input type="number" id="program-id" name="program-id" class="form-control" min="0">
                 </p>
                 <p>
-                  Program:
-                  <span class="dom-playing-name"></span>
+                  Program Name:
+                  <input type="text" id="program-name" name="program-name" class="form-control">
                 </p>
                 <p>
-                  Performer:
-                  <span class="dom-playing-player"></span>
+                  Player Name:
+                  <input type="text" id="program-player-name" name="program-player-name" class="form-control">
                 </p>
+                <p>
+                  Player Class:
+                  <input type="text" id="program-player-class" name="program-player-class" class="form-control">
+                </p>
+                <p>
+                  Player Doom:
+                  <input type="text" id="program-player-doom" name="program-player-doom" class="form-control">
+                </p>
+                <p>
+                <button type="submit" class="btn btn-success form-control">Submit</button>
+                </p>
+              </form>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collaspeTwo" aria-expanded="true" aria-controls="collaspeTwo">Display</a>
+              </h4>
+            </div>
+            <div id="collaspeTwo" class="panel-collapse collapse in" role="tabpanel">
+              <div class="panel-body">
+                
               </div>
             </div>
           </div>
         </div>
-
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">Background Music</a>
+              </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel">
+              <div class="panel-body">
+                
+              </div>
+            </div>
+          </div>
+        </div>
 
     </div>
 

@@ -2,7 +2,9 @@ define(function(require, exports, module) {
 
 	var editor = require('editor/editor'),
 		plugins = [
-			require('ext/sidebar')
+			require('ext/form'),
+			require('ext/sidebar'),
+			require('ext/information')
 		];
 
 	$(function() {

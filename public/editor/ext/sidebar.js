@@ -14,7 +14,6 @@ define(function(require, exports, module) {
 			}
 		}
 	];
-	
 
 	var buildSidebar = function(highlightId) {
 		var programs = this.programs,

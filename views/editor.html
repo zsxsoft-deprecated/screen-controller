@@ -52,26 +52,26 @@
               <div class="panel-body">
                 <form id="program-info" data-function="program-info">
                   <p>
-                    Program ID:
+                    <%=lang.editor.programId%>
                     <input type="number" id="program-id" name="program-id" class="form-control" min="0" readonly></p>
                   <p>
                   <p>
-                    Program Sort:
+                    <%=lang.editor.programSort%>
                     <input type="number" id="program-sort" name="program-sort" class="form-control" min="0"></p>
                   <p>
-                    Program Name:
+                    <%=lang.editor.programName%>
                     <input type="text" id="program-name" name="program-name" class="form-control"></p>
                   <p>
-                    Player Name:
+                    <%=lang.editor.playerName%>
                     <input type="text" id="program-player-name" name="program-player-name" class="form-control"></p>
                   <p>
-                    Player Class:
+                    <%=lang.editor.playerClass%>
                     <input type="text" id="program-player-class" name="program-player-class" class="form-control"></p>
                   <p>
-                    Player Doom:
+                    <%=lang.editor.playerDoom%>
                     <input type="text" id="program-player-doom" name="program-player-doom" class="form-control"></p>
                   <p>
-                    <button type="submit" class="btn btn-success form-control">Submit</button>
+                    <button type="submit" class="btn btn-success form-control"><%=lang.editor.submit%></button>
                   </p>
                 </form>
               </div>
@@ -83,7 +83,7 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collaspeTwo" aria-expanded="true" aria-controls="collaspeTwo">Display</a>
+                <a data-toggle="collapse" data-parent="#accordion" href="#collaspeTwo" aria-expanded="true" aria-controls="collaspeTwo"><%=lang.editor.displayData%></a>
               </h4>
             </div>
             <div id="collaspeTwo" class="panel-collapse collapse in" role="tabpanel">
@@ -93,7 +93,7 @@
                     <textarea class="form-control" rows="10" name="program-display" id="program-display"></textarea>
                   </p>
                   <p>
-                    <button type="submit" class="btn btn-success form-control">Submit</button>
+                    <button type="submit" class="btn btn-success form-control"><%=lang.editor.submit%></button>
                   </p>
                 </form>
               </div>
@@ -104,7 +104,7 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">Background Music</a>
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree"><%=lang.editor.backgroundMusic%></a>
               </h4>
             </div>
             <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel">
@@ -114,7 +114,7 @@
                     <textarea class="form-control" rows="10" name="program-tabgm" id="program-tabgm"></textarea>
                   </p>
                   <p>
-                    <button type="submit" class="btn btn-success form-control">Submit</button>
+                    <button type="submit" class="btn btn-success form-control"><%=lang.editor.submit%></button>
                   </p>
                 </form>
               </div>
@@ -125,7 +125,7 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour">Score</a>
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour"><%=lang.editor.score%></a>
               </h4>
             </div>
             <div id="collapseFour" class="panel-collapse collapse in" role="tabpanel">
@@ -135,7 +135,7 @@
                     <textarea class="form-control" rows="10" name="program-tascore" id="program-tascore"></textarea>
                   </p>
                   <p>
-                    <button type="submit" class="btn btn-success form-control">Submit</button>
+                    <button type="submit" class="btn btn-success form-control"><%=lang.editor.submit%></button>
                   </p>
                 </form>
               </div>

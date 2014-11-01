@@ -1,24 +1,18 @@
-var GLOBAL = {
-	footer: {
-		left: "This project created by zsx.",
-		right: 'GitHub: zsxsoft'
-	}
-};
-
 exports.config = {};
+exports.lang = {};
 
 exports.index = function(req, res){
 	res.render('index', {
 		title: 'INDEX', 
-		global: GLOBAL
+		lang: exports.lang
 	});
 };
 
 exports.screen = function(req, res){
 	res.render('screen', {
-		title: 'SCREEN',
+		title: exports.lang.global.screen,
 		config: exports.config,
-		global: GLOBAL
+		lang: exports.lang
 	});
 };
 
@@ -28,9 +22,9 @@ exports.controller = function(req, res){
 		http: {
 			get: req.query
 		},
-		title: 'CONTROLLER',
+		title: exports.lang.global.controller,
 		config: exports.config,
-		global: GLOBAL,
+		lang: exports.lang,
 	});
 };
 
@@ -40,8 +34,8 @@ exports.editor = function(req, res){
 		http: {
 			get: req.query
 		},
-		title: 'EDITOR',
+		title: exports.lang.global.editor,
 		config: exports.config,
-		global: GLOBAL
+		lang: exports.lang
 	});
 }

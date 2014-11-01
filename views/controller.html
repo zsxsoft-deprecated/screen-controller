@@ -39,10 +39,7 @@
       <div class="col-sm-3 col-md-2 sidebar">
         <ul class="nav nav-sidebar">
           <li class="active">
-            <a href="#">Dashboard</a>
-          </li>
-          <li>
-            <a href="#">Data Editor</a>
+            <a href="#"><%=lang.controller.dashboard%></a>
           </li>
         </ul>
       </div>
@@ -52,21 +49,21 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Information</a>
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><%=lang.controller.information%></a>
               </h4>
             </div>
             <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel">
               <div class="panel-body">
                 <p>
-                  Playing ID:
+                  <%=lang.controller.playingId%>
                   <span class="dom-playing-id"></span>
                 </p>
                 <p>
-                  Program:
+                  <%=lang.controller.playingName%>
                   <span class="dom-playing-name"></span>
                 </p>
                 <p>
-                  Performer:
+                  <%=lang.controller.player%>
                   <span class="dom-playing-player"></span>
                 </p>
               </div>
@@ -79,23 +76,23 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">Program Control</a>
+                <a data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"><%=lang.controller.programControl%></a>
               </h4>
             </div>
             <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel">
               <div class="panel-body">
                 <p>
-                  Select a program:
+                  <%=lang.controller.programSelect%>
                   <select id="controlselect-changeprogram" class="form-control select-command" data-command="toProgram" data-param="{action: 'absolute', pos: %val%}"></select>
                 </p>
                 <p>
-                  <button class="btn btn-default btn-command" data-command="toProgram" data-param="{action: '', pos: -1}"  id="controlbutton-prev">Prev</button>
+                  <button class="btn btn-default btn-command" data-command="toProgram" data-param="{action: '', pos: -1}"  id="controlbutton-prev"><%=lang.controller.prev%></button>
                   &nbsp;
-                  <button class="btn btn-success btn-command" data-command="toProgram" data-param="{action: '', pos: 1}"  id="controlbutton-next" >Next</button>
+                  <button class="btn btn-success btn-command" data-command="toProgram" data-param="{action: '', pos: 1}"  id="controlbutton-next" ><%=lang.controller.next%></button>
                   &nbsp;
-                  <button class="btn btn-default btn-command" data-command="toProgram" data-param="{action: 'absoulue', pos: 0}"  id="controlbutton-background">Mode Background</button>
+                  <button class="btn btn-default btn-command" data-command="toProgram" data-param="{action: 'absoulue', pos: 0}"  id="controlbutton-background"><%=lang.controller.modeBackground%></button>
                   &nbsp;
-                  <button class="btn btn-default btn-command" data-command="toScore" data-param="{}"  id="controlbutton-score">Mode Score</button>
+                  <button class="btn btn-default btn-command" data-command="toScore" data-param="{}"  id="controlbutton-score"><%=lang.controller.modeScore%></button>
 
                 </p>
               </div>
@@ -109,31 +106,31 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion3" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">Slide  &amp; Music Control</a>
+                <a data-toggle="collapse" data-parent="#accordion3" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree"><%=lang.controller.controlSlideMusic%></a>
               </h4>
             </div>
             <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel">
               <div class="panel-body">
                 <p>
-                  Select a music:
+                  <%=lang.controller.musicSelect%>
                   <select id="controlselect-changebgm" class="form-control select-command" data-command="controlMultimedia" data-param="{method: 'toggle', param: {action: 'absolute', pos: %val%}}"></select>
                 </p>
                 <p>
-                  <button class="btn btn-success btn-command" data-command="toggleSlide" data-param="{action: '', pos: -1}" id="controlbutton-toggle-background-prev">Prev Slide</button>
+                  <button class="btn btn-success btn-command" data-command="toggleSlide" data-param="{action: '', pos: -1}" id="controlbutton-toggle-background-prev"><%=lang.controller.prevSlide%></button>
                   &nbsp;
-                  <button class="btn btn-success btn-command" data-command="toggleSlide" data-param="{action: '', pos: 1}" id="controlbutton-toggle-background-next">Next Slide</button>
+                  <button class="btn btn-success btn-command" data-command="toggleSlide" data-param="{action: '', pos: 1}" id="controlbutton-toggle-background-next"><%=lang.controller.nextSlide%></button>
                   &nbsp;
-                  <button class="btn btn-default btn-command" data-command="controlMultimedia" data-param="{method: 'toggle', param: {action: '', pos: -1}}" id="controlbutton-toggle-music-prev">Prev Music</button>
+                  <button class="btn btn-default btn-command" data-command="controlMultimedia" data-param="{method: 'toggle', param: {action: '', pos: -1}}" id="controlbutton-toggle-music-prev"><%=lang.controller.prevMusic%></button>
                   &nbsp;
-                  <button class="btn btn-default btn-command" data-command="controlMultimedia" data-param="{method: 'toggle', param: {action: '', pos: 1}}" id="controlbutton-toggle-music-next">Next Music</button>
+                  <button class="btn btn-default btn-command" data-command="controlMultimedia" data-param="{method: 'toggle', param: {action: '', pos: 1}}" id="controlbutton-toggle-music-next"><%=lang.controller.nextMusic%></button>
                 </p>
                 <p></p>
                 <p>
-                  <button class="btn btn-info btn-command" data-command="controlMultimedia" data-param="{method: 'play'}" id="controlbutton-play">Play</button>
+                  <button class="btn btn-info btn-command" data-command="controlMultimedia" data-param="{method: 'play'}" id="controlbutton-play"><%=lang.controller.play%></button>
                   &nbsp;
-                  <button class="btn btn-warning btn-command" data-command="controlMultimedia" data-param="{method: 'pause'}"   id="controlbutton-pause">Pause</button>
+                  <button class="btn btn-warning btn-command" data-command="controlMultimedia" data-param="{method: 'pause'}"   id="controlbutton-pause"><%=lang.controller.pause%></button>
                   &nbsp;
-                  <button class="btn btn-danger btn-command" data-command="controlMultimedia" data-param="{method: 'stop'}"   id="controlbutton-stop">Stop</button>
+                  <button class="btn btn-danger btn-command" data-command="controlMultimedia" data-param="{method: 'stop'}"   id="controlbutton-stop"><%=lang.controller.stop%></button>
                 </p>
 
               </div>
@@ -146,18 +143,18 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion5" href="#collapseFive" aria-expanded="true" aria-controls="collapseThree">Advanced</a>
+                <a data-toggle="collapse" data-parent="#accordion5" href="#collapseFive" aria-expanded="true" aria-controls="collapseThree"><%=lang.controller.advanced%></a>
               </h4>
             </div>
             <div id="collapseFive" class="panel-collapse collapse in" role="tabpanel">
               <div class="panel-body">
                 <div class="input-group">
                   <span class="input-group-btn">
-                    <button class="btn btn-info btn-command" data-command="initPage" data-param="{}" type="button" id="controlbutton-init">Refresh</button>
+                    <button class="btn btn-info btn-command" data-command="initPage" data-param="{}" type="button" id="controlbutton-init"><%=lang.controller.refresh%></button>
                   </span>
-                  <input type="text" class="form-control" id="text-javascript" placeholder="JavaScript Here">
+                  <input type="text" class="form-control" id="text-javascript" placeholder="<%=lang.controller.javascript%>">
                   <span class="input-group-btn">
-                    <button class="btn btn-success btn-command" data-command="runJavaScript" data-param="{}" type="button" id="controlbutton-postjavascript">Run</button>
+                    <button class="btn btn-success btn-command" data-command="runJavaScript" data-param="{}" type="button" id="controlbutton-postjavascript"><%=lang.controller.run%></button>
                   </span>
                 </div>
 

@@ -1,10 +1,11 @@
 exports.config = {
+	"lang": "en",
 	"mysql"	: {
 		"host": "localhost",
 		"post": "3306",
 		"user": "root",
 		"password": "123456",
-		"database": "screen_langsongbisai",
+		"database": "xgywyhy",
 	},
 	"tables":{
 		"data": {

@@ -13,10 +13,12 @@ var
 var config = require('./config').config,
 	httpPage = require('./' + config.webServer.serverFolders),
 	app = express(),
+  lang = require('./lang/' + config.lang).lang,
 	mysqlConnect = mysql.createConnection(config.mysql);
 
 mysqlConnect.query('USE `' + config.mysql.database + '`');
 httpPage.config = config;
+httpPage.lang = lang;
 
 app
    // Dev mode
@@ -55,10 +57,11 @@ app
 
 
 var httpServer = http.createServer(app).listen(config.webServer.port, function(){
-  console.success('Server created at http://127.0.0.1:' + config.webServer.port + '/ !');
+  console.success(lang.console.serverCreated.replace("%u%", "http://127.0.0.1:" + config.webServer.port + '/'));
 });
 
 common.setConsole(console)
+      .setLang(lang)
       .bindSQLObject(mysqlConnect)
       .rebuildConfig(config)
       .bindEvent('global')

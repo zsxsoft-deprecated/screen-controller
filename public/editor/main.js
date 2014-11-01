@@ -5,8 +5,11 @@ define(function(require, exports, module) {
 		plugins = [
 			require('ext/form'),
 			require('ext/sidebar'),
-			require('ext/information')
+			require('ext/information'),
+			require('ext/display')
 		];
+
+	editor.utils = require("editor/utils");
 
 	$(function() {
 		window.editor = editor;

@@ -45,7 +45,7 @@ define(function(require, exports, module) {
 			return false;
 		}
 		
-		this.runSql("UPDATE `" + this.tableName + '` SET `data_display` = \'' + data.replace("/'/g", "\\\'") + "'");
+		this.runSql("UPDATE `" + this.tableName + '` SET `data_display` = \'' + data.replace("/'/g", "\\\'") + "' WHERE `data_ID` = " + me.program.id);
 	}
 
 

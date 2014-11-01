@@ -5,6 +5,10 @@ define(function(require, exports, module) {
 		program: {},
 		display: {},
 		programs: [],
+		queue: {
+			data: [],
+			callback: []
+		},
 		events: {
 			runSql: [],
 			toProgram: [],
@@ -19,7 +23,6 @@ define(function(require, exports, module) {
 			});
 		},
 		runSql: function() {
-			console.log(arguments);
 			var me = this,
 				argu = arguments;
 			$.each(this.events.runSql, function(i, value) {
@@ -50,8 +53,14 @@ define(function(require, exports, module) {
 				me.programs = data;
 				me.toProgram(0);
 			})
-			this.socket.on('return', function(data) {
-				me.runSocket(data.data.method, data);
+			this.socket.on('result', function(data) {
+				var id = data.dataId;
+				if(id >= 0 && me.queue.data[id]){
+					console.log('Request ' + id + ' finished!');
+					me.queue.callback[id]();
+					delete me.queue.data[id];
+					delete me.queue.callback[id];
+				}
 			});
 			this.register([{
 				event: "toProgram",
@@ -84,11 +93,25 @@ define(function(require, exports, module) {
 			$.each(this.sockets[name], function(i, value) {
 				if (value.call(me, data.data)) {
 					data['data'] = null;
-					me.socket.emit('result', data);
 					return true;
 				}
 			});
-		}
+		},
+		sendRequest: function(data, callback) {
+
+			if (!data) data = {};
+			if (typeof(data) == 'string') data = {'method': data};
+			if (!callback) callback = function(){}
+		
+			var queueLength = this.queue.data.length;
+			this.queue.data[queueLength] = {
+				data: data,
+				id : queueLength
+			};
+			this.queue.callback[queueLength] = callback;
+			this.socket.emit('editor', this.queue.data[queueLength]);
+
+		},
 	};
 
 });

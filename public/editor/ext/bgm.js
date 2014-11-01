@@ -29,7 +29,6 @@ define(function(require, exports, module) {
 	var buildInfo = function(id) {
 		var program = this.programs[id],
 			bgm = program.bgm;
-		if (typeof(bgm) == 'string') bgm = [bgm];
 		$("#program-tabgm").val(this.utils.formatJSON(bgm));
 	}
 	
@@ -47,7 +46,7 @@ define(function(require, exports, module) {
 			return false;
 		}
 		
-		this.runSql("UPDATE `" + this.tableName + '` SET `data_bgm` = \'' + data.replace("/'/g", "\\\'") + "'");
+		this.runSql("UPDATE `" + this.tableName + '` SET `data_bgm` = \'' + data.replace("/'/g", "\\\'") + "' WHERE `data_ID` = " + me.program.id);
 	}
 
 

@@ -30,6 +30,7 @@ define(function(require, exports, module) {
 	var buildInfo = function(id) {
 		var program = this.programs[id];
 		$("#program-id").val(program.id);
+		$("#program-sort").val(program.sort);
 		$("#program-name").val(program.program.name);
 		$("#program-player-name").val(program.player.name);
 		$("#program-player-class").val(program.player.class);
@@ -49,11 +50,12 @@ define(function(require, exports, module) {
 			player = {},
 			program = {};
 
-		sql['data_id'] = ary["program-id"];
+		//sql['data_id'] = ary["program-id"];
+		sql['data_sort'] = this.program.sort = ary['program-sort'];
 		sql['data_player_name'] = player['name'] = this.program.player_name = this.program.player.name = ary["program-player-name"];
 		sql['data_player_class'] = player['class'] = this.program.player_class = this.program.player.class = ary["program-player-class"];
 		player['doom'] = this.program.player.doom = ary["program-player-doom"];
-		sql['data_program_name'] = program['program'] = this.program.program.name = this.program.program_name = ary['program-name'];
+		sql['data_program_name'] = program['name'] = this.program.program.name = this.program.program_name = ary['program-name'];
 
 		sql['data_player'] = JSON.stringify(player);
 		sql['data_program'] = JSON.stringify(program);
@@ -64,7 +66,7 @@ define(function(require, exports, module) {
 		});
 		ret = ret.join(",");
 		
-		this.runSql("UPDATE `" + this.tableName + '` SET ' + ret);
+		this.runSql("UPDATE `" + this.tableName + '` SET ' + ret + ' WHERE data_id = ' + ary["program-id"]);
 	}
 
 

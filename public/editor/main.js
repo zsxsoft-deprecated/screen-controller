@@ -4,6 +4,8 @@ define(function(require, exports, module) {
 	var editor = require('editor/editor'),
 		plugins = [
 			require('ext/form'),
+			require('ext/sql'),
+
 			require('ext/sidebar'),
 			require('ext/information'),
 			require('ext/display'),
@@ -22,6 +24,7 @@ define(function(require, exports, module) {
 		$.each(plugins, function(i, v) {
 			v.init.call(editor);
 		});
+		
 	});
 
 

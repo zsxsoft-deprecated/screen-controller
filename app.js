@@ -49,7 +49,7 @@ app
    .get('/', httpPage.index)
    .get('/screen', httpPage.screen)
    .get('/controller', httpPage.controller)
-   .get('/edit', httpPage.edit)
+   .get('/editor', httpPage.editor)
 
 ;
 
@@ -64,4 +64,5 @@ common.setConsole(console)
       .bindEvent('global')
       .bindEvent('screen')
       .bindEvent('controller')
+      .bindEvent('editor')
       .bindServer(httpServer);

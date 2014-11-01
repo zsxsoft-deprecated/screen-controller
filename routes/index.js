@@ -35,7 +35,13 @@ exports.controller = function(req, res){
 };
 
 
-exports.edit = function(req, res){
-	res.render('edit_desc',{
+exports.editor = function(req, res){
+	res.render('editor',{
+		http: {
+			get: req.query
+		},
+		title: 'EDITOR',
+		config: exports.config,
+		global: GLOBAL
 	});
 }

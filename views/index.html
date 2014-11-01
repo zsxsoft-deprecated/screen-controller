@@ -4,12 +4,11 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title><%= title %></title>
+	<title><%= lang.global.index %></title>
 	<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/controller.css" rel="stylesheet">
 	<script src="/jquery-2.1.1.min.js"></script>
 	<script src="/bootstrap/js/bootstrap.min.js"></script>
-	<title><%= title%></title>
 </head>
 <body>
 
@@ -23,7 +22,7 @@
 					<span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="#">
-					<%=title%></a>
+					<%=lang.global.index%></a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right"></ul>
@@ -34,12 +33,12 @@
 	<div class="container-fluid">
 		<div class="main">
 
-			<button type="button" data-url="/screen" class="btn btn-webjump btn-info">SCREEN</button>
+			<button type="button" data-url="/screen" class="btn btn-webjump btn-info"><%=lang.global.screen%></button>
 			<p>&nbsp;</p>
-			<button type="button" data-url="/controller?action=full" class="btn btn-webjump btn-warning">CONTROLLER - FULL</button>
+			<button type="button" data-url="/controller?action=full" class="btn btn-webjump btn-warning"><%=lang.global.controllerFull%></button>
 			&nbsp;
 			&nbsp;
-			<button type="button" data-url="/controller" class="btn btn-webjump btn-warning">CONTROLLER - MINI</button>
+			<button type="button" data-url="/controller" class="btn btn-webjump btn-warning"><%=lang.global.controllerMini%></button>
 
 		</div>
 	</div>

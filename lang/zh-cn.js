@@ -5,7 +5,10 @@
  */
 exports.lang = {
 	global: {
+		index: "首页",
 		controller: "控制台",
+		controllerFull: "完整版控制台",
+		controllerMini: "精简版控制台",
 		screen: "屏幕",
 		editor: "编辑器"
 	},

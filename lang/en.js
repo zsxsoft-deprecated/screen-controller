@@ -1,7 +1,10 @@
 // My English is very poor..
 exports.lang = {
 	global: {
+		index: "INDEX",
 		controller: "CONTROLLER",
+		controllerFull: "CONTROLLER - FULL",
+		controllerMini: "CONTROLLER - MINI"
 		screen: "SCREEN",
 		editor: "EDITOR"
 	},
@@ -48,6 +51,7 @@ exports.lang = {
 		}
 	},
 	editor: {
+		information: "Information",
 		programId: "Program ID: ",
 		programSort: "Program Sort: ",
 		programName: "Program Name: ",

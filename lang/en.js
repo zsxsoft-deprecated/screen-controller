@@ -65,6 +65,13 @@ exports.lang = {
 		score: "Score",
 
 		submit: "Submit",
+	},
+	ext: {
+		barrage: {
+			connected: "Connected to barrage server: %u%",
+			receivedBarrage: "Got %c% barrage(s)!",
+			getResponse: "Get barrage server response."
+		}
 	}
 
 };

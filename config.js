@@ -19,8 +19,9 @@ exports.config = {
 		"htmlFolders": "views",
 		"serverFolders": "routes"
 	},
-	"barrageServer": {
-		"enable": true,
-		"wsUrl": ""
+	"extensions": {
+		"barrage": {
+			"wsUrl": "http://127.0.0.1:4000/"
+		}
 	}
 }

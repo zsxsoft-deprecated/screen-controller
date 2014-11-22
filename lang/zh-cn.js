@@ -69,6 +69,13 @@ exports.lang = {
 		score: "分数数据管理",
 
 		submit: "提交",
+	},
+	ext: {
+		barrage: {
+			connected: "弹幕服务器%u%连接成功！",
+			receivedBarrage: "收到%c%条弹幕！",
+			getResponse: "得到弹幕服务器的响应！"
+		}
 	}
 
 };

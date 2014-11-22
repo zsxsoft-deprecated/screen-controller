@@ -9,6 +9,7 @@
     "express": "3.4.8",
     "ejs": "*",
     "socket.io": "*",
+    "socket.io-client": "*",
     "express-less": "*",
   	"mysql" : "*",
     "rich-console": "*"

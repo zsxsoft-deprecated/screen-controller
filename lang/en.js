@@ -42,6 +42,8 @@ exports.lang = {
 		musicSelect: "Select a music: ",
 		modeBackground: "Background Mode",
 		modeScore: "Score Mode",
+		barrage: "Barrage",
+		send: "Send"
 		
 	},
 	screen: {

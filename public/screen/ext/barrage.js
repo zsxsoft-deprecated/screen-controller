@@ -4,6 +4,7 @@ define(function(require, exports, module) {
 		player = new DD.Player("display-data", $("#display-data")[0]);
 	player.init("canvas", "fuck");
 	player.controlDanmu("play");
+
 	module.exports = {
 		init: function() {
 			this.registerSocket(resisterSocket);
@@ -18,6 +19,17 @@ define(function(require, exports, module) {
 				player.parseDanmus(data.data, player);
 				player.controlDanmu("update");
 			}
+		},
+		{
+			event: "sendBarrage", 
+			func: function(data) {
+				showSingleBarrage({
+					style: "Scroll",
+					text: data.barrage,
+					color: "red",
+					lifeTime: 10 * 60
+				});
+			}
 		}
 	];
 
@@ -31,7 +43,6 @@ define(function(require, exports, module) {
 		}], player);
 		player.controlDanmu("update");
 	}
-
 
 
 	// Use for debug

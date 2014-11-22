@@ -47,6 +47,12 @@ define(function(require, exports, module) {
 					method: "runJavaScript",
 					code: $("#text-javascript").val()
 				});
+			},
+			sendBarrage: function(me, param) {
+				me.sendRequest({
+					method: "sendBarrage",
+					text: $("#text-barrage").val()
+				});
 			}
 		},
 

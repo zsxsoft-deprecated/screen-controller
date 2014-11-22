@@ -162,8 +162,32 @@
             </div>
           </div>
         </div>
-        <% }%></div>
-    </div>
+      </div>
+        <% }%>
+
+        <% if (http.get.action == "full") {%>
+        <div class="panel-group" id="accordion6" role="tablist" aria-multiselectable="true">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion6" href="#collapseSix" aria-expanded="true" aria-controls="collapseSix"><%=lang.controller.barrage%></a>
+              </h4>
+            </div>
+            <div id="collapseSix" class="panel-collapse collapse in" role="tabpanel">
+              <div class="panel-body">
+                <div class="input-group">
+                  <input type="text" class="form-control" id="text-barrage" placeholder="">
+                  <span class="input-group-btn">
+                    <button class="btn btn-success btn-command" data-command="sendBarrage" data-param="{}" type="button" id="controlbutton-sendbarrage"><%=lang.controller.send%></button>
+                  </span>
+                </div>
+
+              </p>
+            </div>
+          </div>
+        </div>
+        <% }%>
+
 
   </div>
 </div>

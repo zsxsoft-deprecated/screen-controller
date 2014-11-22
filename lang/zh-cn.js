@@ -46,6 +46,8 @@ exports.lang = {
 		musicSelect: "选择一个背景音乐：",
 		modeBackground: "背景模式",
 		modeScore: "评分模式",
+		barrage: "弹幕",
+		send: "发送"
 		
 	},
 	screen: {

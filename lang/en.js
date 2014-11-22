@@ -4,7 +4,7 @@ exports.lang = {
 		index: "INDEX",
 		controller: "CONTROLLER",
 		controllerFull: "CONTROLLER - FULL",
-		controllerMini: "CONTROLLER - MINI"
+		controllerMini: "CONTROLLER - MINI",
 		screen: "SCREEN",
 		editor: "EDITOR"
 	},

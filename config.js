@@ -20,7 +20,7 @@ exports.config = {
 		"serverFolders": "routes"
 	},
 	"barrageServer": {
-		"enable": true
+		"enable": true,
 		"wsUrl": ""
 	}
 }

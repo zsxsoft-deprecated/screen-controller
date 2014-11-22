@@ -25,7 +25,7 @@ define(function(require, exports, module) {
 			func: function(data) {
 				showSingleBarrage({
 					style: "Scroll",
-					text: data.barrage,
+					text: data.text,
 					color: "red",
 					lifeTime: 10 * 60
 				});

@@ -14,6 +14,8 @@ As we know, the activities in schools are always __SHITFUL__. My school is Fuzho
 * seajs [https://github.com/seajs/seajs](https://github.com/seajs/seajs)
 * jQuery [https://github.com/jquery/jquery](https://github.com/jquery/jquery)
 * Bootstrap [https://github.com/twbs/bootstrap](https://github.com/twbs/bootstrap)
+* DDPlayer [https://github.com/dpy1123/ddplayer](https://github.com/dpy1123/ddplayer)
+* Highcharts [https://github.com/highslide-software/highcharts.com](https://github.com/highslide-software/highcharts.com) 
 
 
 

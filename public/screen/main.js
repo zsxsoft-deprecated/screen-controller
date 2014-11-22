@@ -13,6 +13,8 @@ define(function(require, exports, module) {
 			require('ext/init'),
 
 			require('ext/highcharts'),
+
+			require('ext/barrage')
 			
 		];
 

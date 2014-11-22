@@ -5,7 +5,7 @@ exports.config = {
 		"post": "3306",
 		"user": "root",
 		"password": "123456",
-		"database": "xgywyhy",
+		"database": "screen_fuck",
 	},
 	"tables":{
 		"data": {
@@ -18,5 +18,9 @@ exports.config = {
 		"staticFolders": "public",
 		"htmlFolders": "views",
 		"serverFolders": "routes"
+	},
+	"barrageServer": {
+		"enable": true
+		"wsUrl": ""
 	}
 }

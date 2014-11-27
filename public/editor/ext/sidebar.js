@@ -23,6 +23,7 @@ define(function(require, exports, module) {
 			return parseInt(a.sort) > parseInt(b.sort);
 		});
 		if (dataBind != "bind") bindSideBar.call(this, dom);
+		console.log(programs);
 		$.each(programs, function(i, v) {
 			$("<a>").data("id", v.id)
 					.data("aryId", i)

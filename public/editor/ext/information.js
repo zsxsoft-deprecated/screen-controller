@@ -46,32 +46,21 @@ define(function(require, exports, module) {
 				});
 				return ret;
 			})($(object).serializeArray()),
-			sql = {},
 			player = {},
 			program = {};
 
-		//sql['data_id'] = ary["program-id"];
-		sql['data_sort'] = this.program.sort = ary['program-sort'];
-		sql['data_player_name'] = player['name'] = this.program.player_name = this.program.player.name = ary["program-player-name"];
-		sql['data_player_class'] = player['class'] = this.program.player_class = this.program.player.class = ary["program-player-class"];
+		//ary["program-id"];
+		this.program.id = ary['program-id'];
+		this.program.sort = ary['program-sort'];
+		player['name'] = this.program.player_name = this.program.player.name = ary["program-player-name"];
+		player['class'] = this.program.player_class = this.program.player.class = ary["program-player-class"];
 		player['doom'] = this.program.player.doom = ary["program-player-doom"];
-		sql['data_program_name'] = program['name'] = this.program.program.name = this.program.program_name = ary['program-name'];
-
-		sql['data_player'] = JSON.stringify(player);
-		sql['data_program'] = JSON.stringify(program);
+		program['name'] = this.program.program.name = this.program.program_name = ary['program-name'];
 
 		this.program.player = player;
 		this.programs[this.programIndex] = $.extend({}, this.program);
 		this.submitPrograms();
 
-		/*var ret = [];
-		$.each(sql, function(i, v) {
-			ret.push(" `" + i + "` = '" + v.replace("/'/g", '\\\'') + "' ");
-		});
-		ret = ret.join(",");
-		
-		this.runSql("UPDATE `" + this.tableName + '` SET ' + ret + ' WHERE data_id = ' + ary["program-id"]);
-		*/
 	}
 
 

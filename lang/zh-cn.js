@@ -18,8 +18,9 @@ exports.lang = {
 		clientConnected: "新的%c% (%d%) 连接成功！",
 		requestFinish: "请求 (%d%) 收到响应：",
 		dataTransfered: "数据已传输到 (%d%)。",
-		runSql: "接收到待执行SQL语句： %s%",
-		sqlError: "SQL执行错误：%s%"
+		getModifiedData: "接收到待修改数据：%s%",
+		saveFileError: "数据保存时出现错误：%s%",
+		dataTransferError: "数据读取时出现错误：%s%",
 	},
 	controller: {
 		prev: "向前",

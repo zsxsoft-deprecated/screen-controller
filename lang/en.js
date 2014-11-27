@@ -14,8 +14,10 @@ exports.lang = {
 		clientConnected: "%c% (%d%) connected!",
 		requestFinish: "Request (%d%) finish!",
 		dataTransfered: "Data transfered to (%d%).",
-		runSql: "Get SQL: %s%",
-		sqlError: "SQL Error: %s%"
+		getModifiedData: "Get Data: %s%",
+		saveFileError: "Save File Error: %s%",
+		dataTransferError: "Data Transfer Error: %s%",
+
 	},
 	controller: {
 		prev: "Prev",

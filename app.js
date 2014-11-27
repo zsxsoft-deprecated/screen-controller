@@ -7,16 +7,13 @@ var
   path = require('path'),
 	common = require('./lib/common'),
   console = require('./lib/console'),
-	expressLess = require('express-less'),
-  mysql = require('mysql');
+	expressLess = require('express-less');
 
 var config = require('./config').config,
 	httpPage = require('./' + config.webServer.serverFolders),
 	app = express(),
-  lang = require('./lang/' + config.lang).lang,
-	mysqlConnect = mysql.createConnection(config.mysql);
+  lang = require('./lang/' + config.lang).lang;
 
-mysqlConnect.query('USE `' + config.mysql.database + '`');
 httpPage.config = config;
 httpPage.lang = lang;
 
@@ -62,7 +59,6 @@ var httpServer = http.createServer(app).listen(config.webServer.port, function()
 
 common.setConsole(console)
       .setLang(lang)
-      .bindSQLObject(mysqlConnect)
       .rebuildConfig(config)
       .loadExtensions()
       .bindEvent('global')

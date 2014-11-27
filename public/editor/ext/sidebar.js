@@ -19,7 +19,11 @@ define(function(require, exports, module) {
 		var programs = this.programs,
 			dom = $("#sidebar").html(""),
 			dataBind = dom.data("bind");
+		programs.sort(function(a, b) {
+			return parseInt(a.sort) > parseInt(b.sort);
+		});
 		if (dataBind != "bind") bindSideBar.call(this, dom);
+		console.log(programs);
 		$.each(programs, function(i, v) {
 			$("<a>").data("id", v.id)
 					.data("aryId", i)

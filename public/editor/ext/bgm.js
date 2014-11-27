@@ -45,8 +45,10 @@ define(function(require, exports, module) {
 			$("#modalMsg").modal();
 			return false;
 		}
+		this.programs[this.programIndex].bgm = $.parseJSON(data);
+		this.submitPrograms();
 		
-		this.runSql("UPDATE `" + this.tableName + '` SET `data_bgm` = \'' + data.replace("/'/g", "\\\'") + "' WHERE `data_ID` = " + me.program.id);
+		//this.runSql("UPDATE `" + this.tableName + '` SET `data_bgm` = \'' + data.replace("/'/g", "\\\'") + "' WHERE `data_ID` = " + me.program.id);
 	}
 
 

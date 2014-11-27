@@ -5,12 +5,13 @@ define(function(require, exports, module) {
 		program: {},
 		display: {},
 		programs: [],
+		programIndex: 0,
 		queue: {
 			data: [],
 			callback: []
 		},
 		events: {
-			runSql: [],
+			submitPrograms: [],
 			toProgram: [],
 		},
 
@@ -22,10 +23,10 @@ define(function(require, exports, module) {
 				value.apply(me, argu);
 			});
 		},
-		runSql: function() {
+		submitPrograms: function() {
 			var me = this,
 				argu = arguments;
-			$.each(this.events.runSql, function(i, value) {
+			$.each(this.events.submitPrograms, function(i, value) {
 				value.apply(me, argu);
 			});
 		},
@@ -67,6 +68,7 @@ define(function(require, exports, module) {
 				func: function(id) {
 					this.program = this.programs[id];
 					this.display = this.program.display;
+					this.programIndex = id;
 				}
 			}])
 

@@ -8,22 +8,23 @@ define(function(require, exports, module) {
 
 	var registerFunction = [
 		{
-			event: "runSql",
+			event: "submitPrograms",
 			func: function() {
-				runSql.apply(this, arguments);		
+				submitPrograms.apply(this, arguments);		
 			}
 		}
 	];
 
-	var runSql = function(sql) {
-		console.log(sql);
-		$('#modalMsg').find(".modal-body").html("SQL Running.....");
+	var submitPrograms = function() {
+		console.log(this.programs);
+		$('#modalMsg').find(".modal-body").html("Submitting..");
 		$('#modalMsg').modal();
 		this.sendRequest({
-			method: "runsql", 
-			data: sql
+			method: "editData", 
+			data: this.programs
 		}, function() {
 			$('#modalMsg').modal('hide');
+			this.socket.emit('global', {need: "data"});
 		});
 	}
 

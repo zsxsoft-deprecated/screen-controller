@@ -60,13 +60,18 @@ define(function(require, exports, module) {
 		sql['data_player'] = JSON.stringify(player);
 		sql['data_program'] = JSON.stringify(program);
 
-		var ret = [];
+		this.program.player = player;
+		this.programs[this.programIndex] = $.extend({}, this.program);
+		this.submitPrograms();
+
+		/*var ret = [];
 		$.each(sql, function(i, v) {
 			ret.push(" `" + i + "` = '" + v.replace("/'/g", '\\\'') + "' ");
 		});
 		ret = ret.join(",");
 		
 		this.runSql("UPDATE `" + this.tableName + '` SET ' + ret + ' WHERE data_id = ' + ary["program-id"]);
+		*/
 	}
 
 

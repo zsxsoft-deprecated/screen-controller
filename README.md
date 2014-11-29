@@ -1,4 +1,4 @@
-﻿Screen Controler
+﻿Screen Controller
 ================
 
 a Node.js project to control fzbz screen.

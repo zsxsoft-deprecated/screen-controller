@@ -27,5 +27,4 @@ As we know, the activities in schools are always __SHITFUL__. My school is Fuzho
 * express-less [https://github.com/toogle/express-less](https://github.com/toogle/express-less)
 * socket.io [https://github.com/Automattic/socket.io](https://github.com/Automattic/socket.io)
 * ejs [https://github.com/visionmedia/ejs](https://github.com/visionmedia/ejs)
-* node-mysql [https://github.com/felixge/node-mysql](https://github.com/felixge/node-mysql)
 * rich-console [https://github.com/keven-wang/rich-console](https://github.com/keven-wang/rich-console)

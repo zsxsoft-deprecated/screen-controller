@@ -50,12 +50,12 @@ define(function(require, exports, module) {
 			program = {};
 
 		//ary["program-id"];
+		player['name'] = ary["program-player-name"];
+		player['class'] = ary["program-player-class"];
+		player['doom'] = ary["program-player-doom"];
 		this.program.id = ary['program-id'];
 		this.program.sort = ary['program-sort'];
-		player['name'] = this.program.player_name = this.program.player.name = ary["program-player-name"];
-		player['class'] = this.program.player_class = this.program.player.class = ary["program-player-class"];
-		player['doom'] = this.program.player.doom = ary["program-player-doom"];
-		program['name'] = this.program.program.name = this.program.program_name = ary['program-name'];
+		this.program.program.name = ary['program-name'];
 
 		this.program.player = player;
 		this.programs[this.programIndex] = $.extend({}, this.program);

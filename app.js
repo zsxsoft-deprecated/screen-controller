@@ -10,7 +10,7 @@ var
 	expressLess = require('express-less');
 
 var config = require('./config').config,
-	httpPage = require('./' + config.webServer.serverFolders),
+	httpPage = require('./' + config.webServer.serverFolder),
 	app = express(),
   lang = require('./core/lang/' + config.lang).lang;
 
@@ -19,19 +19,19 @@ httpPage.lang = lang;
 
 app
    // Dev mode
-   /*
-     .use(express.logger('dev'))
-     .use(express.errorHandler())
-   */
+   
+   .use(express.logger('dev'))
+   .use(express.errorHandler())
+   
    
    // set ejs
    .engine('.html', require('ejs').__express)
    .set('view engine', 'html')
    // set ejs render
-   .set('views', path.join(__dirname, config.webServer.htmlFolders))
+   .set('views', path.join(__dirname, config.webServer.htmlFolder))
 
    // set less
-   .use('/less', expressLess(path.join(__dirname, config.webServer.staticFolders, '/less')))
+   .use('/less', expressLess(path.join(__dirname, config.webServer.staticFolder, '/less')))
 
    .use(express.json())
    .use(express.urlencoded())
@@ -42,7 +42,9 @@ app
    .set('port', config.webServer.port)
 
    // set static resouces
-   .use(express.static(path.join(__dirname, config.webServer.staticFolders)))
+   .use('/resources', express.static(path.join(__dirname, config.webServer.resourceFolder)))
+   .use(express.static(path.join(__dirname, config.webServer.staticFolder)))
+
 
    // set url
    .get('/', httpPage.index)

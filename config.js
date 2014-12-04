@@ -2,9 +2,9 @@ exports.config = {
 	"lang": "en",
 	"webServer":{
 		"port": 3000,
-		"staticFolders": "public",
-		"htmlFolders": "views",
-		"serverFolders": "routes"
+		"staticFolders": "core/public",
+		"htmlFolders": "core/views",
+		"serverFolders": "core/routes"
 	},
 	"extensions": {
 		"barrage": {

@@ -5,14 +5,14 @@ var
   express = require('express'),
   http = require('http'),
   path = require('path'),
-	common = require('./lib/common'),
-  console = require('./lib/console'),
+	common = require('./core/lib/common'),
+  console = require('./core/lib/console'),
 	expressLess = require('express-less');
 
 var config = require('./config').config,
 	httpPage = require('./' + config.webServer.serverFolders),
 	app = express(),
-  lang = require('./lang/' + config.lang).lang;
+  lang = require('./core/lang/' + config.lang).lang;
 
 httpPage.config = config;
 httpPage.lang = lang;

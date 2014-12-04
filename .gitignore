@@ -25,5 +25,5 @@ build/Release
 node_modules
 
 # Testing multimedia data
-/public/multimedia/*
+core/public/multimedia/*
 

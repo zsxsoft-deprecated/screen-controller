@@ -25,5 +25,5 @@ build/Release
 node_modules
 
 # Testing multimedia data
-core/public/multimedia/*
-
+resources/*
+!resouces/empty.mp3

@@ -34,6 +34,8 @@ define(function(require, exports, module) {
 
 	var slideToggle = function(argu) {
 
+		var that = this;
+		
 		if (this.display.length == 0) return;
 
 
@@ -75,7 +77,7 @@ define(function(require, exports, module) {
 			if (nextSlide.data("type") == "video") {
 				this.objects.active = nextSlide.find("video");
 				this.objects.active.bind("timeupdate", function(){
-					$(".dom-time").html(this.objects.active[0].currentTime);
+					$(".dom-time").html(that.objects.active[0].currentTime);
 				});
 				this.current.lastType = "video";
 

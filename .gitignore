@@ -26,4 +26,5 @@ node_modules
 
 # Testing multimedia data
 core/public/multimedia/*
-
+resources/*
+!resources/empty.mp3

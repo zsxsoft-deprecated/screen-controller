@@ -12,7 +12,7 @@ define(function(require, exports, module) {
 				this.text = param.text || ""; //文字内容
 				this.lifeTime = param.lifeTime || 0;
 				this.color = param.color || "rgb(255,255,255)";
-				this.font = param.font || "normal bold 22px 华文细黑";
+				this.font = param.font || "normal bold 2em 华文细黑";
 				this.alive = true; //生命状态
 			};
 

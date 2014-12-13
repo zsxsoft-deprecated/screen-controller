@@ -52,14 +52,14 @@ define(function(require, exports, module) {
 
 				style = style || "Scroll";
 				color = color || "rgb(255,255,255)";
-				font = font || "normal bold 22px  Microsoft Yahei , 微软雅黑 , Tahoma , Arial , Helvetica , STHeiti";
+				font = font || "normal bold 5em  Microsoft Yahei , 微软雅黑 , Tahoma , Arial , Helvetica , STHeiti";
 				lifeTime = lifeTime || 4 * 60;
 
 
 				//文字的宽度【注意，ctx.measureText(text).width得到文字宽度是基于ctx当前的font的，如果取得width后改变了ctx.font很可能width与实际文字宽度不匹配】
 				this.bufCanvas.getContext("2d").font = font;
 				var width = this.bufCanvas.getContext("2d").measureText(text).width;
-				var height = 22;
+				var height = 50;
 				var result = generateY(style, height, 0); //计算弹幕位置，从第0层弹幕开始
 				var y = result.y;
 				var index = result.index;

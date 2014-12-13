@@ -86,7 +86,7 @@ define(function(require, exports, module) {
 					this.objects.active[0].pause();
 					if (this.objects.active[0].readyState == 4) this.objects.active[0].currentTime = 0;
 
-					this.objects.active = this.thiss.player;
+					this.objects.active = this.objects.player;
 					this.objects.active[0].play();
 				}
 				this.current.lastType = nextSlide.data("type");

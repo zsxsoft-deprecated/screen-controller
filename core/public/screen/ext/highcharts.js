@@ -135,7 +135,7 @@ define(function(require, exports, module) {
 			var o = $('#dom-score').highcharts();
 			for(var i = 0;i < o.series.length; i++)
 			{
-				for (var j = 0; j < object.programs.length; j++) {
+				for (var j = 0; j < object.programs.length - 1; j++) {
 					o.series[i].data[j].update(parseFloat(object.programs[j].score[i]));
 				}						
 			}
@@ -156,7 +156,7 @@ define(function(require, exports, module) {
 				name: series_name[i],
 				data: (function(){
 					var scores = [];
-					for(var i = 0; i < object.programs.length; i++) scores.push(0);
+					for(var i = 0; i < object.programs.length - 1; i++) scores.push(0);
 					return scores;
 				})()
 			});

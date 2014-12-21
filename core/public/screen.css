@@ -196,3 +196,14 @@ body {
     padding: 30em;
   }
 }
+
+
+
+.vjs-control-bar {
+  display: none;
+}
+
+.video-js {
+  height: 100%;
+  width: 100%;
+}

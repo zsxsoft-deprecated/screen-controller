@@ -1,1 +1,53 @@
-[{"id":"1","sort":"1","player":{"name":"Test Case 1","class":"1080p"},"bgm":["/resources/empty.mp3"],"program":{"name":"Fate/stay night -UBW- 03"},"score":[1,2,3,4,5],"display":[{"media":"/resources/1080p.mp4","type":"video","display_type":"full-screen"}]},{"id":"2","sort":"2","player":{"name":"Test Case 2","class":"720p"},"bgm":["/resources/empty.mp3"],"program":{"name":"Start:Dash!"},"score":[5,2,3,4,1],"display":[{"media":"/resources/720p.mp4","type":"video","display_type":"full-screen"}]},{"id":"3","sort":"3","player":{"name":"Test Case 3","class":"图片测试","doom":""},"bgm":["/resources/fhána - 星屑のインターリュード.mp3"],"program":{"name":"天体的秩序"},"score":[5,2,3,4,1],"display":[{"media":"/resources/ttdzx.jpg","type":"image","display_type":"full-screen"}]}]
+[{
+	"id": "1",
+	"sort": "1",
+	"player": {
+		"name": "Test Case 1",
+		"class": "1080p"
+	},
+	"bgm": ["/resources/empty.mp3"],
+	"program": {
+		"name": "Fate/stay night -UBW- 03"
+	},
+	"score": [1, 2, 3, 4, 5],
+	"display": [{
+		"media": "http://127.0.0.1/video-js/1080p.mp4",
+		"type": "flash-video",
+		"display_type": "full-screen"
+	}]
+}, {
+	"id": "2",
+	"sort": "2",
+	"player": {
+		"name": "Test Case 2",
+		"class": "720p"
+	},
+	"bgm": ["/resources/empty.mp3"],
+	"program": {
+		"name": "Start:Dash!"
+	},
+	"score": [5, 2, 3, 4, 1],
+	"display": [{
+		"media": "/resources/720p.mp4",
+		"type": "video",
+		"display_type": "full-screen"
+	}]
+}, {
+	"id": "3",
+	"sort": "3",
+	"player": {
+		"name": "Test Case 3",
+		"class": "图片测试",
+		"doom": ""
+	},
+	"bgm": ["/resources/fhána - 星屑のインターリュード.mp3"],
+	"program": {
+		"name": "天体的秩序"
+	},
+	"score": [5, 2, 3, 4, 1],
+	"display": [{
+		"media": "/resources/ttdzx.jpg",
+		"type": "image",
+		"display_type": "full-screen"
+	}]
+}]

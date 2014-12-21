@@ -20,6 +20,12 @@ define(function(require, exports, module) {
 
 	$(function() {
 
+
+		if ('videojs' in window) {
+			videojs.options.flash.swf = "/third-party/video-js.swf"
+		}
+
+
 		window.program = program;
 
 		program.objects.player = $("#dom-background-audio");

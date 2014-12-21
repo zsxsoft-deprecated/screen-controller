@@ -78,11 +78,17 @@ define(function(require, exports, module) {
 					$(".dom-time").html(this.objects.active[0].currentTime);
 				});
 				this.current.lastType = "video";
-
 				this.objects.player[0].pause();
+			} else if (nextSlide.data("type") == "flash-video") {
+				this.objects.active = nextSlide.find("object");
+				//this.objects.active.bind("timeupdate", function(){
+				//	$(".dom-time").html(this.objects.active[0].currentTime);
+				//});
+				this.current.lastType = "flash-video";
+				//this.objects.player[0].pause();
 			}
 			else {
-				if (this.current.lastType == "video")	{
+				if (this.current.lastType == "video" || this.current.lastType == "flash-video")	{
 					this.objects.active[0].pause();
 					if (this.objects.active[0].readyState == 4) this.objects.active[0].currentTime = 0;
 

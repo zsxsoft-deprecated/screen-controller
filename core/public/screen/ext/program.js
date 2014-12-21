@@ -61,19 +61,22 @@ define(function(require, exports, module) {
 							.css("background-image", "url(" + o.media + ")")
 							.appendTo(fullscreen);
 				break;
-				case "video":
+				case "video": case "flash-video":
 					$("<div>").addClass("background-image")
 							  .css("background-color", "#000000")
-							  .append($("<video>").attr("src", o.media)
-							  		              .width('100%')
+							  .append($("<video>").width('100%')
 							  		              .height('100%')
+							  		              .attr("id", "video-" + i)
+							  		              .addClass("video-js vjs-default-skin")
+							  		              .append($("<source>").attr("src", o.media).attr("type", "video/" + o.media.split(".")[o.media.split(".").length - 1]))
 							  		              //.css("transform", "scaleX(2)")
 							  		 )
 							  		              //.width(document.documentElement.clientWidth)
 							  		              //.height(document.documentElement.clientHeight))
 							  .appendTo(fullscreen);
+
 				break;
-				case "default":
+					case "default":
 					fullscreen.addClass("cover-container")
 							  .css("background-color", "#333")
 						      .append($("<div>")
@@ -96,6 +99,12 @@ define(function(require, exports, module) {
 			o["time"] = parseFloat(o["time"]);
 			o["minus_time"] = (i == 0 ? 1 : (o["time"] - self.display[i - 1]["time"]));
 			o["dom_id"] = i;
+
+			//if (o.type == "flash-video") {
+			//	videojs("video-" + i, {}, function(){
+			//		console.log(this);
+			//	});
+			//}
 
 		});
 	};

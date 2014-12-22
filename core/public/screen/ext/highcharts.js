@@ -71,7 +71,7 @@ define(function(require, exports, module) {
 			chart: {
 				type: 'column',
 				backgroundColor: '#333',
-				height: 900,
+				height: 1000,
 				animation: {
 	                duration: 5000
 	            }
@@ -116,6 +116,7 @@ define(function(require, exports, module) {
 				}
 			},
 			legend: {
+				enabled: false,
 				backgroundColor: '#FFFFFF',
 				reversed: true,
 				layout: 'horizontal'
@@ -128,16 +129,15 @@ define(function(require, exports, module) {
 			series: buildSeries.call(object),
 			credits: {
 				enabled: false
-			}
+			},
 		});
 
 		$(function(){
 			var o = $('#dom-score').highcharts();
-			for(var i = 0;i < o.series.length; i++)
-			{
-				for (var j = 0; j < object.programs.length; j++) {
+			for(var i = 0; i < o.series.length; i++) {
+				for (var j = 0; j < object.programs.length - 1; j++) {
 					o.series[i].data[j].update(parseFloat(object.programs[j].score[i]));
-				}						
+				}
 			}
 			o.redraw();
 		});
@@ -147,16 +147,15 @@ define(function(require, exports, module) {
 	var buildSeries = function(){
 		var 
 			series = [],
-			series_name = [''],
+			series_name = this.programs[0].score,
 			object = this;
 		
-		for(var i = 0; i < series_name.length; i++)
-		{
+		for(var i = 0; i < series_name.length; i++) {
 			series.push({
 				name: series_name[i],
 				data: (function(){
 					var scores = [];
-					for(var i = 0; i < object.programs.length; i++) scores.push(0);
+					for(var i = 0; i < object.programs.length - 1; i++) scores.push(0);
 					return scores;
 				})()
 			});

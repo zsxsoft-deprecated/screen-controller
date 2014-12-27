@@ -14,7 +14,6 @@
 	"display": [{
 		"media": "/resources/thefox.mp4",
 		"type": "video",
-		"display_type": "full-screen",
 		"time": null
 	}, {
 		"media": "/resources/2.jpg",
@@ -36,10 +35,9 @@
 	"score": [5, 2, 3, 4, 1],
 	"display": [{
 		"media": "/resources/1.jpg",
-		"type": "image",
-		"display_type": "full-screen"
+		"type": "image"
 	}, {
 		"media": "/resources/thefox.mp4",
-		"type": "video",
+		"type": "video"
 	}]
 }]

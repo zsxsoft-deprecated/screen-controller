@@ -1,7 +1,6 @@
 exports.e = function(io, socket) {
 	var self = this;
 	self.console.info(this.lang.console.clientConnected.replace("%c%", this.lang.global.editor).replace("%d%", socket.id));
-	socket.join('editor');
 	socket.on('editor', function(data) {
 		self.createRequest("editor", socket.id, data.id, data.data, function(data) {
 			var json = JSON.stringify(data.data.data);

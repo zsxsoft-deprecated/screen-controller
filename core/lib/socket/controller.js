@@ -1,7 +1,6 @@
 exports.e = function(io, socket) {
 	var self = this;
 	self.console.info(this.lang.console.clientConnected.replace("%c%", this.lang.global.controller).replace("%d%", socket.id));
-	socket.join('controller');
 	socket.on('screen', function(data) {
 		self.createRequest("allScreen", socket.id, data.id, data.data);
 	});

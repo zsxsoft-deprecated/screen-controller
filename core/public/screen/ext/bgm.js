@@ -59,6 +59,7 @@ define(function(require, exports, module) {
 			nextBGM = 0;
 		}
 
+		this.objects.player[0].pause();
 		this.objects.player.attr("src", this.program.bgm[nextBGM]);
 		this.current.bgm = nextBGM;
 

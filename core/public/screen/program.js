@@ -62,7 +62,7 @@ define(function(require, exports, module) {
 			this.objects.active = this.objects.player;
 			this.objects.player
 				.attr("preload", true)
-				.attr("autoplay", true)
+//				.attr("autoplay", true)
 				.bind('timeupdate', function() {
 					$.each(me.events.timeupdate, function(i, value) {
 						value.apply(me);

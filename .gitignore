@@ -27,3 +27,4 @@ node_modules
 # Testing multimedia data
 resources/*
 !resouces/empty.mp3
+data*.json

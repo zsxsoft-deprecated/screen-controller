@@ -30,7 +30,6 @@ define(function(require, exports, module) {
 						bgm: [HIGHCHARTS_BGM],
 						display: [
 							{
-								display_type: "full-screen",
 								type: "custom",
 								custom: function(dom) {
 									dom.attr("id", "dom-score").css("background-color", "#333");
@@ -43,14 +42,12 @@ define(function(require, exports, module) {
 							doom: "",
 							name: ""
 						},
-						player_class: "精彩正在呈现",
-						player_name: "",
 						program: {
 							name: "排名展示"
 						},
-						program_name: "排名展示",
 						score: [0],
-						ishighcharts: true
+						ishighcharts: true,
+						rank: false
 					});
 					lastProgram++;	
 				}
@@ -93,7 +90,9 @@ define(function(require, exports, module) {
 				categories: function() {
 					var a = [];
 					for (var i = 0; i <= object.programs.length - 1; i++) {
-						a.push(object.programs[i].player.class)
+						if (object.programs[i]['rank'] !== false) {
+							a.push(object.programs[i].player.name);
+						}
 					}
 					return a;
 				}(),
@@ -136,7 +135,9 @@ define(function(require, exports, module) {
 			var o = $('#dom-score').highcharts();
 			for(var i = 0; i < o.series.length; i++) {
 				for (var j = 0; j < object.programs.length - 1; j++) {
-					o.series[i].data[j].update(parseFloat(object.programs[j].score[i]));
+					if (object.programs[i]['rank'] !== false) {
+						o.series[i].data[j].update(parseFloat(object.programs[j].score[i]));
+					}
 				}
 			}
 			o.redraw();
@@ -147,15 +148,19 @@ define(function(require, exports, module) {
 	var buildSeries = function(){
 		var 
 			series = [],
-			series_name = this.programs[0].score,
+			seriesName = this.programs[0].score,
 			object = this;
 		
-		for(var i = 0; i < series_name.length; i++) {
+		for(var i = 0; i < seriesName.length; i++) {
 			series.push({
-				name: series_name[i],
+				name: seriesName[i],
 				data: (function(){
 					var scores = [];
-					for(var i = 0; i < object.programs.length - 1; i++) scores.push(0);
+					for(var i = 0; i < object.programs.length - 1; i++) {
+						if (object.programs[i]['rank'] !== false) {
+							scores.push(0);
+						}
+					}
 					return scores;
 				})()
 			});

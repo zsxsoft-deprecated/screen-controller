@@ -122,6 +122,8 @@ define(function(require, exports, module) {
 				me.program = me.programs[data];
 				me.initProgram();
 
+				$("#controlselect-changeprogram").find('.active').removeClass('active');
+				$("#controlselect-changeprogram").find("a").eq(data).addClass('active');
 				// fix music-switch
 				var findActive = $("#controlselect-changebgm");
 				if (findActive.find('.active').length == 0) {

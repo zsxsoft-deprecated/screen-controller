@@ -1,6 +1,6 @@
 define(function(require, exports, module) {
 	
-	var HIGHCHARTS_BGM = '/multimedia/empty.mp3';
+	var HIGHCHARTS_BGM = '/resources/empty.mp3';
 	module.exports = {
 		init: function() {
 			this.register(registerFunction);

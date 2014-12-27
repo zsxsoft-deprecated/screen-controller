@@ -1,6 +1,6 @@
 define(function(require, exports, module) {
 
-	var NO_AUDIO_DEFAULT_BGM = '/multimedia/empty.mp3';
+	var NO_AUDIO_DEFAULT_BGM = '/resources/empty.mp3';
 
 
 	module.exports = {

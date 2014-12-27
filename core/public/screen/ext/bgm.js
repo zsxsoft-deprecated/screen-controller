@@ -34,7 +34,7 @@ define(function(require, exports, module) {
 						this.objects.active[0].pause();
 					},
 					stop: function() {
-						this.pause();
+						this.objects.active[0].pause();
 						this.objects.active[0].currentTime = 0;
 					},
 					toggle: function() {

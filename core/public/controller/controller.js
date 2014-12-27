@@ -86,7 +86,7 @@ define(function(require, exports, module) {
 
 			var object = $("#controlselect-changebgm").html("");
 			$.each(me.program.bgm, function(i, v) {
-				$("<option>").val(i)
+				$('<a href="#" class="list-group-item">').data("value", i)
 							 .attr("data-pos", i)
 							 .text(v)
 							 .appendTo(object);
@@ -138,7 +138,7 @@ define(function(require, exports, module) {
 				var object = $("#controlselect-changeprogram").html("");
 				$.each(me.programs, function(i, v) {
 					v.tagId = i;
-					$("<option>").val(i)
+					$('<a href="#" class="list-group-item">').data("value", i)
 								 .attr("data-pos", v.program.id)
 								 .text(v.program.name)
 								 .appendTo(object);
@@ -164,10 +164,11 @@ define(function(require, exports, module) {
 
 			});
 
-			$(".select-command").change(function() {
+			$(".select-command").on('click', '.list-group-item', function(e) {
 				var that = $(this),
-					command = that.data("command"),
-					param = (typeof(that.data("param")) == 'object' ? that.data("param") : ((new Function('return ' + that.data("param").replace("%val%", that.val())))()));
+					parent = $(this).parent(),
+					command = parent.data("command"),
+					param = (typeof(parent.data("param")) == 'object' ? parent.data("param") : ((new Function('return ' + parent.data("param").replace("%val%", that.data("value"))))()));
 
 				if (me.selectEvents[command]) {
 					me.selectEvents[command](me, param);
@@ -177,6 +178,11 @@ define(function(require, exports, module) {
 						param: param
 					});
 				}
+
+				parent.find('.active').removeClass('active');
+				that.addClass('active');
+
+				e.preventDefault();
 
 			});
 

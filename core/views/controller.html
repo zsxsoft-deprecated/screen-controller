@@ -80,15 +80,15 @@
                 <div class="panel-body">
                   <p>
                     <%=lang.controller.programSelect%>
-                    <select id="controlselect-changeprogram" class="form-control select-command" data-command="toProgram" data-param="{action: 'absolute', pos: %val%}"></select>
+                    <div class="list-group select-command" id="controlselect-changeprogram" data-command="toProgram" data-param="{action: 'absolute', pos: %val%}"></div>
                   </p>
                   <p>
-                    <button class="btn btn-default btn-command" data-command="toProgram" data-param="{action: '', pos: -1}"  id="controlbutton-prev">
+                    <!--<button class="btn btn-default btn-command" data-command="toProgram" data-param="{action: '', pos: -1}"  id="controlbutton-prev">
                       <%=lang.controller.prev%></button>
                     &nbsp;
                     <button class="btn btn-success btn-command" data-command="toProgram" data-param="{action: '', pos: 1}"  id="controlbutton-next" >
                       <%=lang.controller.next%></button>
-                    &nbsp;
+                    &nbsp;-->
                     <button class="btn btn-default btn-command" data-command="toProgram" data-param="{action: 'absoulue', pos: 0}"  id="controlbutton-background">
                       <%=lang.controller.modeBackground%></button>
                     &nbsp;
@@ -115,7 +115,7 @@
                 <div class="panel-body">
                   <p>
                     <%=lang.controller.musicSelect%>
-                    <select id="controlselect-changebgm" class="form-control select-command" data-command="controlMultimedia" data-param="{method: 'toggle', param: {action: 'absolute', pos: %val%}}"></select>
+                    <div class="list-group select-command" id="controlselect-changebgm" data-command="controlMultimedia" data-param="{method: 'toggle', param: {action: 'absolute', pos: %val%}}"></div>
                   </p>
                   <p>
                     <button class="btn btn-success btn-command" data-command="toggleSlide" data-param="{action: '', pos: -1}" id="controlbutton-toggle-background-prev">
@@ -124,14 +124,11 @@
                     <button class="btn btn-success btn-command" data-command="toggleSlide" data-param="{action: '', pos: 1}" id="controlbutton-toggle-background-next">
                       <%=lang.controller.nextSlide%></button>
                     &nbsp;
-                    <button class="btn btn-default btn-command" data-command="controlMultimedia" data-param="{method: 'toggle', param: {action: '', pos: -1}}" id="controlbutton-toggle-music-prev">
+                    <!--<button class="btn btn-default btn-command" data-command="controlMultimedia" data-param="{method: 'toggle', param: {action: '', pos: -1}}" id="controlbutton-toggle-music-prev">
                       <%=lang.controller.prevMusic%></button>
                     &nbsp;
                     <button class="btn btn-default btn-command" data-command="controlMultimedia" data-param="{method: 'toggle', param: {action: '', pos: 1}}" id="controlbutton-toggle-music-next">
-                      <%=lang.controller.nextMusic%></button>
-                  </p>
-                  <p></p>
-                  <p>
+                      <%=lang.controller.nextMusic%></button>-->
                     <button class="btn btn-info btn-command" data-command="controlMultimedia" data-param="{method: 'play'}" id="controlbutton-play">
                       <%=lang.controller.play%></button>
                     &nbsp;

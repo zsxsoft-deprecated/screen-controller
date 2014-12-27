@@ -7,7 +7,7 @@ exports.e = function(io, socket) {
 			var json = JSON.stringify(data.data.data);
 			self.console.success(self.lang.console.getModifiedData.replace("%s%", json));
 			try {
-				require("fs").writeFileSync("./data.json", json, "utf-8");
+				require("fs").writeFileSync(self.config.data, json, "utf-8");
 			}
 			catch (e) {
 				self.console.success(self.lang.console.saveFileError.replace("%s%", e.toString()));

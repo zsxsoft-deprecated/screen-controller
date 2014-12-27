@@ -19,7 +19,6 @@
 	}, {
 		"media": "/resources/2.jpg",
 		"type": "image",
-		"display_type": "full-screen",
 		"time": null
 	}]
 }, {
@@ -42,6 +41,5 @@
 	}, {
 		"media": "/resources/thefox.mp4",
 		"type": "video",
-		"display_type": "full-screen"
 	}]
 }]

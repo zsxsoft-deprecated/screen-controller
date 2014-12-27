@@ -11,7 +11,7 @@ var fetchAllData = function(io, socket) {
 	socket.on('global', function(data){
 		if (data.need == "data") {
 			try {
-				var data = JSON.parse(require("fs").readFileSync("./data.json", "utf-8"));
+				var data = JSON.parse(require("fs").readFileSync(self.config.data, "utf-8"));
 				self.console.success(self.lang.console.dataTransfered.replace("%d%", socket.id));
 				socket.emit("data", data);
 			}

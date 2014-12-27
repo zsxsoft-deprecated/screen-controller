@@ -1,5 +1,6 @@
 exports.config = {
 	"lang": "en",
+	"data": "./data.json",
 	"webServer":{
 		"port": 3000,
 		"staticFolder": "core/public",

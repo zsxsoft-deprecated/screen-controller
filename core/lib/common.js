@@ -52,7 +52,7 @@ exports.createRequestToAllScreen = function(requestId, dataId, requestData) {
 exports.createRequestToController = function(requestMethod, requestData) {
 	
 	this.io.sockets.in('controller').emit(requestMethod, requestData);
-	this.logConsole({id: "TOCONTROLLER", method: requestMethod, data: requestData});
+	this.logConsole({id: "TOCONTROLLER", data: {method: requestMethod, data: requestData}});
 	return this;
 
 };

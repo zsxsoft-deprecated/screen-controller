@@ -23,7 +23,6 @@ app
    .use(express.logger('dev'))
    .use(express.errorHandler())
    
-   
    // set ejs
    .engine('.html', require('ejs').__express)
    .set('view engine', 'html')

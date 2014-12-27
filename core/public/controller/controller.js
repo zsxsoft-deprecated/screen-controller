@@ -162,7 +162,7 @@ define(function(require, exports, module) {
 					v.tagId = i;
 					$('<a href="#" class="list-group-item">').data("value", i)
 								 .attr("data-pos", v.program.id)
-								 .text(v.program.name)
+								 .text(v.program.name + " - " + v.player.name)
 								 .appendTo(object);
 				});
 				me.program = me.programs[0];

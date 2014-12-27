@@ -95,7 +95,7 @@ define(function(require, exports, module) {
 					} else {
 						object.current.repeat = object.current.index = false;
 					}
-				
+					
 				}
 			}]);
 

@@ -7,7 +7,8 @@ define(function(require, exports, module) {
 			require('ext/program'),
 			require('ext/slide'),
 			require('ext/bgm'),
-			require('ext/timeupdate'),
+			require('ext/time_update'),
+			require('ext/send_status'),
 
 			require('ext/runjs'),
 			require('ext/init'),

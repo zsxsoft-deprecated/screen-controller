@@ -12,7 +12,7 @@ define(function(require, exports, module) {
 			event: "toProgram",
 			func: function(argu) {			
 
-				build_dom.apply(this);
+				domBuilder.apply(this);
 				$(".dom-playing-name").text(this.program.program.name);
 				$(".dom-playing-player").text(this.program.player.class + " " + this.program.player.name);
 
@@ -33,7 +33,7 @@ define(function(require, exports, module) {
 	
 
 
-	var build_dom = function() {
+	var domBuilder = function() {
 
 
 		$("#display-data .background-image").css("background-image", "");
@@ -43,10 +43,8 @@ define(function(require, exports, module) {
 		if (!this.current.index) {
 
 			this.display.unshift({
-				display_type: "full-screen",
 				index: true,
 				media: "",
-				message: "",
 				type: "default"
 			});		
 			this.current.index = true;

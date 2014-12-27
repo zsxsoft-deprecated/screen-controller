@@ -49,6 +49,15 @@ exports.createRequestToAllScreen = function(requestId, dataId, requestData) {
 
 };
 
+exports.createRequestToController = function(requestMethod, requestData) {
+	
+	this.io.sockets.in('controller').emit(requestMethod, requestData);
+	this.logConsole({id: "TOCONTROLLER", method: requestMethod, data: requestData});
+	return this;
+
+};
+
+
 exports.bindServer = function(server) {
 	var me = this,
 		io = this.io = require('socket.io').listen(server);

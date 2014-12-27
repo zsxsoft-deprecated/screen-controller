@@ -50,7 +50,8 @@ define(function(require, exports, module) {
 	var initMusic = function(param) {
 
 		var thisBGM = this.current.bgm,
-			nextBGM = (param.action == "absolute" ? param.pos : thisBGM + param.pos);
+			nextBGM = param.pos;
+			//nextBGM = (param.action == "absolute" ? param.pos : thisBGM + param.pos);
 
 		if (nextBGM >= this.program.bgm.length) {
 			nextBGM %= (this.program.bgm.length);

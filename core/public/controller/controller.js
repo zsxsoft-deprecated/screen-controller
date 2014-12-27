@@ -13,15 +13,11 @@ define(function(require, exports, module) {
 		},
 		selectEvents: {
 			toProgram: function(me, param) {
-				var subFunction = function() {
-					me.program = me.programs[param.pos];
-					me.initProgram();
-				}
 
 				me.sendRequest({
 					method: "toProgram",
 					param: param
-				}, subFunction);
+				});
 			}
 		},
 		buttonEvents: {
@@ -107,7 +103,7 @@ define(function(require, exports, module) {
 				}
 			});
 
-			this.socket.on('result', function(data){
+			this.socket.on('result', function(data) {
 				var id = data.dataId;
 				if(id >= 0 && me.queue.data[id]){
 					console.log('Request ' + id + ' finished!');
@@ -117,10 +113,34 @@ define(function(require, exports, module) {
 				}
 			});
 
-			this.socket.on('whoami', function(){
+			this.socket.on('whoami', function() {
 				me.socket.emit('whoami', 'controller');
 				me.socket.emit('global', {"need": "data"});
 			});
+
+			this.socket.on('program-switch', function (data) {
+				me.program = me.programs[data];
+				me.initProgram();
+
+				// fix music-switch
+				var findActive = $("#controlselect-changebgm");
+				if (findActive.find('.active').length == 0) {
+					findActive.find("a").eq(0).addClass("active");
+				}
+			});
+
+			this.socket.on('music-switch', function (data) {
+				var findActive = $("#controlselect-changebgm").find('.active');
+
+				if (findActive.length == 0) {
+					findActive = $("#controlselect-changebgm")
+				}
+				else {
+					findActive = findActive.removeClass('active').parent();
+				}
+				findActive.find("a").eq(data).addClass("active");
+			
+			})
 
 			return this;
 

@@ -16,7 +16,8 @@ define(function(require, exports, module) {
 		},
 		{
 			event: "toProgram",
-			func: function(argu) {			
+			func: function(argu) {	
+				this.objects.active = this.objects.player;		
 				this.toggleMusic({action: "absolute", pos: 0})
 			}
 		}

@@ -56,13 +56,13 @@ define(function(require, exports, module) {
 			switch(o.type) {
 				case "image":
 					$("<div>").addClass("background-image")
-							.css("background-image", "url(" + o.media + ")")
+							.css("background-image", "url(" + encodeURI(o.media) + ")")
 							.appendTo(fullscreen);
 				break;
 				case "video":
 					$("<div>").addClass("background-image")
 							  .css("background-color", "#000000")
-							  .append($("<video>").attr("src", o.media)
+							  .append($("<video>").attr("src", encodeURI(o.media))
 							  		              .width('100%')
 							  		              .height('100%')
 							  		              //.css("transform", "scaleX(2)")

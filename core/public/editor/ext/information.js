@@ -49,8 +49,8 @@ define(function(require, exports, module) {
 		player['name'] = ary["program-player-name"];
 		player['class'] = ary["program-player-class"];
 		player['doom'] = ary["program-player-doom"];
-		this.program.id = ary['program-id'];
-		this.program.sort = ary['program-sort'];
+		this.program.id = parseInt(ary['program-id']);
+		this.program.sort = parseInt(ary['program-sort']);
 		this.program.program.name = ary['program-name'];
 
 		this.program.player = player;

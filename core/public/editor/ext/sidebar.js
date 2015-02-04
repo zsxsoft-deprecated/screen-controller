@@ -18,7 +18,7 @@ define(function(require, exports, module) {
 			dom = $("#sidebar").html(""),
 			dataBind = dom.data("bind");
 		programs.sort(function(a, b) {
-			return parseInt(a.sort) > parseInt(b.sort);
+			return parseInt(a.sort) - parseInt(b.sort);
 		});
 		if (dataBind != "bind") bindSideBar.call(this, dom);
 		console.log(programs);

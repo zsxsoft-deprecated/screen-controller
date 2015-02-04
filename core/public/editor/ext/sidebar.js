@@ -1,19 +1,17 @@
 define(function(require, exports, module) {
-	
+
 	module.exports = {
 		init: function() {
 			this.register(registerFunction);
 		}
 	};
 
-	var registerFunction = [
-		{
-			event: "toProgram",
-			func: function() {
-				buildSidebar.apply(this, arguments);		
-			}
+	var registerFunction = [{
+		event: "toProgram",
+		func: function() {
+			buildSidebar.apply(this, arguments);
 		}
-	];
+	}];
 
 	var buildSidebar = function(highlightId) {
 		var programs = this.programs,
@@ -26,10 +24,10 @@ define(function(require, exports, module) {
 		console.log(programs);
 		$.each(programs, function(i, v) {
 			$("<a>").data("id", v.id)
-					.data("aryId", i)
-					.attr("href", "#")
-					.html(v.program.name)
-					.appendTo($("<li>").addClass("item " + (highlightId == i ? "active" : "")).appendTo(dom));
+				.data("aryId", i)
+				.attr("href", "#")
+				.html(v.program.name)
+				.appendTo($("<li>").addClass("item " + (highlightId == i ? "active" : "")).appendTo(dom));
 		})
 	}
 

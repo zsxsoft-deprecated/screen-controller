@@ -1,7 +1,7 @@
 define(function(require, exports, module) {
 
 	/* 
-	 * This function based on DDPlayer Project 
+	 * This function based on DDPlayer Project
 	 * https://github.com/dpy1123/ddplayer
 	 */
 

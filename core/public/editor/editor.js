@@ -35,20 +35,22 @@ define(function(require, exports, module) {
 			var me = this;
 			// Reconnect socket.io
 			this.socket = io.connect(param.socket);
-			this.socket.on('error', function (err) {
+			this.socket.on('error', function(err) {
 				if (err && (err.code == 'ECONNREFUSED' || err.indexOf && err.indexOf('ECONNREFUSED') >= 0)) {
-					var reconnecting = setTimeout(function () {
+					var reconnecting = setTimeout(function() {
 						socket.reconnect();
 					}, 500); //assume a little threshold
-					socket.on('connect', function () {
+					socket.on('connect', function() {
 						clearTimeout(reconnecting);
 						socket.removeListener('connect', arguments.callee);
 					});
 				}
 			});
-			this.socket.on('whoami', function(){
+			this.socket.on('whoami', function() {
 				me.socket.emit('whoami', 'editor');
-				me.socket.emit('global', {need: "data"});
+				me.socket.emit('global', {
+					need: "data"
+				});
 			});
 			this.socket.on('data', function(data) {
 				me.programs = data;
@@ -56,7 +58,7 @@ define(function(require, exports, module) {
 			})
 			this.socket.on('result', function(data) {
 				var id = data.dataId;
-				if(id >= 0 && me.queue.data[id]){
+				if (id >= 0 && me.queue.data[id]) {
 					console.log('Request ' + id + ' finished!');
 					me.queue.callback[id]();
 					delete me.queue.data[id];
@@ -102,13 +104,15 @@ define(function(require, exports, module) {
 		sendRequest: function(data, callback) {
 
 			if (!data) data = {};
-			if (typeof(data) == 'string') data = {'method': data};
-			if (!callback) callback = function(){}
-		
+			if (typeof(data) == 'string') data = {
+				'method': data
+			};
+			if (!callback) callback = function() {}
+
 			var queueLength = this.queue.data.length;
 			this.queue.data[queueLength] = {
 				data: data,
-				id : queueLength
+				id: queueLength
 			};
 			this.queue.callback[queueLength] = callback;
 			this.socket.emit('editor', this.queue.data[queueLength]);

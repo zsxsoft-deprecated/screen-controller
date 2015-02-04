@@ -27,7 +27,7 @@ define(function(require, exports, module) {
 						me.program = me.programs[absId];
 						me.initProgram();
 					}
-				// console.log("beforeId:  " + me.program.id + "    afterId: " + absId);
+					// console.log("beforeId:  " + me.program.id + "    afterId: " + absId);
 
 				me.sendRequest({
 					method: "toProgram",
@@ -55,13 +55,15 @@ define(function(require, exports, module) {
 		sendRequest: function(data, callback) {
 
 			if (!data) data = {};
-			if (typeof(data) == 'string') data = {'method': data};
-			if (!callback) callback = function(){}
-		
+			if (typeof(data) == 'string') data = {
+				'method': data
+			};
+			if (!callback) callback = function() {}
+
 			var queueLength = this.queue.data.length;
 			this.queue.data[queueLength] = {
 				data: data,
-				id : queueLength
+				id: queueLength
 			};
 			this.queue.callback[queueLength] = callback;
 			this.socket.emit('screen', this.queue.data[queueLength]);
@@ -83,20 +85,20 @@ define(function(require, exports, module) {
 			var object = $("#controlselect-changebgm").html("");
 			$.each(me.program.bgm, function(i, v) {
 				$('<a href="#" class="list-group-item">').data("value", i)
-							 .attr("data-pos", i)
-							 .text(v)
-							 .appendTo(object);
+					.attr("data-pos", i)
+					.text(v)
+					.appendTo(object);
 			});
 		},
 		initSocket: function() {
 			var me = this;
 			this.socket = io.connect(location.origin);
-			this.socket.on('error', function (err) {
+			this.socket.on('error', function(err) {
 				if (err && (err.code == 'ECONNREFUSED' || err.indexOf && err.indexOf('ECONNREFUSED') >= 0)) {
-					var reconnecting = setTimeout(function () {
+					var reconnecting = setTimeout(function() {
 						me.socket.reconnect();
 					}, 500); //assume a little threshold
-					me.socket.on('connect', function () {
+					me.socket.on('connect', function() {
 						clearTimeout(reconnecting);
 						me.socket.removeListener('connect', arguments.callee);
 					});
@@ -105,7 +107,7 @@ define(function(require, exports, module) {
 
 			this.socket.on('result', function(data) {
 				var id = data.dataId;
-				if(id >= 0 && me.queue.data[id]){
+				if (id >= 0 && me.queue.data[id]) {
 					console.log('Request ' + id + ' finished!');
 					me.queue.callback[id]();
 					delete me.queue.data[id];
@@ -115,10 +117,12 @@ define(function(require, exports, module) {
 
 			this.socket.on('whoami', function() {
 				me.socket.emit('whoami', 'controller');
-				me.socket.emit('global', {"need": "data"});
+				me.socket.emit('global', {
+					"need": "data"
+				});
 			});
 
-			this.socket.on('program-switch', function (data) {
+			this.socket.on('program-switch', function(data) {
 				me.program = me.programs[data];
 				me.initProgram();
 
@@ -131,17 +135,16 @@ define(function(require, exports, module) {
 				}
 			});
 
-			this.socket.on('music-switch', function (data) {
+			this.socket.on('music-switch', function(data) {
 				var findActive = $("#controlselect-changebgm").find('.active');
 
 				if (findActive.length == 0) {
 					findActive = $("#controlselect-changebgm")
-				}
-				else {
+				} else {
 					findActive = findActive.removeClass('active').parent();
 				}
 				findActive.find("a").eq(data).addClass("active");
-			
+
 			})
 
 			return this;
@@ -152,23 +155,23 @@ define(function(require, exports, module) {
 
 			var me = this;
 
-			this.socket.on('data', function(data){
+			this.socket.on('data', function(data) {
 				me.programs = data;
 				me.program = me.programs[0];
 				//me.toProgram(0);
-				
+
 				var object = $("#controlselect-changeprogram").html("");
 				$.each(me.programs, function(i, v) {
 					v.tagId = i;
 					$('<a href="#" class="list-group-item">').data("value", i)
-								 .attr("data-pos", v.program.id)
-								 .text(v.program.name + " - " + v.player.name)
-								 .appendTo(object);
+						.attr("data-pos", v.program.id)
+						.text(v.program.name + " - " + v.player.name)
+						.appendTo(object);
 				});
 				me.program = me.programs[0];
 
 			});
-			
+
 
 			$(".btn-command").click(function() {
 				var that = $(this),
@@ -216,7 +219,6 @@ define(function(require, exports, module) {
 
 
 
-
 	};
 
 
@@ -226,7 +228,7 @@ define(function(require, exports, module) {
 		if (param.method == "absolute") {
 			return param.pos;
 		}
-		var nextId = param.pos + object.program.tagId;// - 1;
+		var nextId = param.pos + object.program.tagId; // - 1;
 		//console.log("programId: " + object.program.id + ", pos: " + param.pos + "")
 
 		if (nextId >= object.programs.length) {
@@ -235,7 +237,7 @@ define(function(require, exports, module) {
 			nextId = 0;
 		}
 
-		return nextId;//object.programs[nextId].id;
+		return nextId; //object.programs[nextId].id;
 
 	}
 

@@ -14,11 +14,11 @@ define(function(require, exports, module) {
 			bgm: 0,
 			repeat: false,
 			index: false,
-			lastType : "image"
+			lastType: "image"
 		},
-		objects : {
+		objects: {
 			player: null,
-			active : null
+			active: null
 		},
 		events: {
 			timeupdate: [],
@@ -62,7 +62,7 @@ define(function(require, exports, module) {
 			this.objects.active = this.objects.player;
 			this.objects.player
 				.attr("preload", true)
-//				.attr("autoplay", true)
+				//				.attr("autoplay", true)
 				.bind('timeupdate', function() {
 					$.each(me.events.timeupdate, function(i, value) {
 						value.apply(me);
@@ -71,9 +71,9 @@ define(function(require, exports, module) {
 
 			// Register events
 			this.register([{
-				event: "toProgram", 
+				event: "toProgram",
 				func: function(argu) {
-				
+
 					var id = argu[0],
 						object = this;
 
@@ -95,26 +95,28 @@ define(function(require, exports, module) {
 					} else {
 						object.current.repeat = object.current.index = false;
 					}
-					
+
 				}
 			}]);
 
 			// Reconnect socket.io
 			this.socket = io.connect(param.socket);
-			this.socket.on('error', function (err) {
+			this.socket.on('error', function(err) {
 				if (err && (err.code == 'ECONNREFUSED' || err.indexOf && err.indexOf('ECONNREFUSED') >= 0)) {
-					var reconnecting = setTimeout(function () {
+					var reconnecting = setTimeout(function() {
 						socket.reconnect();
 					}, 500); //assume a little threshold
-					socket.on('connect', function () {
+					socket.on('connect', function() {
 						clearTimeout(reconnecting);
 						socket.removeListener('connect', arguments.callee);
 					});
 				}
 			});
-			this.socket.on('whoami', function(){
+			this.socket.on('whoami', function() {
 				me.socket.emit('whoami', 'screen');
-				me.socket.emit('global', {need: "data"});
+				me.socket.emit('global', {
+					need: "data"
+				});
 			});
 			this.socket.on('data', function(data) {
 				me.programs = data;

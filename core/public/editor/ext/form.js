@@ -1,5 +1,5 @@
 define(function(require, exports, module) {
-	
+
 	module.exports = {
 		init: function() {
 			var me = this;
@@ -21,7 +21,6 @@ define(function(require, exports, module) {
 
 		}
 	};
-
 
 
 

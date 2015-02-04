@@ -1,5 +1,5 @@
 define(function(require, exports, module) {
-	
+
 	var origProgramId = 0; // log orig id
 
 	module.exports = {
@@ -8,20 +8,17 @@ define(function(require, exports, module) {
 		}
 	};
 
-	var registerFunction = [
-		{
-			event: "submitPrograms",
-			func: function() {
-				submitPrograms.apply(this, arguments);		
-			}
-		},
-		{
-			event: "toProgram",
-			func: function() {
-				rebuildOrigProgramId.apply(this, arguments);		
-			}
+	var registerFunction = [{
+		event: "submitPrograms",
+		func: function() {
+			submitPrograms.apply(this, arguments);
 		}
-	];
+	}, {
+		event: "toProgram",
+		func: function() {
+			rebuildOrigProgramId.apply(this, arguments);
+		}
+	}];
 
 	var rebuildOrigProgramId = function() {
 		if (origProgramId == 0) return;
@@ -43,11 +40,13 @@ define(function(require, exports, module) {
 		$('#modalMsg').find(".modal-body").html("Submitting..");
 		$('#modalMsg').modal();
 		this.sendRequest({
-			method: "editData", 
+			method: "editData",
 			data: this.programs
 		}, function() {
 			$('#modalMsg').modal('hide');
-			self.socket.emit('global', {need: "data"});
+			self.socket.emit('global', {
+				need: "data"
+			});
 		});
 	}
 

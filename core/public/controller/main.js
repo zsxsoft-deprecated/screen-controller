@@ -6,11 +6,11 @@ define(function(require, exports, module) {
 	var controller = require('controller/controller');
 
 	$(function() {
-		
+
 		window.controller = controller;
 		controller.initSocket()
-			      .initDom()
-			      .audio = $("#dom-audio-test")[0];
+			.initDom()
+			.audio = $("#dom-audio-test")[0];
 	});
 
 

@@ -1,5 +1,5 @@
 define(function(require, exports, module) {
-	
+
 	module.exports = {
 		init: function() {
 			this.register(registerFunction);
@@ -7,24 +7,20 @@ define(function(require, exports, module) {
 		}
 	};
 
-	var registerFunction = [
-		{
-			event: "toProgram",
-			func: function() {
-				buildInfo.apply(this, arguments);		
-			}
+	var registerFunction = [{
+		event: "toProgram",
+		func: function() {
+			buildInfo.apply(this, arguments);
 		}
-	];
+	}];
 
-	var registerSubmitFunction = [
-		{
-			event: "program-info",
-			func: function(object) {
-				submitForm.apply(this, arguments);
+	var registerSubmitFunction = [{
+		event: "program-info",
+		func: function(object) {
+			submitForm.apply(this, arguments);
 
-			}
 		}
-	];
+	}];
 
 
 	var buildInfo = function(id) {
@@ -36,7 +32,7 @@ define(function(require, exports, module) {
 		$("#program-player-class").val(program.player.class);
 		$("#program-player-doom").val(program.player.doom);
 	}
-	
+
 	var submitForm = function(object) {
 		var me = this,
 			ary = (function(ary) {

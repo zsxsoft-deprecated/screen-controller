@@ -159,12 +159,12 @@ define(function(require, exports, module) {
 				addDanmu: function() {
 					for (var i = 0; i < this.danmus.length; i++) {
 						//if (this.danmus[i].start >= this.video.currentTime && this.danmus[i].start <= (this.video.currentTime + 0.25)) {
-							var info = this.danmus[i];
-							if (info.style == "Custom") {
-								this.frame.addCustomSprite(info.clazz, info.param);
-							} else {
-								this.frame.addSprite(info.text, info.style, info.color, info.font, info.lifeTime);
-							}
+						var info = this.danmus[i];
+						if (info.style == "Custom") {
+							this.frame.addCustomSprite(info.clazz, info.param);
+						} else {
+							this.frame.addSprite(info.text, info.style, info.color, info.font, info.lifeTime);
+						}
 						//}
 					}
 				},
@@ -277,29 +277,29 @@ define(function(require, exports, module) {
 					this.frame.width = this.canvas.width;
 					this.frame.height = this.canvas.height - 30;
 				},
-/*
-				setWsConnection: function(url) {
-					//与实时弹幕服务器建立WebSocket
-					if ('WebSocket' in window)
-						this.ws = new WebSocket(url);
-					else if ('MozWebSocket' in window)
-						this.ws = new MozWebSocket(url);
-					else
-						console.warn("WebSocket not support");
-					//初始化websocket中的方法，如果浏览器支持websocket
-					if (this.ws != null) {
-						//当连接打开时的事件
-						this.ws.onopen = function(evt) {
-							console.log("Openened connection to websocket");
-						};
-						//当连接有信息时的事件
-						this.ws.onmessage = function(msg) {
-							//解析，加入弹幕准备队列
-							this.parseDanmus(msg.data);
-						};
-					}
-				},
-*/
+				/*
+								setWsConnection: function(url) {
+									//与实时弹幕服务器建立WebSocket
+									if ('WebSocket' in window)
+										this.ws = new WebSocket(url);
+									else if ('MozWebSocket' in window)
+										this.ws = new MozWebSocket(url);
+									else
+										console.warn("WebSocket not support");
+									//初始化websocket中的方法，如果浏览器支持websocket
+									if (this.ws != null) {
+										//当连接打开时的事件
+										this.ws.onopen = function(evt) {
+											console.log("Openened connection to websocket");
+										};
+										//当连接有信息时的事件
+										this.ws.onmessage = function(msg) {
+											//解析，加入弹幕准备队列
+											this.parseDanmus(msg.data);
+										};
+									}
+								},
+				*/
 				/**
 				 * 发送弹幕
 				 * @param url 如果是ws://sendDanmu,并且ws链接已建立,则通过ws发送;

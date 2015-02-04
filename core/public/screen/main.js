@@ -16,7 +16,7 @@ define(function(require, exports, module) {
 			require('ext/highcharts'),
 
 			require('ext/barrage')
-			
+
 		];
 
 	$(function() {
@@ -33,7 +33,7 @@ define(function(require, exports, module) {
 		});
 
 		// debug
-		
+
 	});
 
 

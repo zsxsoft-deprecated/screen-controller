@@ -49,7 +49,7 @@ exports.lang = {
 		modeScore: "评分模式",
 		barrage: "弹幕",
 		send: "发送"
-		
+
 	},
 	screen: {
 		footer: {

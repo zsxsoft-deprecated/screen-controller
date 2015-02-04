@@ -45,7 +45,8 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><%=lang.editor.information%></a>
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  <%=lang.editor.information%></a>
               </h4>
             </div>
             <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel">
@@ -55,102 +56,109 @@
                     <%=lang.editor.programId%>
                     <input type="number" id="program-id" name="program-id" class="form-control" min="0" readonly></p>
                   <p>
-                  <p>
-                    <%=lang.editor.programSort%>
-                    <input type="number" id="program-sort" name="program-sort" class="form-control" min="0"></p>
-                  <p>
-                    <%=lang.editor.programName%>
-                    <input type="text" id="program-name" name="program-name" class="form-control"></p>
-                  <p>
-                    <%=lang.editor.playerName%>
-                    <input type="text" id="program-player-name" name="program-player-name" class="form-control"></p>
-                  <p>
-                    <%=lang.editor.playerClass%>
-                    <input type="text" id="program-player-class" name="program-player-class" class="form-control"></p>
-                  <p>
-                    <%=lang.editor.playerDoom%>
-                    <input type="text" id="program-player-doom" name="program-player-doom" class="form-control"></p>
-                  <p>
-                    <button type="submit" class="btn btn-success form-control"><%=lang.editor.submit%></button>
-                  </p>
-                </form>
-              </div>
+                    <p>
+                      <%=lang.editor.programSort%>
+                      <input type="number" id="program-sort" name="program-sort" class="form-control" min="0"></p>
+                    <p>
+                      <%=lang.editor.programName%>
+                      <input type="text" id="program-name" name="program-name" class="form-control"></p>
+                    <p>
+                      <%=lang.editor.playerName%>
+                      <input type="text" id="program-player-name" name="program-player-name" class="form-control"></p>
+                    <p>
+                      <%=lang.editor.playerClass%>
+                      <input type="text" id="program-player-class" name="program-player-class" class="form-control"></p>
+                    <p>
+                      <%=lang.editor.playerDoom%>
+                      <input type="text" id="program-player-doom" name="program-player-doom" class="form-control"></p>
+                    <p>
+                      <button type="submit" class="btn btn-success form-control">
+                        <%=lang.editor.submit%></button>
+                    </p>
+                  </form>
+                </div>
 
-            </div>
-          </div>
-        </div>
-        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collaspeTwo" aria-expanded="true" aria-controls="collaspeTwo"><%=lang.editor.displayData%></a>
-              </h4>
-            </div>
-            <div id="collaspeTwo" class="panel-collapse collapse in" role="tabpanel">
-              <div class="panel-body">
-                <form id="program-desc" data-function="program-desc">
-                  <p>
-                    <textarea class="form-control" rows="10" name="program-display" id="program-display"></textarea>
-                  </p>
-                  <p>
-                    <button type="submit" class="btn btn-success form-control"><%=lang.editor.submit%></button>
-                  </p>
-                </form>
               </div>
             </div>
           </div>
-        </div>
-        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree"><%=lang.editor.backgroundMusic%></a>
-              </h4>
-            </div>
-            <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel">
-              <div class="panel-body">
-                <form id="program-bgm" data-function="program-bgm">
-                  <p>
-                    <textarea class="form-control" rows="10" name="program-tabgm" id="program-tabgm"></textarea>
-                  </p>
-                  <p>
-                    <button type="submit" class="btn btn-success form-control"><%=lang.editor.submit%></button>
-                  </p>
-                </form>
+          <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collaspeTwo" aria-expanded="true" aria-controls="collaspeTwo">
+                    <%=lang.editor.displayData%></a>
+                </h4>
+              </div>
+              <div id="collaspeTwo" class="panel-collapse collapse in" role="tabpanel">
+                <div class="panel-body">
+                  <form id="program-desc" data-function="program-desc">
+                    <p>
+                      <textarea class="form-control" rows="10" name="program-display" id="program-display"></textarea>
+                    </p>
+                    <p>
+                      <button type="submit" class="btn btn-success form-control">
+                        <%=lang.editor.submit%></button>
+                    </p>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour"><%=lang.editor.score%></a>
-              </h4>
-            </div>
-            <div id="collapseFour" class="panel-collapse collapse in" role="tabpanel">
-              <div class="panel-body">
-                <form id="program-score" data-function="program-score">
-                  <p>
-                    <textarea class="form-control" rows="10" name="program-tascore" id="program-tascore"></textarea>
-                  </p>
-                  <p>
-                    <button type="submit" class="btn btn-success form-control"><%=lang.editor.submit%></button>
-                  </p>
-                </form>
+          <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                    <%=lang.editor.backgroundMusic%></a>
+                </h4>
+              </div>
+              <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel">
+                <div class="panel-body">
+                  <form id="program-bgm" data-function="program-bgm">
+                    <p>
+                      <textarea class="form-control" rows="10" name="program-tabgm" id="program-tabgm"></textarea>
+                    </p>
+                    <p>
+                      <button type="submit" class="btn btn-success form-control">
+                        <%=lang.editor.submit%></button>
+                    </p>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
+          <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                    <%=lang.editor.score%></a>
+                </h4>
+              </div>
+              <div id="collapseFour" class="panel-collapse collapse in" role="tabpanel">
+                <div class="panel-body">
+                  <form id="program-score" data-function="program-score">
+                    <p>
+                      <textarea class="form-control" rows="10" name="program-tascore" id="program-tascore"></textarea>
+                    </p>
+                    <p>
+                      <button type="submit" class="btn btn-success form-control">
+                        <%=lang.editor.submit%></button>
+                    </p>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
 
       </div>
-
     </div>
-  </div>
 
-  <audio id="dom-audio-test"></audio>
+    <audio id="dom-audio-test"></audio>
 
-  <script>
+    <script>
   seajs.config({
       paths: {
         'editor': '/editor',
@@ -163,21 +171,21 @@
     });
 </script>
 
-  <div class="modal fade bs-modal-sm" tabindex="-1" role="dialog" aria-labelledby="modalInfo" aria-hidden="true" id="modalMsg">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">
-            <span class="sr-only">Close</span>
-          </button>
-          <h4 class="modal-title" id="Title">Info</h4>
-        </div>
-        <div class="modal-body"></div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    <div class="modal fade bs-modal-sm" tabindex="-1" role="dialog" aria-labelledby="modalInfo" aria-hidden="true" id="modalMsg">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span class="sr-only">Close</span>
+            </button>
+            <h4 class="modal-title" id="Title">Info</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 </body>
-</html>
+  </html>

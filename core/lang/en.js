@@ -46,7 +46,7 @@ exports.lang = {
 		modeScore: "Score Mode",
 		barrage: "Barrage",
 		send: "Send"
-		
+
 	},
 	screen: {
 		footer: {

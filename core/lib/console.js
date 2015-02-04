@@ -1,9 +1,9 @@
 var exports = module.exports = console,
 	richConsole = require('rich-console'),
 	colorArray = {
-		success: ['green' , 'Success'],
-		info:    ['yellow', 'Info'],
-		error:   ['red'   , 'Error'],
+		success: ['green', 'Success'],
+		info: ['yellow', 'Info'],
+		error: ['red', 'Error'],
 	};
 
 for (index in colorArray) {

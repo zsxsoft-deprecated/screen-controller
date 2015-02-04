@@ -7,14 +7,13 @@ exports.e = function(io, socket) {
 			self.console.success(self.lang.console.getModifiedData.replace("%s%", json));
 			try {
 				require("fs").writeFileSync(self.config.data, json, "utf-8");
-			}
-			catch (e) {
+			} catch (e) {
 				self.console.success(self.lang.console.saveFileError.replace("%s%", e.toString()));
 			}
 			self.console.success(self.lang.console.requestFinish.replace("%d%", data.id));
 			delete self.queue.queue[data.id];
 			io.sockets.to(data.requestId).emit('result', data);
 
-		});	
+		});
 	});
 }

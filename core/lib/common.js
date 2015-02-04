@@ -35,24 +35,30 @@ exports.createRequest = function(room, requestId, dataId, requestData, callback)
 	this.logConsole(this.queue.queue[this.queue.maxId])
 	if (room == 'allScreen')
 		return this.createRequestToAllScreen(requestId, dataId, requestData);
-	else 
+	else
 		callback.call(this, this.queue.queue[this.queue.maxId]);
-	
+
 	return this;
 
 }
 
 exports.createRequestToAllScreen = function(requestId, dataId, requestData) {
-	
+
 	this.io.sockets.in('screen').emit('screen', this.queue.queue[this.queue.maxId]);
 	return this;
 
 };
 
 exports.createRequestToController = function(requestMethod, requestData) {
-	
+
 	this.io.sockets.in('controller').emit(requestMethod, requestData);
-	this.logConsole({id: "TOCONTROLLER", data: {method: requestMethod, data: requestData}});
+	this.logConsole({
+		id: "TOCONTROLLER",
+		data: {
+			method: requestMethod,
+			data: requestData
+		}
+	});
 	return this;
 
 };
@@ -61,10 +67,10 @@ exports.createRequestToController = function(requestMethod, requestData) {
 exports.bindServer = function(server) {
 	var me = this,
 		io = this.io = require('socket.io').listen(server);
-	
-	io.sockets.on('connection', function (socket) {
+
+	io.sockets.on('connection', function(socket) {
 		socket.emit('whoami', 'Who are you?');
-		socket.on('whoami', function (data) {
+		socket.on('whoami', function(data) {
 			socket.join(data);
 			me.socketFunctions.global.call(me, io, socket);
 			me.socketFunctions[data].call(me, io, socket);

@@ -5,9 +5,9 @@ exports.e = function(io, socket) {
 		self.createRequest("allScreen", socket.id, data.id, data.data);
 	});
 
-	socket.on('result', function(data){
+	socket.on('result', function(data) {
 		delete self.queue.queue[data.id];
 		// io.sockets.to(data.requestId).emit('result', data);
 		self.console.success(self.lang.console.requestFinish.replace("%d%", data.id));
-	});	
+	});
 }

@@ -21,16 +21,21 @@ define(function(require, exports, module) {
 			return parseInt(a.sort) - parseInt(b.sort);
 		});
 		if (dataBind != "bind") bindSideBar.call(this, dom);
-		console.log(programs);
 		$.each(programs, function(i, v) {
-			$("<a>").data("id", v.id)
+			var $li = $("<li>").addClass("item " + (highlightId == i ? "active" : ""));
+			var $a = $("<a>").data("id", v.id)
 				.data("aryId", i)
 				.attr("href", "#")
 				.html(v.program.name)
-				.appendTo($("<li>").addClass("item " + (highlightId == i ? "active" : "")).appendTo(dom));
+				.appendTo($li);
+			var $del = $("<span>")
+						.addClass("list-del glyphicon glyphicon-remove")
+						.css("float", "right")
+						.appendTo($a);
+			dom.append($li);
 		});
 
-		$("<li>").addClass("item item-add").append($("<a>").html("Add..").attr("href", "#")).appendTo(dom);
+		$("<li>").addClass("item item-add").append($("<a>").html('<span class="glyphicon glyphicon-plus"></span> Add...').attr("href", "#")).appendTo(dom);
 	}
 
 	var bindSideBar = function(dom) {
@@ -48,6 +53,17 @@ define(function(require, exports, module) {
 				me.toProgram($a.data("aryId"));
 			}
 		}).data("bind", "bind");
+
+		dom.on("click", ".list-del", function (e) {
+			var $parent = $(this).parent();
+			if (confirm("Delete <" + $parent.text() + "> ?")) {
+				me.programs.splice($parent.data("aryId"), 1);
+				me.toProgram(0);
+				me.submitPrograms();
+			}
+			e.preventDefault();
+			return false;
+		})
 	}
 
 

@@ -3,7 +3,7 @@
 
 一个Node项目，用于控制福州八中体育馆的LED大屏幕。
 
-## Contributors
+## 作者
 zsx(http://www.zsxsoft.com)
 
 ## 创建项目的原因
@@ -23,9 +23,11 @@ zsx(http://www.zsxsoft.com)
 ``npm start``
 ### （Windows）打开显示窗口
 
-``start /min title SCREEN-CONTROLLER ^& nw ^& exit``
+``npm run go-win``
 
 ### （Linux）打开显示窗口
+
+``npm run go``
 懒得写
 
 ### 打开控制面板等
@@ -34,7 +36,7 @@ zsx(http://www.zsxsoft.com)
 
 ## 关于显示窗口的说明
 
-显示窗口由nw.js创建，可以修改大小，没有标题。视频仅支持__vp8__格式，音频只支持__ogg、wav__格式。请注意转换！
+显示窗口由nw.js创建，可以修改大小，没有标题。视频仅支持__vp8__格式，音频只支持__ogg、wav__格式。如果想修改文件，可参阅[https://github.com/nwjs/nw.js/wiki/Using-MP3-%26-MP4-%28H.264%29-using-the--video--%26--audio--tags.](https://github.com/nwjs/nw.js/wiki/Using-MP3-%26-MP4-%28H.264%29-using-the--video--%26--audio--tags.)地址，对node_modules/nw/nwjs进行替换；否则，请注意格式转换！
 
 若不使用显示窗口，转而使用浏览器访问``http://127.0.0.1:3000/screen``的话，音频推荐使用__mp3__格式，视频推荐使用__mp4、H.264、AAC__。
 

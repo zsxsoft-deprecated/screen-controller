@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  var gui = require('nw.gui');
+  var win = gui.Window.get();
+  win.showDevTools();
+  //win.maximize();
+  var config = require('./config').config;
+  location.href = "http://127.0.0.1:" + config.webServer.port + "/screen";
+  </script>
+</body>
+</html>

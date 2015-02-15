@@ -1,9 +1,14 @@
 {
   "name": "screen",
   "version": "0.0.1",
+  "main": "index.html",
   "private": true,
   "scripts": {
-    "start": "node app.js"
+    "start": "node app",
+    "screen": "nw",
+    "screen-win": "start /min title SCREEN-CONTROLLER ^& nw",
+    "go-win": "npm run screen-win && npm run start",
+    "go": "npm run start & npm run screen"
   },
   "dependencies": {
     "express": "3.4.8",
@@ -11,6 +16,11 @@
     "socket.io": "*",
     "socket.io-client": "*",
     "express-less": "*",
-    "rich-console": "*"
+    "rich-console": "*",
+  }, 
+  "window": {
+    "toolbar": false,
+    "resizable": true,
+    "frame": false
   }
 }

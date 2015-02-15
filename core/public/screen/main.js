@@ -15,7 +15,10 @@ define(function(require, exports, module) {
 
 			require('ext/highcharts'),
 
-			require('ext/barrage')
+			require('ext/barrage'),
+
+
+			require('ext/nwjs')
 
 		];
 

@@ -1,5 +1,5 @@
 exports.config = {
-	"lang": "en",
+	"lang": "zh-cn",
 	"data": "./data.json",
 	"webServer":{
 		"port": 3000,
@@ -9,8 +9,8 @@ exports.config = {
 		"resourceFolder": "resources"
 	},
 	"extensions": {
-		"barrage": {
+		/*"barrage": {
 			"wsUrl": "http://dmserver.duapp.com/"
-		}
+		}*/
 	}
 }

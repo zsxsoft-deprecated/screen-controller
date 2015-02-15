@@ -28,9 +28,8 @@ zsx(http://www.zsxsoft.com)
 ### （Linux）打开显示窗口
 
 ``npm run go``
-懒得写
 
-### 打开控制面板等
+### 进行控制
 
 启动服务端后，用现代浏览器打开``http://127.0.0.1:3000/``
 
@@ -42,6 +41,7 @@ zsx(http://www.zsxsoft.com)
 
 ## 库
 
+### 前端
 * seajs [https://github.com/seajs/seajs](https://github.com/seajs/seajs)
 * jQuery [https://github.com/jquery/jquery](https://github.com/jquery/jquery)
 * Bootstrap [https://github.com/twbs/bootstrap](https://github.com/twbs/bootstrap)
@@ -49,7 +49,7 @@ zsx(http://www.zsxsoft.com)
 * Highcharts [https://github.com/highslide-software/highcharts.com](https://github.com/highslide-software/highcharts.com) 
 
 
-
+### 后端
 * express [https://github.com/strongloop/express](https://github.com/strongloop/express)
 * express-less [https://github.com/toogle/express-less](https://github.com/toogle/express-less)
 * socket.io [https://github.com/Automattic/socket.io](https://github.com/Automattic/socket.io)

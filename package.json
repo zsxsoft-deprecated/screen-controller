@@ -16,8 +16,8 @@
     "socket.io": "*",
     "socket.io-client": "*",
     "express-less": "*",
-    "rich-console": "*",
-  }, 
+    "rich-console": "*"
+  },
   "window": {
     "toolbar": false,
     "resizable": true,

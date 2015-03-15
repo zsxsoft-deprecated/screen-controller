@@ -18,12 +18,12 @@ exports.init = function(config) {
 		}
 	});
 
-	barrageSocket.on('whoami', function(data) {
+	barrageSocket.on('init', function(data) {
 		console.info(self.lang.ext.barrage.getResponse);
-		barrageSocket.emit("whoami", "receiver");
+		barrageSocket.emit("password", {room: "client", password: self.config.extensions.barrage.password});
 	});
 
-	barrageSocket.on('barrage', function(data) {
+	barrageSocket.on('danmu', function(data) {
 		console.info(self.lang.ext.barrage.receivedBarrage.replace("%c%", data.length));
 		self.createRequest("allScreen", 0, 0, {
 			method: "barrage",

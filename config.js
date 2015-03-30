@@ -9,9 +9,9 @@ exports.config = {
 		"resourceFolder": "resources"
 	},
 	"extensions": {
-		"barrage": {
+		/*"barrage": {
 			"wsUrl": "http://127.0.0.1:3000",
 			"password": "123456"
-		}
+		}*/
 	}
 }

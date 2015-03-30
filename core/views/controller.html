@@ -174,7 +174,7 @@
       </div>
       <% }%>
 
-      <% if (http.get.action == "full") {%>
+      <% if (http.get.action == "full" && typeof config.extensions["barrage"] != "undefined") {%>
       <div class="panel-group" id="accordion6" role="tablist" aria-multiselectable="true">
         <div class="panel panel-default">
           <div class="panel-heading">
@@ -194,8 +194,24 @@
               </div>
             </div>
           </div>
-        </div>
-        <% }%></div>
+        </div></div>
+        <% }%>
+
+      <% if (http.get.action == "full") {%>
+      <div class="panel-group" id="accordion7" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion7" href="#collapseSix" aria-expanded="true" aria-controls="collapseSeven">演讲比赛控制</a>
+            </h4>
+          </div>
+          <div id="collapseSeven" class="panel-collapse collapse in" role="tabpanel">
+            <div class="panel-body">
+            待加入：1. 抽签 2. 倒计时（抽签30s，演讲2min） 3. 切换到演讲比赛页面
+            </div>
+          </div>
+        </div></div>
+        <% }%>
     </div>
   </div>
 </div>

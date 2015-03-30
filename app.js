@@ -46,7 +46,6 @@ app
 
 for (var index in httpPage) {
   if (/^\//.test(index)) {
-    console.log(index);
     app.route(index).all(httpPage[index]);
   }
 }

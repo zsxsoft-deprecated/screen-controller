@@ -1,14 +1,14 @@
 exports.config = {};
 exports.lang = {};
 
-exports.index = function(req, res) {
+exports["/"] = function(req, res) {
 	res.render('index', {
 		title: 'INDEX',
 		lang: exports.lang
 	});
 };
 
-exports.screen = function(req, res) {
+exports["/screen"] = function(req, res) {
 	res.render('screen', {
 		title: exports.lang.global.screen,
 		config: exports.config,
@@ -17,7 +17,7 @@ exports.screen = function(req, res) {
 };
 
 
-exports.controller = function(req, res) {
+exports["/controller"] = function(req, res) {
 	res.render('controller', {
 		http: {
 			get: req.query
@@ -29,7 +29,7 @@ exports.controller = function(req, res) {
 };
 
 
-exports.editor = function(req, res) {
+exports["/editor"] = function(req, res) {
 	res.render('editor', {
 		http: {
 			get: req.query

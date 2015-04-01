@@ -10,16 +10,12 @@ var errorHandler = require('errorhandler');
 var path = require('path');
 var bodyParser = require('body-parser');
 
-var common = require('./core/lib/common'), console = require('./core/lib/console');
-
-var config = require('./config').config;
-var httpPage = require('./' + config.webServer.serverFolder);
-var lang = require('./core/lang/' + config.lang).lang;
-
 var app = express();
 
-httpPage.config = config;
-httpPage.lang = lang;
+global.config = require("./config");
+global.lang = require("./core/lang/" + config.lang);
+var common = require('./core/lib/common'), console = require('./core/lib/console');
+var route = require('./' + config.webServer.routeFolder);
 
 app
 // Dev mode
@@ -44,9 +40,9 @@ app
 .use(express.static(path.join(__dirname, config.webServer.staticFolder)));
 
 
-for (var index in httpPage) {
+for (var index in route) {
   if (/^\//.test(index)) {
-    app.route(index).all(httpPage[index]);
+    app.route(index).all(route[index]);
   }
 }
 

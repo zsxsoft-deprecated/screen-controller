@@ -1,5 +1,5 @@
 // My English is very poor..
-exports.lang = {
+module.exports = {
 	global: {
 		index: "INDEX",
 		controller: "CONTROLLER",

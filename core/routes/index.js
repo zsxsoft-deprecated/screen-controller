@@ -1,18 +1,15 @@
-exports.config = {};
-exports.lang = {};
-
 exports["/"] = function(req, res) {
 	res.render('index', {
 		title: 'INDEX',
-		lang: exports.lang
+		lang: lang
 	});
 };
 
 exports["/screen"] = function(req, res) {
 	res.render('screen', {
-		title: exports.lang.global.screen,
-		config: exports.config,
-		lang: exports.lang
+		title: lang.global.screen,
+		config: config,
+		lang: lang
 	});
 };
 
@@ -22,9 +19,9 @@ exports["/controller"] = function(req, res) {
 		http: {
 			get: req.query
 		},
-		title: exports.lang.global.controller,
-		config: exports.config,
-		lang: exports.lang,
+		title: lang.global.controller,
+		config: config,
+		lang: lang,
 	});
 };
 
@@ -34,8 +31,8 @@ exports["/editor"] = function(req, res) {
 		http: {
 			get: req.query
 		},
-		title: exports.lang.global.editor,
-		config: exports.config,
-		lang: exports.lang
+		title: lang.global.editor,
+		config: config,
+		lang: lang
 	});
 }

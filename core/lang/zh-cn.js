@@ -3,7 +3,7 @@
  * 怎样！
  * 反正你用这个的话肯定是中国人啦！
  */
-exports.lang = {
+module.exports = {
 	global: {
 		index: "首页",
 		controller: "控制台",

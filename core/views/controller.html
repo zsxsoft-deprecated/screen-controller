@@ -146,15 +146,15 @@
       </div>
 
       <% if (http.get.action == "full") {%>
-      <div class="panel-group" id="accordion5" role="tablist" aria-multiselectable="true">
+      <div class="panel-group" id="accordionAdvanced" role="tablist" aria-multiselectable="true">
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion5" href="#collapseFive" aria-expanded="true" aria-controls="collapseThree">
+              <a data-toggle="collapse" data-parent="#accordionAdvanced" href="#collapseAdvanced" aria-expanded="true" aria-controls="collapseAdvanced">
                 <%=lang.controller.advanced%></a>
             </h4>
           </div>
-          <div id="collapseFive" class="panel-collapse collapse in" role="tabpanel">
+          <div id="collapseAdvanced" class="panel-collapse collapse in" role="tabpanel">
             <div class="panel-body">
               <div class="input-group">
                 <span class="input-group-btn">
@@ -175,15 +175,15 @@
       <% }%>
 
       <% if (http.get.action == "full" && typeof config.extensions["barrage"] != "undefined") {%>
-      <div class="panel-group" id="accordion6" role="tablist" aria-multiselectable="true">
+      <div class="panel-group" id="accordionBarrage" role="tablist" aria-multiselectable="true">
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion6" href="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+              <a data-toggle="collapse" data-parent="#accordionBarrage" href="#collapseBarrage" aria-expanded="true" aria-controls="collapseBarrage">
                 <%=lang.controller.barrage%></a>
             </h4>
           </div>
-          <div id="collapseSix" class="panel-collapse collapse in" role="tabpanel">
+          <div id="collapseBarrage" class="panel-collapse collapse in" role="tabpanel">
             <div class="panel-body">
               <div class="input-group">
                 <input type="text" class="form-control" id="text-barrage" placeholder="">
@@ -198,14 +198,14 @@
         <% }%>
 
       <% if (http.get.action == "full") {%>
-      <div class="panel-group" id="accordion7" role="tablist" aria-multiselectable="true">
+      <div class="panel-group" id="accordionSpeech" role="tablist" aria-multiselectable="true">
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion7" href="#collapseSix" aria-expanded="true" aria-controls="collapseSeven">演讲比赛控制</a>
+              <a data-toggle="collapse" data-parent="#accordionSpeech" href="#collapseSpeech" aria-expanded="true" aria-controls="collapseSpeech">演讲比赛控制</a>
             </h4>
           </div>
-          <div id="collapseSeven" class="panel-collapse collapse in" role="tabpanel">
+          <div id="collapseSpeech" class="panel-collapse collapse in" role="tabpanel">
             <div class="panel-body">
             待加入：1. 抽签 2. 倒计时（抽签30s，演讲2min） 3. 切换到演讲比赛页面
             </div>

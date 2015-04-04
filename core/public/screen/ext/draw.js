@@ -18,7 +18,13 @@ define(function(require, exports, module) {
 	}];
 
 	var registerSocket = [{
-		event: "toScore",
+		event: "timingControl",  // 倒计时控制
+		func: function() {
+			
+			return true;
+		}
+	}, {
+		event: "toDraw",
 		func: function() {
 			var lastProgram = this.programs.length - 1;
 			if (!this.programs[lastProgram].isDraw) {
@@ -48,7 +54,7 @@ define(function(require, exports, module) {
 
 			this.toProgram(lastProgram);
 			return true;
-		}
+		}, 
 	}];
 
 

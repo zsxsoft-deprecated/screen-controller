@@ -44,6 +44,7 @@ app
 		if (extName == ".less") {
 			// 检查是否less，如果是less就要处理转换一下
 			less.render(data, function(e, output) {
+				res.header("Content-Type", "text/css; charset=utf-8");
 				res.send(output.css);
 			});
 		} else {

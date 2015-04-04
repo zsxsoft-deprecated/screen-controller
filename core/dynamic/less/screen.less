@@ -1,6 +1,6 @@
 @newline: `"\n"`; // Newline
 
-.animation_top(@selector, @animateName, @name, @duration, @delay) {
+.buildAnimation(@selector, @animateName, @name, @duration, @delay) {
     .Keyframe(@pre, @post, @vendor) {
         @keyframe: ~"@{pre}@@{vendor}keyframes @{name} {@{newline}0%";
         & when (@animateName = "fadeIn") {
@@ -41,13 +41,12 @@
     } 
     .Keyframe(""            , 0,    "-moz-");
     .Keyframe(~"}@{newline}", 0, "-webkit-");
-    .Keyframe(~"}@{newline}", 0,      "-o-");
     .Keyframe(~"}@{newline}", 0,     "-ms-");
     .Keyframe(~"}@{newline}", 1,         "");
 } 
 
-.animation_top(".animate-fadeIn", "fadeIn", animate-fadeIn, <%=config.program.fadeTimeout / 1000%>s, "0s");
-.animation_top(".animate-fadeOut", "fadeOut", animate-fadeOut, <%=config.program.fadeTimeout / 1000%>s, "0s");
+.buildAnimation(".animate-fadeIn", "fadeIn", animate-fadeIn, <%=config.program.fadeTimeout / 1000%>s, "0s");
+.buildAnimation(".animate-fadeOut", "fadeOut", animate-fadeOut, <%=config.program.fadeTimeout / 1000%>s, "0s");
 
 
 

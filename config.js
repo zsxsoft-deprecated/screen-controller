@@ -6,7 +6,11 @@ module.exports = {
 		"staticFolder": "core/public",
 		"htmlFolder": "core/views",
 		"routeFolder": "core/routes",
+		"dynamicFolder": "core/dynamic",
 		"resourceFolder": "resources"
+	},
+	"program": {
+		"fadeTimeout": 800
 	},
 	"extensions": {
 		"draw": {

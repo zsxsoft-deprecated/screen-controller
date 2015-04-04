@@ -1,4 +1,5 @@
 "use strict";
+var version = "1.0.4-20150404b";
 
 //  Include modules
 var express = require('express')
@@ -14,10 +15,11 @@ var fs = require("fs");
 var app = express();
 
 global.config = require("./config");
+config.version = version;
 global.lang = require("./core/lang/" + config.lang);
+
 var common = require('./core/lib/common');
 var route = require('./' + config.webServer.routeFolder);
-
 var console = require('./core/lib/console');
 
 app
@@ -40,6 +42,7 @@ app
 	fs.readFile(filePath, "utf8", function(err, data) {
 		if (err) res.end("Error");
 		var extName = path.extname(filePath);
+		// 动态的文件用ejs处理，省得自己再去正则替换
 		data = ejs.render(data);
 		if (extName == ".less") {
 			// 检查是否less，如果是less就要处理转换一下

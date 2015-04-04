@@ -45,6 +45,7 @@ define(function(require, exports, module) {
 			if (this.display[0].type == "image") {
 				//$("#display-data").css("background", "url(" + encodeURI(this.display[0].media) + ")");
 				// 淡入淡出效果，用于下一帧背景
+				// 因为后文已经存在，故注释之
 			} else {
 				$("#display-data").css("background", "");
 			}
@@ -52,8 +53,8 @@ define(function(require, exports, module) {
 
 		$(".display-child-data").addClass("animate-fadeOut"); // 淡出
 
-		// 以下是一部分DOM元素的缓存，定时删除。
-		
+
+		// 以下是已经失去存在价值的DOM元素的缓存，将在一定期间后删除。
 		var origData = $("#display-data").children();
 		var origBackgroundImage = $("#display-data .background-image");
 		var displayData = $("#display-data");

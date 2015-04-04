@@ -7,6 +7,7 @@ body {
 	font-family: 微软雅黑 Light, 方正兰亭纤黑, 微软雅黑, 宋体 !important;
 	padding-bottom: 15px;
   overflow: hidden;
+  cursor: none;
 }
 .yahei-font {
 	font-family: 微软雅黑 Light, 方正兰亭纤黑, 微软雅黑, 宋体;

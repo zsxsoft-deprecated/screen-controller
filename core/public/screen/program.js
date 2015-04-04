@@ -149,6 +149,9 @@ define(function(require, exports, module) {
 
 		runSocket: function(name, data) {
 			var me = this;
+			if (typeof this.sockets[name] == "undefined") {
+				throw new Exception("No handle for " + name, data);
+			}
 			$.each(this.sockets[name], function(i, value) {
 				if (value.call(me, data.data)) {
 					data['data'] = null;

@@ -1,6 +1,5 @@
 define(function(require, exports, module) {
-
-
+	
 	var program = require('screen/program'),
 		plugins = [
 
@@ -22,6 +21,14 @@ define(function(require, exports, module) {
 			require('ext/nwjs')
 
 		];
+
+	window.Exception = function(errorMessage, data) {
+		this.data = data;
+		this.errorMessage = errorMessage;
+		this.toString = function() {
+			return "Error: " + errorMessage + "\n\n" + (typeof data == "object" ? JSON.stringify(data) : data.toString());
+		};
+	};
 
 	$(function() {
 

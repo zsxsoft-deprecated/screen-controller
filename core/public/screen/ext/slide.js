@@ -39,7 +39,6 @@ define(function(require, exports, module) {
 		if (this.display.length == 0) return;
 
 
-		$(".animate-fadeIn").removeClass('animate-fadeIn');
 		$(".slide-prepareCurrent").removeClass('slide-prepareCurrent')
 		//$(".animate-fadeOut").removeClass('animate-fadeOut');
 		
@@ -95,6 +94,9 @@ define(function(require, exports, module) {
 			}
 		}
 
+		setTimeout(function() {
+			nextSlide.removeClass('animate-fadeIn');
+		}, config.program.fadeTimeout);
 		this.current.display = nextSlideId;
 		
 

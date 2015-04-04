@@ -207,7 +207,22 @@
           </div>
           <div id="collapseSpeech" class="panel-collapse collapse in" role="tabpanel">
             <div class="panel-body">
-            待加入：1. 抽签 2. 倒计时（抽签30s，演讲2min） 3. 切换到演讲比赛页面
+            	<p>
+                  <button class="btn btn-success btn-command" data-command="startDraw" data-param="{}" type="button" id="controlbutton-drawStart">
+                   开始抽签</button>&nbsp;
+                   <button class="btn btn-danger btn-command" data-command="stopDraw" data-param="{}" type="button" id="controlbutton-drawStop">
+                   停止抽签</button>&nbsp;
+                   <button class="btn btn-info btn-command" data-command="refreshDraw" data-param="{}" type="button" id="controlbutton-drawRefresh">
+                   抽签状态重置</button>
+                </p>
+                <p>
+                	<button class="btn btn-default btn-command" data-command="startLoop" data-param="{time: 30}" id="controlbutton-loopState1">30秒倒计时</button>
+                	<button class="btn btn-default btn-command" data-command="startLoop" data-param="{time: 120}" id="controlbutton-loopState2">120秒倒计时</button>
+                	<button class="btn btn-default btn-command" data-command="stopLoop" data-param="" id="controlbutton-loopStop">停止倒计时</button>
+                </p>
+				<p>
+					<button class="btn btn-warning btn-command" data-command="toSpeech" data-param="" id="controlbutton-tospeech">切换至演讲比赛模式</button> 
+				</p>
             </div>
           </div>
         </div></div>

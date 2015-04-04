@@ -6,9 +6,6 @@
         & when (@animateName = "fadeIn") {
                 @{keyframe} {
                         opacity: 0;  
-                    }    
-                    50% {
-                        opacity: 0;
                     }
                     100%  { 
                         opacity: 1;
@@ -18,9 +15,6 @@
         & when (@animateName = "fadeOut") {
                 @{keyframe} {
                         opacity: 1;  
-                    }    
-                    50% {
-                        opacity: 0;
                     }
                     100%  { 
                         opacity: 0;
@@ -52,8 +46,8 @@
     .Keyframe(~"}@{newline}", 1,         "");
 } 
 
-.animation_top(".animate-fadeIn", "fadeIn", animate-fadeIn, 0.5s, "0s");
-.animation_top(".animate-fadeOut", "fadeOut", animate-fadeOut, 0.5s, "0s");
+.animation_top(".animate-fadeIn", "fadeIn", animate-fadeIn, <%=config.program.fadeTimeout / 1000%>s, "0s");
+.animation_top(".animate-fadeOut", "fadeOut", animate-fadeOut, <%=config.program.fadeTimeout / 1000%>s, "0s");
 
 
 

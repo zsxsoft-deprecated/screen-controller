@@ -18,7 +18,7 @@
     "ejs": "*",
     "socket.io": "*",
     "socket.io-client": "*",
-    "express-less": "*",
+    "less": "*",
     "rich-console": "*"
   },
   "window": {

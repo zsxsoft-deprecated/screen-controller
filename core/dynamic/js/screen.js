@@ -14,11 +14,11 @@ define(function(require, exports, module) {
 
 			require('ext/highcharts'),
 
-			require('ext/barrage'),
-			require('ext/draw'),
+			require('ext/nwjs'),
 
-
-			require('ext/nwjs')
+			<% for (var o in config.extensions) { %>
+			require('ext/<%=o%>'),
+			<% } %>
 
 		];
 

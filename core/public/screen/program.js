@@ -85,13 +85,13 @@ define(function(require, exports, module) {
 
 					// Build Background Music
 					if (typeof(object.program.bgm) == "string") object.program.bgm = [object.program.bgm];
-					if (object.program.bgm[0] == '' || object.program.bgm.length == 0) object.program.bgm[0] = NO_AUDIO_DEFAULT_BGM;
+					if (object.program.bgm[0] === '' || object.program.bgm.length === 0) object.program.bgm[0] = NO_AUDIO_DEFAULT_BGM;
 
 
 					// Build Current
 					if (object.program.display.length > 0) {
-						object.current.repeat = !!program.display[0]['repeat']; // Set repeat
-						object.current.index = !!program.display[0]['index']; // Set index
+						object.current.repeat = !!program.display[0].repeat; // Set repeat
+						object.current.index = !!program.display[0].index; // Set index
 					} else {
 						object.current.repeat = object.current.index = false;
 					}
@@ -121,7 +121,18 @@ define(function(require, exports, module) {
 			this.socket.on('data', function(data) {
 				me.programs = data;
 				me.toProgram(0);
-			})
+
+				// 暴力预读功能
+				var preloadList = [];
+				me.programs.forEach(function(program) {
+					program.display.forEach(function(item) {
+						if (item.type == "image") {
+							preloadList.push('<link rel="prefetch" href="' + item.media + '" />');
+						}
+					});
+				});
+				$("head").append(preloadList.join("\n"));
+			});
 			this.socket.on('screen', function(data) {
 				me.runSocket(data.data.method, data);
 			});
@@ -154,7 +165,7 @@ define(function(require, exports, module) {
 			}
 			$.each(this.sockets[name], function(i, value) {
 				if (value.call(me, data.data)) {
-					data['data'] = null;
+					data.data = null;
 					me.socket.emit('result', data);
 					return true;
 				}

@@ -26,7 +26,15 @@ define(function(require, exports, module) {
 		this.data = data;
 		this.errorMessage = errorMessage;
 		this.toString = function() {
-			return "Error: " + errorMessage + "\n\n" + (typeof data == "object" ? JSON.stringify(data) : data.toString());
+			var objectString = "";
+			if (typeof data == "object") {
+				objectString = JSON.stringify(data); 
+			} else if (typeof data == "undefined" || typeof data.toString == "undefined"){
+				objectString = "";
+			} else {
+				objectString = data.toString();
+			}
+			return "Error: " + errorMessage + "\n\n" + objectString;
 		};
 	};
 

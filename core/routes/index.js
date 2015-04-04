@@ -13,14 +13,6 @@ exports["/screen"] = function(req, res) {
 	});
 };
 
-exports["/screen_test"] = function(req, res) {
-	res.render('test-screen', {
-		title: lang.global.screen,
-		config: config,
-		lang: lang
-	});
-};
-
 exports["/controller"] = function(req, res) {
 	res.render('controller', {
 		http: {

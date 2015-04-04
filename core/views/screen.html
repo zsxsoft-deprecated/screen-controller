@@ -32,15 +32,9 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li>
-						<a href="javascript:void(0)" class="dom-playing-name"></a>
-					</li>
-					<li>
-						<a href="javascript:void(0)" class="dom-playing-player"></a>
-					</li>
-					<li>
-						<a href="javascript:void(0)" class="dom-time" ></a>
-					</li>
+					<li><a href="javascript:void(0)" class="dom-playing-name"></a></li>
+					<li><a href="javascript:void(0)" class="dom-playing-player"></a></li>
+					<li><a href="javascript:void(0)" class="dom-time" ></a></li>
 				</ul>
 			</div>
 		</div>
@@ -69,6 +63,7 @@
 	</nav>
 
 	<script>
+	var config = <%-JSON.stringify(config)%>;
 	seajs.config({
       paths: {
         'screen': '/screen',

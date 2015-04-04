@@ -72,6 +72,16 @@ define(function(require, exports, module) {
 		},
 		initProgram: function(param) {
 			var me = this;
+			// 动态生成节目
+			if (typeof me.program == "undefined") {
+				me.program = {
+					bgm: "",
+					id: 0,
+					program: {name: "动态生成"}, 
+					player: {name: ""},
+					display: []
+				};
+			}
 
 			if (typeof(me.program.bgm) == "string") me.program.bgm = [me.program.bgm];
 			if (me.program.bgm[0] == '' || me.program.bgm.length == 0) me.program.bgm[0] = NO_AUDIO_DEFAULT_BGM;

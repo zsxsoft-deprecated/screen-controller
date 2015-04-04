@@ -20,7 +20,7 @@ exports.init = function(config) {
 
 	barrageSocket.on('init', function(data) {
 		console.info(self.lang.ext.barrage.getResponse);
-		barrageSocket.emit("password", {room: "client", password: self.config.extensions.barrage.password});
+		barrageSocket.emit("password", {room: self.config.extensions.barrage.room, password: self.config.extensions.barrage.password});
 	});
 
 	barrageSocket.on('danmu', function(data) {

@@ -53,7 +53,7 @@ module.exports = {
 	},
 	screen: {
 		footer: {
-			left: "This project created by zsx.",
+			left: "屏幕控制器 {version}",
 			right: 'GitHub: zsxsoft'
 		}
 	},

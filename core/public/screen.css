@@ -5,7 +5,7 @@
 body {
 	color: #5a5a5a;
 	font-family: 微软雅黑 Light, 方正兰亭纤黑, 微软雅黑, 宋体 !important;
-	padding-bottom: 50px;
+	padding-bottom: 15px;
   overflow: hidden;
 }
 .yahei-font {
@@ -195,4 +195,16 @@ body {
   .inner {
     padding: 30em;
   }
+}
+
+.navbar, .nav, .nav li {
+  min-height: 30px;
+  height: 30px;
+}
+.navbar-brand, .navbar-nav>li>a {
+  height: 30px;
+  padding-top: 5px;
+}
+.navbar-nav {
+  margin-top: -3px;
 }

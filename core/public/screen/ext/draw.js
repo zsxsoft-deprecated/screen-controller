@@ -45,14 +45,14 @@ define(function(require, exports, module) {
 	}, {
 		event: "startLoop",
 		func: function(data) {
-			if (!stateIsInSpeech) throw new Exception("Not in speech mode");
+			// if (!stateIsInSpeech) throw new Exception("Not in speech mode");
 			loopInit(data.param);
 			return true;
 		}
 	}, {
 		event: "stopLoop",
 		func: function() {
-			if (!stateIsInSpeech) throw new Exception("Not in speech mode");
+			// if (!stateIsInSpeech) throw new Exception("Not in speech mode");
 			loopStop();
 			return true;
 		}
@@ -96,7 +96,7 @@ define(function(require, exports, module) {
 
 		var object = this;
 		$("#dom-speech").html((function() {
-			return '<div class="inner"><h1 class="dom-playing-name title-name cover-heading" id="drawLabel">抽签</h1><code class="lead dom-playing-player title-player yahei-font" id="timeRemain">见证奇迹的时刻</code></div>';
+			return '<div class="inner"><h1 class="dom-playing-name title-name cover-heading" id="drawLabel">抽签</h1><code class="lead dom-playing-player title-player yahei-font">见证奇迹的时刻</code></div>';
 		})());
 	};
 
@@ -131,6 +131,7 @@ define(function(require, exports, module) {
 	var loopRemainTime = 0;
 	var loopInterval = 0;
 	var loopInit = function(data) {
+		loopStop();
 		loopRemainTime = data.time;
 		loopRegister();
 	};
@@ -140,11 +141,16 @@ define(function(require, exports, module) {
 	var loopFunction = function() {
 		$("#timeRemain").text(--loopRemainTime);
 		if (loopRemainTime === 0) {
-			clearInterval(loopInterval);
+			loopStop();
 		}
 	};
 	var loopStop = function() {
+		$("#timeRemain").text("");
 		clearInterval(loopInterval);
 	};
+
+	$(function() {
+		$("<div id='timeRemain' style='position: absolute; width: 300px; height: 300px; top: 50px; right: 0; font-size: 8em; color: white; z-index: 100000;'>").appendTo($("body"));
+	});
 
 });

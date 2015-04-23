@@ -57,6 +57,28 @@ define(function(require, exports, module) {
 	var drawChart = function() {
 
 		var object = this;
+		var rankList = [];
+
+		object.programs.forEach(function(el) {
+			if (el.rank !== false) {
+				rankList.push(el);
+			}
+		})
+		rankList.sort(function(a, b) {
+			var scoreA = 0;
+			var scoreB = 0;
+			var sortFunction = function(element) {
+				var sum = 0;
+				element.forEach(function(score) {
+					sum += score;
+				});
+				return sum;
+			};
+			scoreA = sortFunction(a.score);
+			scoreB = sortFunction(b.score);
+			return scoreB - scoreA;
+		});
+
 
 		$('#dom-score').highcharts({
 			chart: {
@@ -83,11 +105,9 @@ define(function(require, exports, module) {
 			xAxis: {
 				categories: (function() {
 					var a = [];
-					for (var i = 0; i <= object.programs.length - 1; i++) {
-						if (object.programs[i]['rank'] !== false) {
-							a.push(object.programs[i].player.name);
-						}
-					}
+					rankList.forEach(function(object) {
+						a.push(object.player.name);
+					});
 					return a;
 				})(),
 				labels: {
@@ -119,7 +139,23 @@ define(function(require, exports, module) {
 					stacking: 'normal'
 				}
 			},
-			series: buildSeries.call(object),
+			series: (function() {
+				var	series = [];
+				var seriesName = rankList[0].score;
+				for (var i = 0; i < seriesName.length; i++) {
+					series.push({
+						name: seriesName[i],
+						data: (function() {
+							var scores = [];
+							rankList.forEach(function() {
+								scores.push(0);
+							})
+							return scores;
+						})()
+					});
+				}
+				return series;
+			})(),
 			credits: {
 				enabled: false
 			},
@@ -129,38 +165,12 @@ define(function(require, exports, module) {
 			var o = $('#dom-score').highcharts();
 			for (var i = 0; i < o.series.length; i++) {
 				var index = -1;
-				for (var j = 0; j < object.programs.length - 1; j++) {
-					if (object.programs[j]['rank'] !== false) {
-						o.series[i].data[++index].update(parseFloat(object.programs[j].score[i]));
-					}
-				}
+				rankList.forEach(function(object) {
+					o.series[i].data[++index].update(parseFloat(object.score[i]));
+				});
 			}
 			o.redraw();
 		});
 	}
 
-
-	var buildSeries = function() {
-		var
-			series = [],
-			seriesName = this.programs[0].score,
-			object = this;
-
-		for (var i = 0; i < seriesName.length; i++) {
-			series.push({
-				name: seriesName[i],
-				data: (function() {
-					var scores = [];
-					for (var i = 0; i < object.programs.length - 1; i++) {
-						if (object.programs[i]['rank'] !== false) {
-							scores.push(0);
-						}
-					}
-					return scores;
-				})()
-			});
-		}
-		return series;
-
-	}
 });

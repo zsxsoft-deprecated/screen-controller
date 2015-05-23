@@ -19,7 +19,8 @@
     "socket.io": "*",
     "socket.io-client": "*",
     "less": "*",
-    "rich-console": "*"
+    "rich-console": "*",
+    "iconv-lite": "^0.4.8"
   },
   "window": {
     "toolbar": false,

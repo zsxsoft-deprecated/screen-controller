@@ -17,7 +17,7 @@ module.exports = {
 		getModifiedData: "Get Data: %s%",
 		saveFileError: "Save File Error: %s%",
 		dataTransferError: "Data Transfer Error: %s%",
-
+		getIpInformation: "You can open a ip created by '%s%': "
 	},
 	controller: {
 		prev: "Prev",

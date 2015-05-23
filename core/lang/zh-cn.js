@@ -21,6 +21,7 @@ module.exports = {
 		getModifiedData: "接收到待修改数据：%s%",
 		saveFileError: "数据保存时出现错误：%s%",
 		dataTransferError: "数据读取时出现错误：%s%",
+		getIpInformation: "你可以通过外网访问由网卡【%s%】定义的地址："
 	},
 	controller: {
 		prev: "向前",

@@ -39,19 +39,8 @@ zsx(http://www.zsxsoft.com)
 
 若不使用显示窗口，转而使用浏览器访问``http://127.0.0.1:3000/screen``的话，音频推荐使用__mp3__格式，视频推荐使用__mp4、H.264、AAC__。
 
-## 库
+## 待写计划
 
-### 前端
-* seajs [https://github.com/seajs/seajs](https://github.com/seajs/seajs)
-* jQuery [https://github.com/jquery/jquery](https://github.com/jquery/jquery)
-* Bootstrap [https://github.com/twbs/bootstrap](https://github.com/twbs/bootstrap)
-* DDPlayer [https://github.com/dpy1123/ddplayer](https://github.com/dpy1123/ddplayer)
-* Highcharts [https://github.com/highslide-software/highcharts.com](https://github.com/highslide-software/highcharts.com) 
+1. 控制器完全模块化
 
-
-### 后端
-* express [https://github.com/strongloop/express](https://github.com/strongloop/express)
-* express-less [https://github.com/toogle/express-less](https://github.com/toogle/express-less)
-* socket.io [https://github.com/Automattic/socket.io](https://github.com/Automattic/socket.io)
-* ejs [https://github.com/visionmedia/ejs](https://github.com/visionmedia/ejs)
-* rich-console [https://github.com/keven-wang/rich-console](https://github.com/keven-wang/rich-console)
+2. 加入公用音乐设置

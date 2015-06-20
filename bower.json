@@ -1,0 +1,29 @@
+{
+  "name": "screen-controller",
+  "version": "1.0.5",
+  "homepage": "https://github.com/zsxsoft/screen-controller",
+  "description": "screen-controller",
+  "main": "app.js",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "authors": [
+    "zsx<zsx@zsxsoft.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "seajs": "~3.0.0",
+    "jquery": "~2.1.4",
+    "highcharts": "~4.1.6"
+  }
+}

@@ -82,5 +82,5 @@ define(function (require, exports, module) {
 	});
 	elementChilds.splice(0, 0, "ReactBootstrap.Accordion", null);
 
-	this.reactRender = React.render(React.createElement(Controller, {programs: self.programs, program: self.program}), document.getElementById("controller-main"));
+	this.reactRender = React.render(React.createElement(Controller, null), document.getElementById("controller-main"));
 });

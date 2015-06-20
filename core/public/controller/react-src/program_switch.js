@@ -13,14 +13,19 @@ define(function (require, exports, module) {
 				handleScore: function() {
 					
 				},
+				handleItemClicked: function(e) {
+					var nodes = Array.prototype.slice.call( e.currentTarget.children );
+			        var index = nodes.indexOf( e.target );
+					console.log(e.target);
+				},
 				render: function () {
 					return (
 					<ReactBootstrap.Panel header='[%=lang.controller.programSelect%]' eventKey='2'>
-					<p>[%=lang.controller.programSelect%]<ReactBootstrap.ListGroup>
-					{this.state.programs.map(function(item, i) {
-						return <ReactBootstrap.List data-pos={item.program.id}>{item.program.name + " - " + item.player.name}</ReactBootstrap.List>
+					[%=lang.controller.programSelect%]<ReactBootstrap.ListGroup onClick={this.handleItemClicked}>
+					{self.programs.map(function(item, i) {
+						return <ReactBootstrap.ListGroupItem active={item.program.id == self.program.id} href="javascript:;" key={i} data-pos={item.program.id}>{item.program.name + " - " + item.player.name}</ReactBootstrap.ListGroupItem>
 					})}
-					</ReactBootstrap.ListGroup></p>
+					</ReactBootstrap.ListGroup>
                     <p>   <ReactBootstrap.Button onClick={this.handleBackground}>[%=lang.controller.modeBackground%]</ReactBootstrap.Button>
                     &nbsp;<ReactBootstrap.Button onClick={this.handleScore}>[%=lang.controller.handleScore%]</ReactBootstrap.Button>
 					</p>

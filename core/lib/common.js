@@ -1,4 +1,4 @@
-var exports = module.exports = {};
+exports = module.exports = {};
 exports.console = console;
 exports.io = null;
 exports.socketFunctions = [];

@@ -1,3 +1,7 @@
+/* global lang */
+/// <reference path="typings/node/node.d.ts"/>
+/* global config */
+/* global global */
 "use strict";
 var version = "1.0.4-20150404b";
 
@@ -37,7 +41,8 @@ app
 
 // set static resouces
 .use('/resources', express.static(path.join(__dirname, config.webServer.resourceFolder)))
-	.use(express.static(path.join(__dirname, config.webServer.staticFolder)))
+.use('/bower_components', express.static(path.join(__dirname, 'bower_components')))
+.use(express.static(path.join(__dirname, config.webServer.staticFolder)))
 
 // set dynamic route
 .get(/\/dynamic\/(.+)/, function(req, res) {

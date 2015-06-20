@@ -4,16 +4,14 @@ exports.e = function(io, socket) {
 
 var fetchAllData = function(io, socket) {
 
-	var replaceTag = /^data_/,
-		jsonTag = /^(\{|\[)[\d\D]+?(\}|\])$/,
-		self = this;
+	var self = this;
 
 	socket.on('global', function(data) {
 		if (data.need == "data") {
 			try {
-				var data = JSON.parse(require("fs").readFileSync(self.config.data, "utf-8"));
+				var jsonData = JSON.parse(require("fs").readFileSync(self.config.data, "utf-8"));
 				self.console.success(self.lang.console.dataTransfered.replace("%d%", socket.id));
-				socket.emit("data", data);
+				socket.emit("data", jsonData);
 			} catch (e) {
 				self.console.success(self.lang.console.dataTransferError.replace("%s%", e.toString()));
 			}

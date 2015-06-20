@@ -32,3 +32,6 @@ data*.json
 
 # Visual Studio Code
 typings
+
+# React
+.module-cache

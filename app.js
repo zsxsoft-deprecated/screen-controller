@@ -35,17 +35,17 @@ app
 	.use(errorHandler())
 
 // set ejs
-.engine('.html', ejs.__express)
+.engine('html', ejs.__express)
 	.set('view engine', 'html')
 	.set('views', path.join(__dirname, config.webServer.htmlFolder))
 
 // set static resouces
 .use('/resources', express.static(path.join(__dirname, config.webServer.resourceFolder)))
-.use('/bower_components', express.static(path.join(__dirname, 'bower_components')))
-.use(express.static(path.join(__dirname, config.webServer.staticFolder)))
+	.use('/bower_components', express.static(path.join(__dirname, 'bower_components')))
+	.use(express.static(path.join(__dirname, config.webServer.staticFolder)))
 
 // set dynamic route
-.get(/\/dynamic\/(.+)/, function(req, res) {
+.use(/\/dynamic\/(.+)/, function(req, res) {
 	var filePath = path.join(__dirname, config.webServer.dynamicFolder, req.params[0]);
 	fs.readFile(filePath, "utf8", function(err, data) {
 		if (err) res.end("Error");
@@ -74,7 +74,7 @@ for (var index in route) {
 
 var httpServer = http.createServer(app).listen(config.webServer.port, function() {
 	console.success(lang.console.serverCreated.replace("%u%", "http://127.0.0.1:" + config.webServer.port + '/'));
-	
+
 	var interfaces = os.networkInterfaces();
 	Object.keys(interfaces).forEach(function(key) {
 		interfaces[key].forEach(function(item) {

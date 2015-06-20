@@ -11,6 +11,9 @@
   <script src="/bower_components/jquery/dist/jquery.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
   <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/bower_components/react/react.js"></script>
+
+
   <title><%= title%></title>
 </head>
 <body>
@@ -24,7 +27,7 @@
     </div>
   </nav>
 
-  <div class="">
+  <div class="controller">
     <div class="container-fluid">
       <div class="row">
 
@@ -37,8 +40,7 @@
           </ul>
         </div>
 
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="controller-main"><!--
           <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
             <div class="panel panel-default">
               <div class="panel-heading">
@@ -82,158 +84,146 @@
                     <div class="list-group select-command" id="controlselect-changeprogram" data-command="toProgram" data-param="{action: 'absolute', pos: %val%}"></div>
                   </p>
                   <p>
-                    <!--<button class="btn btn-default btn-command" data-command="toProgram" data-param="{action: '', pos: -1}"  id="controlbutton-prev">
-                    <%=lang.controller.prev%></button>
-                  &nbsp;
-                  <button class="btn btn-success btn-command" data-command="toProgram" data-param="{action: '', pos: 1}"  id="controlbutton-next" >
-                    <%=lang.controller.next%></button>
-                  &nbsp;-->
-                  <button class="btn btn-default btn-command" data-command="toProgram" data-param="{action: 'absoulue', pos: 0}"  id="controlbutton-background">
-                    <%=lang.controller.modeBackground%></button>
-                  &nbsp;
-                  <button class="btn btn-default btn-command" data-command="toScore" data-param="{}"  id="controlbutton-score">
-                    <%=lang.controller.modeScore%></button>
+                    <button class="btn btn-default btn-command" data-command="toProgram" data-param="{action: 'absoulue', pos: 0}"  id="controlbutton-background">
+                      <%=lang.controller.modeBackground%></button>
+                    &nbsp;
+                    <button class="btn btn-default btn-command" data-command="toScore" data-param="{}"  id="controlbutton-score">
+                      <%=lang.controller.modeScore%></button>
 
-                </p>
+                  </p>
+                </div>
+
               </div>
-
             </div>
           </div>
-        </div>
-        <% }%>
+          <% }%>
 
-        <div class="panel-group" id="accordion3" role="tablist" aria-multiselectable="true">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion3" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                  <%=lang.controller.controlSlideMusic%></a>
-              </h4>
-            </div>
-            <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel">
-              <div class="panel-body">
-                <p>
-                  <%=lang.controller.musicSelect%>
-                  <div class="list-group select-command" id="controlselect-changebgm" data-command="controlMultimedia" data-param="{method: 'toggle', param: {action: 'absolute', pos: %val%}}"></div>
-                </p>
-                <p>
-                  <button class="btn btn-success btn-command" data-command="toggleSlide" data-param="{action: '', pos: -1}" id="controlbutton-toggle-background-prev">
-                    <%=lang.controller.prevSlide%></button>
-                  &nbsp;
-                  <button class="btn btn-success btn-command" data-command="toggleSlide" data-param="{action: '', pos: 1}" id="controlbutton-toggle-background-next">
-                    <%=lang.controller.nextSlide%></button>
-                  &nbsp;
-                  <!--<button class="btn btn-default btn-command" data-command="controlMultimedia" data-param="{method: 'toggle', param: {action: '', pos: -1}}" id="controlbutton-toggle-music-prev">
-                  <%=lang.controller.prevMusic%></button>
-                &nbsp;
-                <button class="btn btn-default btn-command" data-command="controlMultimedia" data-param="{method: 'toggle', param: {action: '', pos: 1}}" id="controlbutton-toggle-music-next">
-                  <%=lang.controller.nextMusic%></button>
-                -->
-                <button class="btn btn-info btn-command" data-command="controlMultimedia" data-param="{method: 'play'}" id="controlbutton-play">
-                  <%=lang.controller.play%></button>
-                &nbsp;
-                <button class="btn btn-warning btn-command" data-command="controlMultimedia" data-param="{method: 'pause'}"   id="controlbutton-pause">
-                  <%=lang.controller.pause%></button>
-                &nbsp;
-                <button class="btn btn-danger btn-command" data-command="controlMultimedia" data-param="{method: 'stop'}"   id="controlbutton-stop">
-                  <%=lang.controller.stop%></button>
-              </p>
+          <div class="panel-group" id="accordion3" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion3" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                    <%=lang.controller.controlSlideMusic%></a>
+                </h4>
+              </div>
+              <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel">
+                <div class="panel-body">
+                  <p>
+                    <%=lang.controller.musicSelect%>
+                    <div class="list-group select-command" id="controlselect-changebgm" data-command="controlMultimedia" data-param="{method: 'toggle', param: {action: 'absolute', pos: %val%}}"></div>
+                  </p>
+                  <p>
+                    <button class="btn btn-success btn-command" data-command="toggleSlide" data-param="{action: '', pos: -1}" id="controlbutton-toggle-background-prev">
+                      <%=lang.controller.prevSlide%></button>
+                    &nbsp;
+                    <button class="btn btn-success btn-command" data-command="toggleSlide" data-param="{action: '', pos: 1}" id="controlbutton-toggle-background-next">
+                      <%=lang.controller.nextSlide%></button>
+                    &nbsp;
+                    <button class="btn btn-info btn-command" data-command="controlMultimedia" data-param="{method: 'play'}" id="controlbutton-play">
+                      <%=lang.controller.play%></button>
+                    &nbsp;
+                    <button class="btn btn-warning btn-command" data-command="controlMultimedia" data-param="{method: 'pause'}"   id="controlbutton-pause">
+                      <%=lang.controller.pause%></button>
+                    &nbsp;
+                    <button class="btn btn-danger btn-command" data-command="controlMultimedia" data-param="{method: 'stop'}"   id="controlbutton-stop">
+                      <%=lang.controller.stop%></button>
+                  </p>
 
+                </div>
+              </div>
             </div>
-          </div>
+
+            <% if (http.get.action == "full") {%>
+            <div class="panel-group" id="accordionAdvanced" role="tablist" aria-multiselectable="true">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordionAdvanced" href="#collapseAdvanced" aria-expanded="true" aria-controls="collapseAdvanced">
+                      <%=lang.controller.advanced%></a>
+                  </h4>
+                </div>
+                <div id="collapseAdvanced" class="panel-collapse collapse in" role="tabpanel">
+                  <div class="panel-body">
+                    <div class="input-group">
+                      <span class="input-group-btn">
+                        <button class="btn btn-info btn-command" data-command="initPage" data-param="{}" type="button" id="controlbutton-init">
+                          <%=lang.controller.refresh%></button>
+                      </span>
+                      <input type="text" class="form-control" id="text-javascript" placeholder="<%=lang.controller.javascript%>
+                      ">
+                      <span class="input-group-btn">
+                        <button class="btn btn-success btn-command" data-command="runJavaScript" data-param="{}" type="button" id="controlbutton-postjavascript">
+                          <%=lang.controller.run%></button>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% }%>
+
+            <% if (http.get.action == "full" && typeof config.extensions["barrage"] != "undefined") {%>
+            <div class="panel-group" id="accordionBarrage" role="tablist" aria-multiselectable="true">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordionBarrage" href="#collapseBarrage" aria-expanded="true" aria-controls="collapseBarrage">
+                      <%=lang.controller.barrage%></a>
+                  </h4>
+                </div>
+                <div id="collapseBarrage" class="panel-collapse collapse in" role="tabpanel">
+                  <div class="panel-body">
+                    <div class="input-group">
+                      <input type="text" class="form-control" id="text-barrage" placeholder="">
+                      <span class="input-group-btn">
+                        <button class="btn btn-success btn-command" data-command="sendBarrage" data-param="{}" type="button" id="controlbutton-sendbarrage">
+                          <%=lang.controller.send%></button>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% }%>
+
+            <% if (http.get.action == "full") {%>
+            <div class="panel-group" id="accordionSpeech" role="tablist" aria-multiselectable="true">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordionSpeech" href="#collapseSpeech" aria-expanded="true" aria-controls="collapseSpeech">演讲比赛控制</a>
+                  </h4>
+                </div>
+                <div id="collapseSpeech" class="panel-collapse collapse in" role="tabpanel">
+                  <div class="panel-body">
+                    <p>
+                      <button class="btn btn-success btn-command" data-command="startDraw" data-param="{}" type="button" id="controlbutton-drawStart">开始抽签</button>
+                      &nbsp;
+                      <button class="btn btn-danger btn-command" data-command="stopDraw" data-param="{}" type="button" id="controlbutton-drawStop">停止抽签</button>
+                      &nbsp;
+                      <button class="btn btn-info btn-command" data-command="refreshDraw" data-param="{}" type="button" id="controlbutton-drawRefresh">抽签状态重置</button>
+                    </p>
+                    <p>
+                      <button class="btn btn-default btn-command" data-command="startLoop" data-param="{time: 30}" id="controlbutton-loopState1">30秒倒计时</button>
+                      <button class="btn btn-default btn-command" data-command="startLoop" data-param="{time: 180}" id="controlbutton-loopState2">180秒倒计时</button>
+                      <button class="btn btn-default btn-command" data-command="startLoop" data-param="{time: 300}" id="controlbutton-loopState3">300秒倒计时</button>
+                      <button class="btn btn-default btn-command" data-command="stopLoop" data-param="" id="controlbutton-loopStop">停止倒计时</button>
+                    </p>
+                    <p>
+                      <button class="btn btn-warning btn-command" data-command="toSpeech" data-param="" id="controlbutton-tospeech">切换至演讲比赛模式</button>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% }%></div>-->
         </div>
       </div>
-
-      <% if (http.get.action == "full") {%>
-      <div class="panel-group" id="accordionAdvanced" role="tablist" aria-multiselectable="true">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordionAdvanced" href="#collapseAdvanced" aria-expanded="true" aria-controls="collapseAdvanced">
-                <%=lang.controller.advanced%></a>
-            </h4>
-          </div>
-          <div id="collapseAdvanced" class="panel-collapse collapse in" role="tabpanel">
-            <div class="panel-body">
-              <div class="input-group">
-                <span class="input-group-btn">
-                  <button class="btn btn-info btn-command" data-command="initPage" data-param="{}" type="button" id="controlbutton-init">
-                    <%=lang.controller.refresh%></button>
-                </span>
-                <input type="text" class="form-control" id="text-javascript" placeholder="<%=lang.controller.javascript%>
-                ">
-                <span class="input-group-btn">
-                  <button class="btn btn-success btn-command" data-command="runJavaScript" data-param="{}" type="button" id="controlbutton-postjavascript">
-                    <%=lang.controller.run%></button>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <% }%>
-
-      <% if (http.get.action == "full" && typeof config.extensions["barrage"] != "undefined") {%>
-      <div class="panel-group" id="accordionBarrage" role="tablist" aria-multiselectable="true">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordionBarrage" href="#collapseBarrage" aria-expanded="true" aria-controls="collapseBarrage">
-                <%=lang.controller.barrage%></a>
-            </h4>
-          </div>
-          <div id="collapseBarrage" class="panel-collapse collapse in" role="tabpanel">
-            <div class="panel-body">
-              <div class="input-group">
-                <input type="text" class="form-control" id="text-barrage" placeholder="">
-                <span class="input-group-btn">
-                  <button class="btn btn-success btn-command" data-command="sendBarrage" data-param="{}" type="button" id="controlbutton-sendbarrage">
-                    <%=lang.controller.send%></button>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div></div>
-        <% }%>
-
-      <% if (http.get.action == "full") {%>
-      <div class="panel-group" id="accordionSpeech" role="tablist" aria-multiselectable="true">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordionSpeech" href="#collapseSpeech" aria-expanded="true" aria-controls="collapseSpeech">演讲比赛控制</a>
-            </h4>
-          </div>
-          <div id="collapseSpeech" class="panel-collapse collapse in" role="tabpanel">
-            <div class="panel-body">
-            	<p>
-                  <button class="btn btn-success btn-command" data-command="startDraw" data-param="{}" type="button" id="controlbutton-drawStart">
-                   开始抽签</button>&nbsp;
-                   <button class="btn btn-danger btn-command" data-command="stopDraw" data-param="{}" type="button" id="controlbutton-drawStop">
-                   停止抽签</button>&nbsp;
-                   <button class="btn btn-info btn-command" data-command="refreshDraw" data-param="{}" type="button" id="controlbutton-drawRefresh">
-                   抽签状态重置</button>
-                </p>
-                <p>
-                	<button class="btn btn-default btn-command" data-command="startLoop" data-param="{time: 30}" id="controlbutton-loopState1">30秒倒计时</button>
-                  <button class="btn btn-default btn-command" data-command="startLoop" data-param="{time: 180}" id="controlbutton-loopState2">180秒倒计时</button>
-                	<button class="btn btn-default btn-command" data-command="startLoop" data-param="{time: 300}" id="controlbutton-loopState3">300秒倒计时</button>
-                	<button class="btn btn-default btn-command" data-command="stopLoop" data-param="" id="controlbutton-loopStop">停止倒计时</button>
-                </p>
-				<p>
-					<button class="btn btn-warning btn-command" data-command="toSpeech" data-param="" id="controlbutton-tospeech">切换至演讲比赛模式</button> 
-				</p>
-            </div>
-          </div>
-        </div></div>
-        <% }%>
     </div>
   </div>
-</div>
-</div>
-</div>
-<script>
-var config = <%-JSON.stringify(config)%>;
+  <script src="/bower_components/react-bootstrap/react-bootstrap.js"></script>
+  <script>var config = <%-JSON.stringify(config)%>;</script>
+  <script>
   seajs.config({
       paths: {
         'controller': '/controller',
@@ -242,7 +232,7 @@ var config = <%-JSON.stringify(config)%>;
       alias: {
       }
     });
-    seajs.use('controller/main');
+    seajs.use('controller/react-build/main');
 </script>
 </body>
 </html>

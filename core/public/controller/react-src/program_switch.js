@@ -5,7 +5,13 @@ define(function (require, exports, module) {
 			var self = this;
 			var programSwitch = React.createClass({
 				getInitialState: function() {
-					return {programs: self.programs, program: self.program}
+					var me = this;
+					var initState = function() {
+						me.setState({programs: self.programs, program: self.program});
+					};
+					self.on("dataGot", initState);
+					self.on("programChanged", initState)
+					return {programs: self.programs, program: self.program};
 				},
 				handleBackground: function() {
 					
@@ -13,27 +19,23 @@ define(function (require, exports, module) {
 				handleScore: function() {
 					
 				},
-				handleItemClicked: function(e) {
-					var nodes = Array.prototype.slice.call( e.currentTarget.children );
-			        var index = nodes.indexOf( e.target );
-					console.log(e.target);
+				handleItemClicked: function(index) {
+					self.emit("changeProgram", index);
 				},
 				render: function () {
+					var me = this;
 					return (
-					<ReactBootstrap.Panel header='[%=lang.controller.programSelect%]' eventKey='2'>
-					[%=lang.controller.programSelect%]<ReactBootstrap.ListGroup onClick={this.handleItemClicked}>
-					{self.programs.map(function(item, i) {
-						return <ReactBootstrap.ListGroupItem active={item.program.id == self.program.id} href="javascript:;" key={i} data-pos={item.program.id}>{item.program.name + " - " + item.player.name}</ReactBootstrap.ListGroupItem>
-					})}
-					</ReactBootstrap.ListGroup>
-                    <p>   <ReactBootstrap.Button onClick={this.handleBackground}>[%=lang.controller.modeBackground%]</ReactBootstrap.Button>
-                    &nbsp;<ReactBootstrap.Button onClick={this.handleScore}>[%=lang.controller.handleScore%]</ReactBootstrap.Button>
-					</p>
-					</ReactBootstrap.Panel>
-				)}
-			});
-			this.on("programChanged", function () {
-				//programInfo.setState({});
+						<ReactBootstrap.Panel header="[%=lang.controller.programSelect%]" eventKey="2">
+						[%=lang.controller.programSelect%]<ReactBootstrap.ListGroup>
+						{this.state.programs.map(function(item, i) {
+							return <ReactBootstrap.ListGroupItem onClick={me.handleItemClicked.bind(null, i)} active={item.id == me.state.program.id} href="javascript:;" key={i} pos={item.id}>{item.program.name + " - " + item.player.name}</ReactBootstrap.ListGroupItem>
+						})}
+						</ReactBootstrap.ListGroup>
+                 	    <p>   <ReactBootstrap.Button onClick={this.handleBackground}>[%=lang.controller.modeBackground%]</ReactBootstrap.Button>
+						&nbsp;<ReactBootstrap.Button onClick={this.handleScore}>[%=lang.controller.handleScore%]</ReactBootstrap.Button>
+						</p>
+						</ReactBootstrap.Panel>
+					)}
 			});
 			var ProgramSwitch = programSwitch;
 			return {

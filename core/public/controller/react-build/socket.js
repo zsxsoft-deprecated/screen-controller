@@ -1,5 +1,24 @@
 /// <reference path="../../../../typings/react/react.d.ts"/>
 define(function (require, exports, module) {
+
+	var sendRequest = function (data, callback) {
+		var me = this;
+		if (!data) data = {};
+		if (typeof (data) == 'string') data = {
+			'method': data
+		};
+		if (!callback) callback = function () { }
+
+		var queueLength = this._queue.data.length;
+		this._queue.data[queueLength] = {
+			data: data,
+			id: queueLength
+		};
+		this._queue.callback[queueLength] = callback;
+		this.socket.emit('screen', this._queue.data[queueLength]);
+		console.log(this._queue.data[queueLength]);
+
+	};
 	module.exports = {
 		init: function () {
 			var me = this;
@@ -33,20 +52,36 @@ define(function (require, exports, module) {
 				});
 			});
 
-			this.socket.on('data', function(data) {
+			this.socket.on('data', function (data) {
 				me.programs = data;
 				me.program = me.programs[0];
-				me.reactRender.forceUpdate();
-
+				//				me.reactRender.setState({programs: data});
+				//				console.log(me.reactRender);
+				me.programs.forEach(function(value, index) {
+					value.tagId = index;console.log(value.tagId);
+				});
+				
+				me.emit("dataGot");
 			});
 
 
-			this.socket.on('program-switch', function(data) {
+			this.socket.on('program-switch', function (data) {
 				me.program = me.programs[data];
 				me.emit("programChanged");
-				
 			});
-			
+
+			this.on("changeProgram", function (id) {
+
+				sendRequest.call(me, {
+					method: "toProgram",
+					param: {
+						action: "absolute",
+						pos: id//me.programs[id].tagId
+					}
+				});
+
+			});
+
 			return {};
 		}
 	};
